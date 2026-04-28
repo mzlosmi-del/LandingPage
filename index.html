@@ -9,10 +9,16 @@
 <meta property="og:title" content="Konfigurator — Sell configurable products without quote forms" />
 <meta property="og:description" content="Live pricing. 3D previews. Qualified inquiries. Embed in one line of code." />
 <meta property="og:type" content="website" />
+<meta name="robots" content="index, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Konfigurator — Sell configurable products without quote forms" />
+<meta name="twitter:description" content="Live pricing. 3D previews. Qualified inquiries. Embed in one line of code." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
 
 <style>
 :root {
@@ -776,6 +782,11 @@ footer {
 .foot-links { display: flex; gap: 20px; font-size: 13px; }
 .foot-links a { color: var(--gray-5); transition: color .15s; }
 .foot-links a:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
 </style>
 </head>
 <body>
@@ -787,7 +798,7 @@ footer {
       <span class="brand-mark">K</span>
       Konfigurator
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Main navigation">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
@@ -795,6 +806,8 @@ footer {
     <a href="#waitlist" class="nav-cta">Get early access</a>
   </div>
 </header>
+
+<main>
 
 <!-- ────────── HERO ────────── -->
 <section class="hero">
@@ -809,21 +822,21 @@ footer {
       <div class="hero-ctas">
         <a href="#demo" class="btn btn-primary">
           Try the live demo
-          <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#waitlist" class="btn btn-ghost">Get early access</a>
       </div>
       <div class="hero-trust">
         <span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           One-line embed
         </span>
         <span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           No setup project
         </span>
         <span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Free tier available
         </span>
       </div>
@@ -843,10 +856,10 @@ footer {
         <div class="hv-row">
           <div class="hv-label"><span>Material</span><b>Oak veneer</b></div>
           <div class="hv-pills">
-            <button class="hv-pill">Pine</button>
-            <button class="hv-pill on">Oak</button>
-            <button class="hv-pill">Walnut</button>
-            <button class="hv-pill">Beech</button>
+            <button class="hv-pill" tabindex="-1">Pine</button>
+            <button class="hv-pill on" tabindex="-1">Oak</button>
+            <button class="hv-pill" tabindex="-1">Walnut</button>
+            <button class="hv-pill" tabindex="-1">Beech</button>
           </div>
         </div>
 
@@ -905,7 +918,7 @@ footer {
     <div class="prob-grid">
       <div class="prob-card">
         <div class="prob-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6a3 3 0 013-3h10a3 3 0 013 3v8a3 3 0 01-3 3H8l-4 3v-3H6a3 3 0 01-3-3V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 6a3 3 0 013-3h10a3 3 0 013 3v8a3 3 0 01-3 3H8l-4 3v-3H6a3 3 0 01-3-3V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         </div>
         <h3>Visitors leave without a price</h3>
         <p>They fill out a contact form, get an auto-reply, and shop the next four competitors while they wait. Most never come back.</p>
@@ -913,7 +926,7 @@ footer {
 
       <div class="prob-card">
         <div class="prob-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <h3>Your team quotes in spreadsheets</h3>
         <p>Every quote is a 20-minute back-and-forth on dimensions, materials, and options. Your best people quote tire-kickers instead of closing real deals.</p>
@@ -921,7 +934,7 @@ footer {
 
       <div class="prob-card">
         <div class="prob-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M2 11h4M16 11h4M4.5 4.5l3 3M14.5 14.5l3 3M4.5 17.5l3-3M14.5 7.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2v4M11 16v4M2 11h4M16 11h4M4.5 4.5l3 3M14.5 14.5l3 3M4.5 17.5l3-3M14.5 7.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h3>Legacy CPQ tools want six months and €60k</h3>
         <p>Heavy enterprise platforms are built for global manufacturing operations. You need a configurator on your site by next quarter — not a multi-year transformation project.</p>
@@ -939,7 +952,7 @@ footer {
 
     <div class="demo-card">
       <div class="demo-bar">
-        <div class="demo-dots"><i></i><i></i><i></i></div>
+        <div class="demo-dots" aria-hidden="true"><i></i><i></i><i></i></div>
         <span>live demo</span>
         <span class="demo-live">LIVE</span>
       </div>
@@ -958,7 +971,7 @@ footer {
     <div class="demo-callouts">
       <div class="demo-co">
         <div class="demo-co-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div>
           <h4>Live price calculation</h4>
@@ -967,7 +980,7 @@ footer {
       </div>
       <div class="demo-co">
         <div class="demo-co-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5l5-3 5 3v6l-5 3-5-3V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 5l5-3 5 3v6l-5 3-5-3V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         </div>
         <div>
           <h4>Visual feedback</h4>
@@ -976,7 +989,7 @@ footer {
       </div>
       <div class="demo-co">
         <div class="demo-co-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8H2V4zM2 7h12" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M2 4h12v8H2V4zM2 7h12" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <div>
           <h4>Qualified inquiries</h4>
@@ -1032,7 +1045,7 @@ footer {
     <div class="feat-grid">
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <h4>Formula-based pricing</h4>
         <p>Visual node editor for any pricing logic. Surface area, perimeter, premiums, surcharges, conditional discounts — recalculated on every selection.</p>
@@ -1040,7 +1053,7 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 11l8-4.5M11 11v9M11 11L3 6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 11l8-4.5M11 11v9M11 11L3 6.5" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <h4>Native 3D &amp; AR</h4>
         <p>Upload a GLB once. Customers rotate, zoom, and view in their own room via AR. Every option re-rendered live in the browser.</p>
@@ -1048,7 +1061,7 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 4h16M3 11h16M3 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 4h16M3 11h16M3 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Display rules &amp; logic</h4>
         <p>Hide options that don't apply. Restrict combinations that aren't possible. Model your real product rules — not a flattened version.</p>
@@ -1056,7 +1069,7 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Branded PDF quotations</h4>
         <p>Turn any inquiry into a formal quote in one click. Your logo, your terms, your branding. Track draft → sent → accepted.</p>
@@ -1064,7 +1077,7 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11a8 8 0 0116 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 11a8 8 0 0116 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Webhooks &amp; CRM sync</h4>
         <p>Push every inquiry and quotation event to your CRM, ERP, or warehouse system. HMAC-signed, retried, audited.</p>
@@ -1072,7 +1085,7 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Multi-language &amp; teams</h4>
         <p>Per-language overrides for every market. Invite admins, members, and viewers across sales, product, and ops.</p>
@@ -1220,23 +1233,23 @@ footer {
     <h2>Everything you might be wondering.</h2>
     <div class="faq-list" style="margin-top:48px">
       <div class="faq-item">
-        <div class="faq-q">Can it handle the actual complexity of my product line?</div>
+        <h3 class="faq-q">Can it handle the actual complexity of my product line?</h3>
         <p class="faq-a">Yes. Konfigurator handles dependent characteristics, surface-area pricing, conditional surcharges, per-language labels, and display rules per product. If your sales team can describe it in a spreadsheet, the formula engine can model it.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Will it work on my existing website?</div>
+        <h3 class="faq-q">Will it work on my existing website?</h3>
         <p class="faq-a">It embeds as a single script tag, a Web Component, or an iFrame — covering WordPress, Shopify, Webflow, Wix, and any custom CMS. Your developer won't need to rebuild anything.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q">What happens to the inquiries — does this replace my sales team?</div>
+        <h3 class="faq-q">What happens to the inquiries — does this replace my sales team?</h3>
         <p class="faq-a">No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Your team converts them into formal quotes and follows up. Konfigurator removes the back-and-forth on basic specs so your people spend time on real conversations.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Can it push data into my ERP or CRM?</div>
+        <h3 class="faq-q">Can it push data into my ERP or CRM?</h3>
         <p class="faq-a">Yes. HMAC-signed webhooks fire on every inquiry and quotation status change. Native Zapier, HubSpot, and Pipedrive integrations are shipping during early access. Custom integrations are straightforward via the webhook payload.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Where do my 3D models come from?</div>
+        <h3 class="faq-q">Where do my 3D models come from?</h3>
         <p class="faq-a">Upload your own GLB or GLTF files — most CAD packages export them. For early-access customers, we'll help convert one model from your existing assets so you launch with a real preview on day one.</p>
       </div>
     </div>
@@ -1250,16 +1263,18 @@ footer {
     <p>Early-access founders get 50% off lifetime, hands-on onboarding, and a direct line to the product team.</p>
     <a href="mailto:hello@konfigurator.io?subject=Early%20access%20%E2%80%94%20Konfigurator" class="btn btn-primary">
       Apply for early access
-      <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 </section>
+
+</main>
 
 <!-- ────────── FOOTER ────────── -->
 <footer>
   <div class="wrap foot">
     <div class="foot-left">© 2026 Konfigurator. Built for teams that ship.</div>
-    <nav class="foot-links">
+    <nav class="foot-links" aria-label="Footer navigation">
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="mailto:hello@konfigurator.io">Contact</a>
