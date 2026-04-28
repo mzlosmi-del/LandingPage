@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Konfigurator — Sell configurable products without quote forms</title>
+<meta name="description" content="The embeddable product configurator for manufacturers and custom shops. Live pricing, 3D previews, qualified inquiries — embed in one line of code." />
+<meta name="theme-color" content="#0a0a0a" />
+<meta property="og:title" content="Konfigurator — Sell configurable products without quote forms" />
+<meta property="og:description" content="Live pricing. 3D previews. Qualified inquiries. Embed in one line of code." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0a0a0a;
+  --ink-2: #1a1a1a;
+  --gray-1: #fafaf7;
+  --gray-2: #f4f3ee;
+  --gray-3: #e8e7e1;
+  --gray-4: #c9c7be;
+  --gray-5: #6b6a64;
+  --gray-6: #3a3a37;
+  --line: #e0ded6;
+  --line-2: #d4d2c9;
+  --accent: #c8ff00;          /* electric lime — minimal, modern, distinctive */
+  --accent-ink: #0a0a0a;       /* text on accent */
+  --good: #0a8043;
+  --bad: #b91c1c;
+  --warn: #946800;
+
+  --sans: 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 2px rgba(10,10,10,.04), 0 1px 3px rgba(10,10,10,.06);
+  --shadow: 0 4px 6px -1px rgba(10,10,10,.05), 0 8px 24px -4px rgba(10,10,10,.08);
+  --shadow-lg: 0 12px 28px -8px rgba(10,10,10,.12), 0 24px 48px -12px rgba(10,10,10,.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+*::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--gray-1);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px) { .wrap { padding: 0 40px; } }
+
+/* ─────────────────────────────────────────
+   NAV
+   ───────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,247,.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -.02em;
+}
+.brand-mark {
+  width: 26px; height: 26px;
+  background: var(--ink); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-weight: 600; font-size: 14px;
+  border-radius: 7px;
+}
+.nav-links { display: none; align-items: center; gap: 32px; font-size: 15px; font-weight: 500; }
+.nav-links a { color: var(--gray-6); transition: color .15s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--ink); color: var(--gray-1);
+  padding: 9px 18px; border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  transition: background .15s, transform .15s;
+}
+.nav-cta:hover { background: var(--ink-2); transform: translateY(-1px); }
+@media (min-width: 768px) { .nav-links { display: flex; } }
+
+/* ─────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────── */
+.hero { padding: 56px 0 72px; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .hero { padding: 88px 0 104px; } }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  color: var(--gray-6);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+  margin-bottom: 24px;
+}
+.hero-tag::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(200,255,0,.25);
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+h1 .hi {
+  background: var(--accent);
+  padding: 0 .15em;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.55;
+  color: var(--gray-6);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.hero-ctas {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 32px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 15px; font-weight: 600;
+  letter-spacing: -.005em;
+  transition: transform .15s, background .15s, color .15s, border-color .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--ink); color: var(--gray-1);
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { background: var(--ink-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn-primary svg { transition: transform .2s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--line-2);
+}
+.btn-ghost:hover { background: var(--gray-2); border-color: var(--gray-4); }
+
+.hero-trust {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  font-size: 14px; color: var(--gray-5);
+  font-weight: 500;
+}
+.hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-trust svg { color: var(--ink); flex-shrink: 0; }
+
+/* ─── HERO VISUAL (desktop only) ─── */
+.hero-visual {
+  display: none;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 1024px) { .hero-visual { display: block; min-height: 500px; } }
+
+.hv-bar {
+  background: var(--ink); color: var(--gray-1);
+  padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+}
+.hv-dots { display: flex; gap: 6px; }
+.hv-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); display: block; }
+.hv-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+.hv-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+.hv-body { padding: 32px; min-height: 440px; }
+.hv-product-name { font-size: 13px; color: var(--gray-5); font-weight: 500; margin-bottom: 4px; }
+.hv-product-title { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 24px; }
+.hv-row { margin-bottom: 18px; }
+.hv-label { font-size: 12px; font-weight: 600; color: var(--gray-5); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; display: flex; justify-content: space-between; }
+.hv-label b { color: var(--ink); font-weight: 700; text-transform: none; letter-spacing: -.005em; }
+.hv-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.hv-pill {
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--line-2);
+  font-size: 13px; font-weight: 500;
+  background: #fff; color: var(--gray-6);
+  transition: all .15s;
+}
+.hv-pill.on { background: var(--ink); color: var(--gray-1); border-color: var(--ink); }
+.hv-swatches { display: flex; gap: 6px; }
+.hv-sw {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  position: relative;
+  cursor: default;
+}
+.hv-sw.on { border-color: var(--ink); }
+.hv-sw.on::after {
+  content: "✓"; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,.5);
+}
+.hv-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hv-dim {
+  background: var(--gray-2); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 10px 14px;
+}
+.hv-dim label { display: block; font-size: 11px; color: var(--gray-5); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.hv-dim .v { font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.hv-dim .v small { font-size: 12px; font-weight: 500; color: var(--gray-5); margin-left: 2px; }
+
+.hv-price-card {
+  margin-top: 24px;
+  background: var(--ink); color: var(--gray-1);
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.hv-price-card .lbl { font-size: 13px; color: rgba(255,255,255,.7); font-weight: 500; }
+.hv-price-card .price {
+  font-size: 28px; font-weight: 700; letter-spacing: -.025em;
+}
+.hv-price-card .price small { font-size: 14px; color: rgba(255,255,255,.6); font-weight: 500; margin-left: 2px; }
+
+/* ─────────────────────────────────────────
+   PRODUCT TYPES STRIP
+   ───────────────────────────────────────── */
+.types {
+  padding: 28px 0;
+  background: var(--gray-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.types-label {
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  color: var(--gray-5); letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 16px; text-align: center;
+}
+.types-list {
+  display: flex; gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 24px;
+  justify-content: flex-start;
+}
+.types-list::-webkit-scrollbar { display: none; }
+.types-list li {
+  list-style: none;
+  font-size: 14px; font-weight: 500;
+  color: var(--gray-6);
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (min-width: 1024px) {
+  .types-list { justify-content: center; flex-wrap: wrap; padding: 0; }
+}
+
+/* ─────────────────────────────────────────
+   SECTION SHELL
+   ───────────────────────────────────────── */
+.sec { padding: 72px 0; }
+.sec.dark { background: var(--ink); color: var(--gray-1); }
+.sec.tinted { background: var(--gray-2); }
+@media (min-width: 768px) { .sec { padding: 104px 0; } }
+
+.sec-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  color: var(--gray-5);
+  margin-bottom: 16px;
+}
+.sec-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--accent); }
+.dark .sec-eyebrow { color: var(--gray-4); }
+
+h2 {
+  font-size: clamp(30px, 4.4vw, 46px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin-bottom: 18px;
+  color: inherit;
+}
+.sec-lead {
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.55;
+  color: var(--gray-6);
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+.dark .sec-lead { color: var(--gray-4); }
+
+/* ─────────────────────────────────────────
+   PROBLEM
+   ───────────────────────────────────────── */
+.prob-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) { .prob-grid { grid-template-columns: repeat(3,1fr); gap: 20px; } }
+
+.prob-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  transition: transform .15s, box-shadow .15s;
+}
+.prob-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.prob-icon {
+  width: 44px; height: 44px;
+  background: var(--gray-2);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.prob-card h3 {
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -.02em; line-height: 1.25;
+  margin-bottom: 10px;
+}
+.prob-card p {
+  font-size: 15px; line-height: 1.6;
+  color: var(--gray-6);
+}
+
+/* ─────────────────────────────────────────
+   DEMO SECTION (live widget)
+   ───────────────────────────────────────── */
+.demo-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.demo-bar {
+  background: var(--ink); color: var(--gray-1);
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+}
+.demo-dots { display: flex; gap: 6px; }
+.demo-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.22); display: block; }
+.demo-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.demo-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s ease-in-out infinite; }
+.demo-body {
+  background: #fff;
+  min-height: 540px;
+  display: flex; align-items: stretch;
+}
+.demo-body > div { width: 100%; }
+
+.demo-callouts {
+  display: grid; grid-template-columns: 1fr; gap: 10px;
+  margin-top: 28px;
+}
+@media (min-width: 768px) { .demo-callouts { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.demo-co {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 18px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.demo-co-icon {
+  width: 32px; height: 32px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.demo-co h4 {
+  font-size: 14px; font-weight: 600;
+  letter-spacing: -.01em; margin-bottom: 2px;
+}
+.demo-co p { font-size: 13px; color: var(--gray-6); line-height: 1.45; }
+
+/* ─────────────────────────────────────────
+   HOW IT WORKS
+   ───────────────────────────────────────── */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+.step {
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  position: relative;
+}
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 14px; font-weight: 700;
+  margin-bottom: 18px;
+}
+.step h3 {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 10px;
+  line-height: 1.25;
+}
+.step p {
+  font-size: 15px; line-height: 1.6;
+  color: var(--gray-6); margin-bottom: 16px;
+}
+.step-meta {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--gray-5);
+  padding-top: 14px; border-top: 1px solid var(--line);
+}
+.step-code {
+  background: var(--ink); color: var(--gray-1);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-family: var(--mono); font-size: 12px; line-height: 1.55;
+  margin-bottom: 16px; overflow-x: auto;
+}
+.step-code .cm { color: #6e6e6e; }
+.step-code .st { color: var(--accent); }
+
+/* ─────────────────────────────────────────
+   FEATURES
+   ───────────────────────────────────────── */
+.feat-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+@media (min-width: 640px) { .feat-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1024px) { .feat-grid { grid-template-columns: repeat(3,1fr); } }
+
+.feat {
+  background: var(--ink);
+  padding: 32px 28px;
+  transition: background .2s;
+}
+.feat:hover { background: #141414; }
+.feat-icon {
+  width: 40px; height: 40px;
+  background: rgba(200,255,0,.12);
+  color: var(--accent);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.feat h4 {
+  font-size: 18px; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 8px;
+  color: var(--gray-1);
+}
+.feat p {
+  font-size: 14.5px; line-height: 1.6;
+  color: rgba(255,255,255,.72);
+}
+
+/* ─────────────────────────────────────────
+   COMPARISON
+   ───────────────────────────────────────── */
+.cmp-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 1024px) { .cmp-grid { grid-template-columns: repeat(3,1fr); gap: 20px; align-items: stretch; } }
+
+.cmp-col {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.cmp-col.featured {
+  background: var(--ink); color: var(--gray-1);
+  border-color: var(--ink);
+  transform: scale(1);
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 1024px) { .cmp-col.featured { transform: scale(1.02); } }
+
+.cmp-badge {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: var(--accent-ink);
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.cmp-icon {
+  width: 44px; height: 44px;
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 16px;
+}
+.cmp-bad-icon { background: #fee2e2; color: var(--bad); }
+.cmp-warn-icon { background: var(--gray-3); color: var(--gray-6); }
+.cmp-good-icon { background: var(--accent); color: var(--accent-ink); }
+.cmp-name {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 4px;
+}
+.cmp-sub {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--gray-5); letter-spacing: .02em;
+  margin-bottom: 24px;
+}
+.cmp-col.featured .cmp-sub { color: rgba(255,255,255,.6); }
+.cmp-list {
+  list-style: none; margin: 0; padding: 0;
+  flex: 1; margin-bottom: 22px;
+}
+.cmp-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.cmp-col.featured .cmp-list li { border-color: rgba(255,255,255,.12); }
+.cmp-list li:last-child { border-bottom: 0; }
+.cmp-attr {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: var(--gray-5);
+}
+.cmp-col.featured .cmp-attr { color: rgba(255,255,255,.5); }
+.cmp-val { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+.cmp-col.featured .cmp-val { color: var(--gray-1); }
+.cmp-good { color: var(--good); font-weight: 600; }
+.cmp-col.featured .cmp-good { color: var(--accent); }
+.cmp-bad { color: var(--bad); font-weight: 500; }
+.cmp-warn { color: var(--warn); font-weight: 500; }
+
+.cmp-verdict {
+  font-size: 13px; font-weight: 500;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--gray-2);
+  color: var(--gray-6);
+}
+.cmp-col.featured .cmp-verdict {
+  background: rgba(200,255,0,.1);
+  border-color: rgba(200,255,0,.3);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─────────────────────────────────────────
+   PRICING
+   ───────────────────────────────────────── */
+.tiers {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) { .tiers { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1024px) { .tiers { grid-template-columns: repeat(4,1fr); gap: 16px; } }
+
+.tier {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.tier:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--line-2); }
+.tier.best {
+  background: var(--ink); color: var(--gray-1);
+  border-color: var(--ink);
+}
+.tier.best:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.tier-badge {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: var(--accent-ink);
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.tier-name {
+  font-size: 14px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: var(--gray-5);
+  margin-bottom: 12px;
+}
+.tier.best .tier-name { color: var(--accent); }
+.tier-price {
+  font-size: 40px; font-weight: 700;
+  letter-spacing: -.035em; line-height: 1;
+  margin-bottom: 4px;
+}
+.tier-price small {
+  font-size: 14px; font-weight: 500;
+  color: var(--gray-5); margin-left: 4px;
+}
+.tier.best .tier-price small { color: rgba(255,255,255,.6); }
+.tier-desc {
+  font-size: 14px; color: var(--gray-6);
+  line-height: 1.45; margin: 12px 0 22px;
+  min-height: 40px;
+}
+.tier.best .tier-desc { color: rgba(255,255,255,.7); }
+.tier ul { list-style: none; padding: 0; margin: 0 0 24px; flex: 1; }
+.tier li {
+  font-size: 14px; padding: 8px 0;
+  display: flex; align-items: flex-start; gap: 10px;
+  line-height: 1.45;
+}
+.tier li::before {
+  content: "";
+  width: 16px; height: 16px;
+  background: var(--gray-2);
+  border-radius: 999px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8L7 11.5L12.5 5' stroke='%230a0a0a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center; background-repeat: no-repeat;
+}
+.tier.best li::before {
+  background: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8L7 11.5L12.5 5' stroke='%230a0a0a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center; background-repeat: no-repeat;
+}
+.tier-cta {
+  display: block; text-align: center;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  background: var(--gray-2); color: var(--ink);
+  border: 1px solid var(--line);
+  transition: background .15s, border-color .15s;
+}
+.tier-cta:hover { background: var(--gray-3); border-color: var(--gray-4); }
+.tier.best .tier-cta {
+  background: var(--accent); color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.tier.best .tier-cta:hover { background: #d6ff3a; border-color: #d6ff3a; }
+
+/* ─────────────────────────────────────────
+   FAQ
+   ───────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.faq-q {
+  font-size: 17px; font-weight: 600;
+  letter-spacing: -.015em;
+  margin-bottom: 8px; line-height: 1.35;
+}
+.faq-a {
+  font-size: 15px; line-height: 1.6;
+  color: var(--gray-6);
+}
+
+/* ─────────────────────────────────────────
+   FINAL CTA
+   ───────────────────────────────────────── */
+.final {
+  background: var(--ink); color: var(--gray-1);
+  padding: 80px 0;
+  position: relative; overflow: hidden;
+}
+@media (min-width: 768px) { .final { padding: 112px 0; } }
+.final::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 50% 0%, rgba(200,255,0,.18), transparent 60%);
+  pointer-events: none;
+}
+.final-inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 700px; margin: 0 auto;
+}
+.final h2 {
+  font-size: clamp(34px, 5vw, 56px);
+  margin-bottom: 18px;
+}
+.final p {
+  font-size: 18px; color: rgba(255,255,255,.75);
+  margin-bottom: 32px; line-height: 1.55;
+}
+.final .btn-primary {
+  background: var(--accent); color: var(--accent-ink);
+}
+.final .btn-primary:hover { background: #d6ff3a; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────── */
+footer {
+  background: var(--gray-1);
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.foot {
+  display: flex; flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+@media (min-width: 640px) { .foot { flex-direction: row; align-items: center; } }
+.foot-left {
+  font-size: 13px; color: var(--gray-5);
+}
+.foot-links { display: flex; gap: 20px; font-size: 13px; }
+.foot-links a { color: var(--gray-5); transition: color .15s; }
+.foot-links a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ────────── NAV ────────── -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">K</span>
+      Konfigurator
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a href="#waitlist" class="nav-cta">Get early access</a>
+  </div>
+</header>
+
+<!-- ────────── HERO ────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-tag">Now in early access</div>
+      <h1>Sell configurable products without <span class="hi">quote forms</span>.</h1>
+      <p class="hero-sub">
+        The embeddable product configurator for manufacturers, custom shops, and configurable-product brands.
+        Live pricing. 3D previews. Qualified inquiries. Embed in one line of code.
+      </p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn btn-primary">
+          Try the live demo
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#waitlist" class="btn btn-ghost">Get early access</a>
+      </div>
+      <div class="hero-trust">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          One-line embed
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          No setup project
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Free tier available
+        </span>
+      </div>
+    </div>
+
+    <!-- Hero visual mock (desktop only) -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-bar">
+        <div class="hv-dots"><i></i><i></i><i></i></div>
+        <span>your-product.com</span>
+        <span class="hv-live">LIVE</span>
+      </div>
+      <div class="hv-body">
+        <div class="hv-product-name">Series · 70 Pro</div>
+        <div class="hv-product-title">Configure your product</div>
+
+        <div class="hv-row">
+          <div class="hv-label"><span>Material</span><b>Oak veneer</b></div>
+          <div class="hv-pills">
+            <button class="hv-pill">Pine</button>
+            <button class="hv-pill on">Oak</button>
+            <button class="hv-pill">Walnut</button>
+            <button class="hv-pill">Beech</button>
+          </div>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-label"><span>Finish</span><b>Anthracite</b></div>
+          <div class="hv-swatches">
+            <span class="hv-sw" style="background:#f5f4ef"></span>
+            <span class="hv-sw on" style="background:#3a3b3f"></span>
+            <span class="hv-sw" style="background:#5e3a1f"></span>
+            <span class="hv-sw" style="background:#0a0a0a"></span>
+            <span class="hv-sw" style="background:#c8ff00"></span>
+          </div>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-label"><span>Dimensions</span></div>
+          <div class="hv-dims">
+            <div class="hv-dim"><label>Width</label><div class="v">1200<small>mm</small></div></div>
+            <div class="hv-dim"><label>Height</label><div class="v">800<small>mm</small></div></div>
+          </div>
+        </div>
+
+        <div class="hv-price-card">
+          <span class="lbl">Configured price</span>
+          <span class="price">€1,247<small>.50</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── PRODUCT TYPES STRIP ────────── -->
+<section class="types" aria-label="Product types Konfigurator supports">
+  <div>
+    <div class="types-label">Built for products like these</div>
+    <ul class="types-list">
+      <li>Windows &amp; doors</li>
+      <li>Furniture</li>
+      <li>Custom kitchens</li>
+      <li>Signage</li>
+      <li>Apparel &amp; merch</li>
+      <li>Industrial equipment</li>
+      <li>Jewelry</li>
+      <li>... or anything you'd quote in a spreadsheet</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ────────── PROBLEM ────────── -->
+<section class="sec">
+  <div class="wrap">
+    <span class="sec-eyebrow">The problem</span>
+    <h2>Your customers want a price now.<br>Your website asks them to wait three days.</h2>
+    <p class="sec-lead">If you sell anything configurable — windows, sofas, signs, equipment — the same three problems quietly cost you sales every week.</p>
+
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6a3 3 0 013-3h10a3 3 0 013 3v8a3 3 0 01-3 3H8l-4 3v-3H6a3 3 0 01-3-3V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Visitors leave without a price</h3>
+        <p>They fill out a contact form, get an auto-reply, and shop the next four competitors while they wait. Most never come back.</p>
+      </div>
+
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Your team quotes in spreadsheets</h3>
+        <p>Every quote is a 20-minute back-and-forth on dimensions, materials, and options. Your best people quote tire-kickers instead of closing real deals.</p>
+      </div>
+
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2v4M11 16v4M2 11h4M16 11h4M4.5 4.5l3 3M14.5 14.5l3 3M4.5 17.5l3-3M14.5 7.5l3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Legacy CPQ tools want six months and €60k</h3>
+        <p>Heavy enterprise platforms are built for global manufacturing operations. You need a configurator on your site by next quarter — not a multi-year transformation project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── DEMO SECTION (live widget) ────────── -->
+<section class="sec tinted" id="demo">
+  <div class="wrap">
+    <span class="sec-eyebrow">Try it live</span>
+    <h2>This is the actual widget. Try it.</h2>
+    <p class="sec-lead">Pick options, watch the price update, see how the configuration logic feels. This is exactly what your customers will use — embedded on your site with one line of code.</p>
+
+    <div class="demo-card">
+      <div class="demo-bar">
+        <div class="demo-dots"><i></i><i></i><i></i></div>
+        <span>live demo</span>
+        <span class="demo-live">LIVE</span>
+      </div>
+      <div class="demo-body">
+        <div
+          id="configurator-b3166145"
+          data-supabase-url="https://laqgfdqorqksfbqkbwkl.supabase.co"
+          data-supabase-anon-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcWdmZHFvcnFrc2ZicWtid2tsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDY2OTgsImV4cCI6MjA5MTEyMjY5OH0.9ysIS9r0ocwwSD_gz9CKvW0T4jK89iToBBmIycPof40"
+          data-product-id="b3166145-68fe-48bb-a26c-411566054f27"
+          data-tenant-id="a1000000-0000-0000-0000-000000000001"
+        ></div>
+        <script src="https://konfigurator-psi.vercel.app/widget.js" async></script>
+      </div>
+    </div>
+
+    <div class="demo-callouts">
+      <div class="demo-co">
+        <div class="demo-co-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h4>Live price calculation</h4>
+          <p>Every option re-prices the product instantly using your formulas.</p>
+        </div>
+      </div>
+      <div class="demo-co">
+        <div class="demo-co-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5l5-3 5 3v6l-5 3-5-3V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>Visual feedback</h4>
+          <p>Customers see exactly what they're configuring — images or 3D.</p>
+        </div>
+      </div>
+      <div class="demo-co">
+        <div class="demo-co-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8H2V4zM2 7h12" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <div>
+          <h4>Qualified inquiries</h4>
+          <p>The full configuration and price land in your inbox, ready to quote.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── HOW IT WORKS ────────── -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <span class="sec-eyebrow">How it works</span>
+    <h2>From product spec to live configurator in three steps.</h2>
+    <p class="sec-lead">Set up your first product in an afternoon. No CPQ consultants. No multi-week implementation.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Define your product</h3>
+        <p>Pick a template or describe your product in plain language — "a sofa with fabric, configuration, and size." Our AI scaffolds the characteristics, values, and base pricing for you.</p>
+        <div class="step-meta">~ 15 minutes · No spreadsheets</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Set your pricing logic</h3>
+        <p>Build any formula in a visual node editor. Per-square-meter costs, material upcharges, conditional discounts, bulk pricing — anything your team currently does in Excel.</p>
+        <div class="step-meta">Visual editor · No code</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Embed and ship</h3>
+        <div class="step-code"><span class="cm">&lt;!-- one line. that's it. --&gt;</span>
+&lt;script src=<span class="st">"konfig.io/w.js"</span>
+  data-product=<span class="st">"your-id"</span>&gt;
+&lt;/script&gt;</div>
+        <div class="step-meta">WordPress · Shopify · Webflow · Custom</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FEATURES ────────── -->
+<section class="sec dark" id="features">
+  <div class="wrap">
+    <span class="sec-eyebrow">Features</span>
+    <h2>Everything you need.<br>Nothing you don't.</h2>
+    <p class="sec-lead">Built for teams that want to ship a configurator this quarter — not next year.</p>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h4>Formula-based pricing</h4>
+        <p>Visual node editor for any pricing logic. Surface area, perimeter, premiums, surcharges, conditional discounts — recalculated on every selection.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 11l8-4.5M11 11v9M11 11L3 6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h4>Native 3D &amp; AR</h4>
+        <p>Upload a GLB once. Customers rotate, zoom, and view in their own room via AR. Every option re-rendered live in the browser.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 4h16M3 11h16M3 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Display rules &amp; logic</h4>
+        <p>Hide options that don't apply. Restrict combinations that aren't possible. Model your real product rules — not a flattened version.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Branded PDF quotations</h4>
+        <p>Turn any inquiry into a formal quote in one click. Your logo, your terms, your branding. Track draft → sent → accepted.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11a8 8 0 0116 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Webhooks &amp; CRM sync</h4>
+        <p>Push every inquiry and quotation event to your CRM, ERP, or warehouse system. HMAC-signed, retried, audited.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Multi-language &amp; teams</h4>
+        <p>Per-language overrides for every market. Invite admins, members, and viewers across sales, product, and ops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── COMPARISON ────────── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">Compared</span>
+    <h2>The right tool, in the right size,<br>at the right price.</h2>
+    <p class="sec-lead">Most teams are choosing between three options today. Here's how they stack up.</p>
+
+    <div class="cmp-grid">
+      <div class="cmp-col">
+        <div class="cmp-icon cmp-bad-icon">✕</div>
+        <div class="cmp-name">Contact form</div>
+        <div class="cmp-sub">What most companies use today</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val">Already there</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-bad">Not shown</span></li>
+          <li><span class="cmp-attr">3D / AR preview</span><span class="cmp-val cmp-bad">None</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val">€0</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val">€0</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-bad">Underspecified</span></li>
+          <li><span class="cmp-attr">CRM integration</span><span class="cmp-val cmp-bad">Manual</span></li>
+        </ul>
+        <div class="cmp-verdict">Loses customers who want a price now</div>
+      </div>
+
+      <div class="cmp-col featured">
+        <div class="cmp-badge">Recommended</div>
+        <div class="cmp-icon cmp-good-icon">✓</div>
+        <div class="cmp-name">Konfigurator</div>
+        <div class="cmp-sub">Built for ambitious teams</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-good">An afternoon</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes — formula engine</span></li>
+          <li><span class="cmp-attr">3D / AR preview</span><span class="cmp-val cmp-good">Native GLB / GLTF</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-good">€0 setup</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-good">From €49 / mo</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
+          <li><span class="cmp-attr">CRM integration</span><span class="cmp-val cmp-good">Webhooks · Zapier</span></li>
+        </ul>
+        <div class="cmp-verdict">A real configurator, without the project</div>
+      </div>
+
+      <div class="cmp-col">
+        <div class="cmp-icon cmp-warn-icon">!</div>
+        <div class="cmp-name">Legacy CPQ tools</div>
+        <div class="cmp-sub">Enterprise sales-config platforms</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-bad">3–6 months</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes</span></li>
+          <li><span class="cmp-attr">3D / AR preview</span><span class="cmp-val cmp-warn">Expensive add-on</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-bad">€40k – €200k</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-bad">€2k+ per user</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
+          <li><span class="cmp-attr">CRM integration</span><span class="cmp-val cmp-good">Native</span></li>
+        </ul>
+        <div class="cmp-verdict">Overkill for most teams</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── PRICING ────────── -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <span class="sec-eyebrow">Pricing</span>
+    <h2>Plans that scale with the inquiries you receive,<br>not your seat count.</h2>
+    <p class="sec-lead">Start free. Upgrade when you grow. No setup fees, no implementation projects, no surprises.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">€0<small>/mo</small></div>
+        <div class="tier-desc">Try the engine on a single product line.</div>
+        <ul>
+          <li>3 products</li>
+          <li>25 inquiries / month</li>
+          <li>1 team member</li>
+          <li>PNG visualization</li>
+          <li>"Powered by" badge</li>
+        </ul>
+        <a href="#waitlist" class="tier-cta">Start free</a>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">Starter</div>
+        <div class="tier-price">€49<small>/mo</small></div>
+        <div class="tier-desc">For shops launching their first online configurator.</div>
+        <ul>
+          <li>25 products</li>
+          <li>250 inquiries / month</li>
+          <li>3 team members</li>
+          <li>3D &amp; AR preview</li>
+          <li>Branded PDF quotations</li>
+          <li>5 AI setups / month</li>
+        </ul>
+        <a href="#waitlist" class="tier-cta">Start free trial</a>
+      </div>
+
+      <div class="tier best">
+        <div class="tier-badge">Most popular</div>
+        <div class="tier-name">Growth</div>
+        <div class="tier-price">€149<small>/mo</small></div>
+        <div class="tier-desc">For teams scaling beyond the homepage.</div>
+        <ul>
+          <li>Unlimited products</li>
+          <li>2,000 inquiries / month</li>
+          <li>10 team members</li>
+          <li>Webhooks &amp; CRM sync</li>
+          <li>Advanced analytics</li>
+          <li>Remove "Powered by" badge</li>
+          <li>50 AI setups / month</li>
+        </ul>
+        <a href="#waitlist" class="tier-cta">Start free trial</a>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">Scale</div>
+        <div class="tier-price">€399<small>/mo</small></div>
+        <div class="tier-desc">For multi-brand and multi-region operations.</div>
+        <ul>
+          <li>Everything unlimited</li>
+          <li>White-label &amp; custom domain</li>
+          <li>Unlimited team members</li>
+          <li>Priority Slack support</li>
+          <li>Onboarding assistance</li>
+          <li>Unlimited AI setups</li>
+        </ul>
+        <a href="#waitlist" class="tier-cta">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FAQ ────────── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">Questions</span>
+    <h2>Everything you might be wondering.</h2>
+    <div class="faq-list" style="margin-top:48px">
+      <div class="faq-item">
+        <div class="faq-q">Can it handle the actual complexity of my product line?</div>
+        <p class="faq-a">Yes. Konfigurator handles dependent characteristics, surface-area pricing, conditional surcharges, per-language labels, and display rules per product. If your sales team can describe it in a spreadsheet, the formula engine can model it.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will it work on my existing website?</div>
+        <p class="faq-a">It embeds as a single script tag, a Web Component, or an iFrame — covering WordPress, Shopify, Webflow, Wix, and any custom CMS. Your developer won't need to rebuild anything.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens to the inquiries — does this replace my sales team?</div>
+        <p class="faq-a">No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Your team converts them into formal quotes and follows up. Konfigurator removes the back-and-forth on basic specs so your people spend time on real conversations.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can it push data into my ERP or CRM?</div>
+        <p class="faq-a">Yes. HMAC-signed webhooks fire on every inquiry and quotation status change. Native Zapier, HubSpot, and Pipedrive integrations are shipping during early access. Custom integrations are straightforward via the webhook payload.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where do my 3D models come from?</div>
+        <p class="faq-a">Upload your own GLB or GLTF files — most CAD packages export them. For early-access customers, we'll help convert one model from your existing assets so you launch with a real preview on day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FINAL CTA ────────── -->
+<section class="final" id="waitlist">
+  <div class="wrap final-inner">
+    <h2>Be one of the first teams<br>to launch with Konfigurator.</h2>
+    <p>Early-access founders get 50% off lifetime, hands-on onboarding, and a direct line to the product team.</p>
+    <a href="mailto:hello@konfigurator.io?subject=Early%20access%20%E2%80%94%20Konfigurator" class="btn btn-primary">
+      Apply for early access
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ────────── FOOTER ────────── -->
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">© 2026 Konfigurator. Built for teams that ship.</div>
+    <nav class="foot-links">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="mailto:hello@konfigurator.io">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
