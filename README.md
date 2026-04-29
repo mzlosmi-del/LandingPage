@@ -1,10 +1,23 @@
-# LandingPage
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/configureout-lockup-reverse.svg">
+    <img src="brand/configureout-lockup-primary.svg" alt="Configureout" width="320">
+  </picture>
+</p>
+<p align="center">
+  <em>Commerce · Configurators</em>
+</p>
 
-Landing Page Configurator — a single static `index.html` ready to deploy on Vercel.
+---
+
+# Configureout — Landing Page
+
+Static landing page for **Configureout**, the embeddable product configurator. Single `index.html` (English) + `sr/index.html` (Serbian), zero build step, deployed on Vercel.
+
+## Brand assets
+SVGs live in [`brand/`](./brand/) — primary lockup, reverse lockup, bare mark, favicon, OG card.
 
 ## Deploy on Vercel
-
-This repo is a zero-build static site. Vercel will serve `index.html` directly.
 
 ### Option A — Vercel Dashboard
 1. Go to https://vercel.com/new and import this repository.
@@ -21,11 +34,13 @@ vercel --prod # production deploy
 ```
 
 ## Local preview
-Any static server works, e.g.:
 ```bash
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
 ## Configuration
-- `vercel.json` — sets clean URLs, security headers, and long-lived caching for static assets.
+- `vercel.json` — clean URLs, security headers, long-lived asset caching.
+- `index.html` — English landing page.
+- `sr/index.html` — Serbian (Latin) landing page.
+- `brand/` — logo, lockups, favicon, OG image.

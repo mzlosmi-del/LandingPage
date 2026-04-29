@@ -3,46 +3,57 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Konfigurator — Prodajte konfigurabilne proizvode bez obrazaca za ponude</title>
+<title>Configureout — Prodajte konfigurabilne proizvode bez obrazaca za ponude</title>
 <meta name="description" content="Ugradiv konfigurator proizvoda za proizvođače i radionice po porudžbini. Cene uživo, 3D prikazi, kvalifikovani upiti — ugradnja jednom linijom koda." />
-<meta name="theme-color" content="#0a0a0a" />
-<meta property="og:title" content="Konfigurator — Prodajte konfigurabilne proizvode bez obrazaca za ponude" />
+<meta name="theme-color" content="#0fa392" />
+<meta property="og:title" content="Configureout — Commerce · Configurators" />
 <meta property="og:description" content="Cene uživo. 3D prikazi. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="sr_RS" />
+<meta property="og:image" content="/brand/configureout-og.svg" />
 <meta name="robots" content="index, follow" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Konfigurator — Prodajte konfigurabilne proizvode bez obrazaca za ponude" />
+<meta name="twitter:title" content="Configureout — Commerce · Configurators" />
 <meta name="twitter:description" content="Cene uživo. 3D prikazi. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
+<meta name="twitter:image" content="/brand/configureout-og.svg" />
 <link rel="alternate" hreflang="en" href="/" />
 <link rel="alternate" hreflang="sr" href="/sr" />
 <link rel="alternate" hreflang="x-default" href="/" />
+<link rel="icon" type="image/svg+xml" href="/brand/configureout-favicon.svg" />
+<link rel="apple-touch-icon" href="/brand/configureout-favicon.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"></noscript>
 
 <style>
 :root {
-  --ink: #0a0a0a;
-  --ink-2: #1a1a1a;
-  --gray-1: #fafaf7;
-  --gray-2: #f4f3ee;
-  --gray-3: #e8e7e1;
-  --gray-4: #c9c7be;
-  --gray-5: #6b6a64;
+  --ink: #0c1414;
+  --ink-2: #182020;
+  --paper: #f7f5f1;
+  --gray-1: #f7f5f1;
+  --gray-2: #efece5;
+  --gray-3: #e5e1d7;
+  --gray-4: #c4c1b6;
+  --gray-5: #6a6a64;
   --gray-6: #3a3a37;
-  --line: #e0ded6;
-  --line-2: #d4d2c9;
-  --accent: #c8ff00;          /* electric lime — minimal, modern, distinctive */
-  --accent-ink: #0a0a0a;       /* text on accent */
+  --line: #ddd9cf;
+  --line-2: #cfcbc0;
+  --turq-50:  #e6fbf8;
+  --turq-200: #7de4d3;
+  --turq-300: #38d3bb;
+  --turq-500: #0fa392;
+  --turq-700: #0a665b;
+  --accent: var(--turq-500);
+  --accent-ink: #0c1414;
   --good: #0a8043;
   --bad: #b91c1c;
   --warn: #946800;
 
-  --sans: 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --radius-sm: 8px;
@@ -93,16 +104,13 @@ img, svg { display: block; max-width: 100%; }
 }
 .brand {
   display: flex; align-items: center; gap: 10px;
-  font-size: 19px; font-weight: 700;
-  letter-spacing: -.02em;
+  font-family: var(--display);
+  font-size: 19px; font-weight: 800;
+  letter-spacing: -.025em;
+  color: var(--ink);
 }
-.brand-mark {
-  width: 26px; height: 26px;
-  background: var(--ink); color: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--mono); font-weight: 600; font-size: 14px;
-  border-radius: 7px;
-}
+.brand svg { display: block; height: 26px; width: auto; }
+.brand .wordmark { line-height: 1; }
 .nav-links { display: none; align-items: center; gap: 32px; font-size: 15px; font-weight: 500; }
 .nav-links a { color: var(--gray-6); transition: color .15s; }
 .nav-links a:hover { color: var(--ink); }
@@ -122,6 +130,32 @@ img, svg { display: block; max-width: 100%; }
 }
 .nav-cta:hover { background: var(--ink-2); transform: translateY(-1px); }
 @media (min-width: 768px) { .nav-links { display: flex; } }
+
+/* ─────────────────────────────────────────
+   BRAND HERO (logo lockup banner)
+   ───────────────────────────────────────── */
+.brand-hero {
+  background: var(--paper);
+  padding: 96px 0;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.brand-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(15,163,146,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,163,146,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.brand-hero-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.brand-hero svg { display: block; height: 140px; width: auto; max-width: 100%; }
+@media (min-width: 768px) { .brand-hero { padding: 128px 0; } }
 
 /* ─────────────────────────────────────────
    HERO
@@ -151,19 +185,21 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero-tag::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 0 3px rgba(200,255,0,.25);
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(15,163,146,.25);
 }
 
 h1 {
+  font-family: var(--display);
   font-size: clamp(40px, 6vw, 68px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.02;
   letter-spacing: -.035em;
   margin-bottom: 22px;
   color: var(--ink);
 }
 h1 .hi {
-  background: var(--accent);
+  background: var(--turq-500);
+  color: var(--paper);
   padding: 0 .15em;
   border-radius: 4px;
   white-space: nowrap;
@@ -343,13 +379,15 @@ h1 .hi {
 .dark .sec-eyebrow { color: var(--gray-4); }
 
 h2 {
+  font-family: var(--display);
   font-size: clamp(30px, 4.4vw, 46px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -.03em;
   margin-bottom: 18px;
   color: inherit;
 }
+h3, h4 { font-family: var(--display); font-weight: 700; }
 .sec-lead {
   font-size: clamp(16px, 1.5vw, 18px);
   line-height: 1.55;
@@ -517,7 +555,7 @@ h2 {
 .feat:hover { background: #141414; }
 .feat-icon {
   width: 40px; height: 40px;
-  background: rgba(200,255,0,.12);
+  background: rgba(15,163,146,.14);
   color: var(--accent);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
@@ -620,9 +658,9 @@ h2 {
   color: var(--gray-6);
 }
 .cmp-col.featured .cmp-verdict {
-  background: rgba(200,255,0,.1);
-  border-color: rgba(200,255,0,.3);
-  color: var(--accent);
+  background: rgba(15,163,146,.12);
+  border-color: rgba(15,163,146,.32);
+  color: var(--turq-300);
   font-weight: 600;
 }
 
@@ -718,7 +756,7 @@ h2 {
   background: var(--accent); color: var(--accent-ink);
   border-color: var(--accent);
 }
-.tier.best .tier-cta:hover { background: #d6ff3a; border-color: #d6ff3a; }
+.tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
 
 /* ─────────────────────────────────────────
    FAQ
@@ -752,7 +790,7 @@ h2 {
 .final::before {
   content: "";
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle at 50% 0%, rgba(200,255,0,.18), transparent 60%);
+  background-image: radial-gradient(circle at 50% 0%, rgba(15,163,146,.28), transparent 60%);
   pointer-events: none;
 }
 .final-inner {
@@ -771,7 +809,7 @@ h2 {
 .final .btn-primary {
   background: var(--accent); color: var(--accent-ink);
 }
-.final .btn-primary:hover { background: #d6ff3a; }
+.final .btn-primary:hover { background: var(--turq-300); }
 
 /* ─────────────────────────────────────────
    FOOTER
@@ -806,9 +844,14 @@ footer {
 <!-- ────────── NAV ────────── -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#" class="brand">
-      <span class="brand-mark">K</span>
-      Konfigurator
+    <a href="/" class="brand" aria-label="Configureout — početna">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="60" height="12" fill="currentColor"/>
+        <rect x="0" y="14" width="12" height="36" fill="currentColor"/>
+        <rect x="0" y="52" width="60" height="12" fill="currentColor"/>
+        <circle cx="54" cy="32" r="5" fill="var(--turq-500)"/>
+      </svg>
+      <span class="wordmark">configureout</span>
     </a>
     <nav class="nav-links" aria-label="Glavna navigacija">
       <a href="#how">Kako funkcioniše</a>
@@ -821,6 +864,26 @@ footer {
 </header>
 
 <main>
+
+<!-- ────────── BRAND HERO ────────── -->
+<section class="brand-hero" aria-label="Configureout">
+  <div class="wrap brand-hero-inner">
+    <svg viewBox="0 0 320 220" role="img" aria-label="Configureout — Commerce · Configurators">
+      <g transform="translate(128, 12)">
+        <rect x="0" y="0" width="60" height="12" fill="var(--ink)"/>
+        <rect x="0" y="14" width="12" height="36" fill="var(--ink)"/>
+        <rect x="0" y="52" width="60" height="12" fill="var(--ink)"/>
+        <circle cx="54" cy="32" r="5" fill="var(--turq-500)"/>
+      </g>
+      <text x="160" y="130" text-anchor="middle"
+            font-family="Sora, system-ui, sans-serif" font-weight="800" font-size="38"
+            letter-spacing="-1.2" fill="var(--ink)">configureout</text>
+      <text x="160" y="172" text-anchor="middle"
+            font-family="'JetBrains Mono', ui-monospace, monospace" font-weight="500" font-size="11"
+            letter-spacing="3.6" fill="var(--turq-500)">COMMERCE · CONFIGURATORS</text>
+    </svg>
+  </div>
+</section>
 
 <!-- ────────── HERO ────────── -->
 <section class="hero">
@@ -883,7 +946,7 @@ footer {
             <span class="hv-sw on" style="background:#3a3b3f"></span>
             <span class="hv-sw" style="background:#5e3a1f"></span>
             <span class="hv-sw" style="background:#0a0a0a"></span>
-            <span class="hv-sw" style="background:#c8ff00"></span>
+            <span class="hv-sw" style="background:#0fa392"></span>
           </div>
         </div>
 
@@ -905,7 +968,7 @@ footer {
 </section>
 
 <!-- ────────── PRODUCT TYPES STRIP ────────── -->
-<section class="types" aria-label="Tipovi proizvoda koje Konfigurator podržava">
+<section class="types" aria-label="Tipovi proizvoda koje Configureout podržava">
   <div>
     <div class="types-label">Napravljeno za proizvode poput ovih</div>
     <ul class="types-list">
@@ -1039,7 +1102,7 @@ footer {
         <div class="step-num">3</div>
         <h3>Ugradite i objavite</h3>
         <div class="step-code"><span class="cm">&lt;!-- jedna linija. i to je sve. --&gt;</span>
-&lt;script src=<span class="st">"konfig.io/w.js"</span>
+&lt;script src=<span class="st">"configureout.com/w.js"</span>
   data-product=<span class="st">"vas-id"</span>&gt;
 &lt;/script&gt;</div>
         <div class="step-meta">WordPress · Shopify · Webflow · Po meri</div>
@@ -1134,7 +1197,7 @@ footer {
       <div class="cmp-col featured">
         <div class="cmp-badge">Preporučeno</div>
         <div class="cmp-icon cmp-good-icon">✓</div>
-        <div class="cmp-name">Konfigurator</div>
+        <div class="cmp-name">Configureout</div>
         <div class="cmp-sub">Napravljeno za ambiciozne timove</div>
         <ul class="cmp-list">
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-good">Jedno popodne</span></li>
@@ -1247,7 +1310,7 @@ footer {
     <div class="faq-list" style="margin-top:48px">
       <div class="faq-item">
         <h3 class="faq-q">Da li može da se nosi sa stvarnom kompleksnošću mog asortimana?</h3>
-        <p class="faq-a">Da. Konfigurator podržava zavisne karakteristike, cene po površini, uslovne doplate, prevode po jeziku i pravila prikaza po proizvodu. Ako vaš prodajni tim to može opisati u tabeli, formula engine to može modelovati.</p>
+        <p class="faq-a">Da. Configureout podržava zavisne karakteristike, cene po površini, uslovne doplate, prevode po jeziku i pravila prikaza po proizvodu. Ako vaš prodajni tim to može opisati u tabeli, formula engine to može modelovati.</p>
       </div>
       <div class="faq-item">
         <h3 class="faq-q">Hoće li raditi na mom postojećem sajtu?</h3>
@@ -1255,7 +1318,7 @@ footer {
       </div>
       <div class="faq-item">
         <h3 class="faq-q">Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?</h3>
-        <p class="faq-a">Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Vaš tim ih pretvara u zvanične ponude i prati ih dalje. Konfigurator uklanja prepisku oko osnovnih specifikacija, pa vaši ljudi vreme troše na prave razgovore.</p>
+        <p class="faq-a">Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Vaš tim ih pretvara u zvanične ponude i prati ih dalje. Configureout uklanja prepisku oko osnovnih specifikacija, pa vaši ljudi vreme troše na prave razgovore.</p>
       </div>
       <div class="faq-item">
         <h3 class="faq-q">Može li slati podatke u moj ERP ili CRM?</h3>
@@ -1272,9 +1335,9 @@ footer {
 <!-- ────────── FINAL CTA ────────── -->
 <section class="final" id="waitlist">
   <div class="wrap final-inner">
-    <h2>Budite jedan od prvih timova<br>koji kreće sa Konfiguratorom.</h2>
+    <h2>Budite jedan od prvih timova<br>koji koristi Configureout.</h2>
     <p>Osnivači u ranom pristupu dobijaju 50% popusta doživotno, lično uvođenje i direktan kontakt sa product timom.</p>
-    <a href="mailto:hello@konfigurator.io?subject=Rani%20pristup%20%E2%80%94%20Konfigurator" class="btn btn-primary">
+    <a href="mailto:hello@configureout.com?subject=Rani%20pristup%20%E2%80%94%20Configureout" class="btn btn-primary">
       Prijavite se za rani pristup
       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -1286,11 +1349,22 @@ footer {
 <!-- ────────── FOOTER ────────── -->
 <footer>
   <div class="wrap foot">
-    <div class="foot-left">© 2026 Konfigurator. Napravljeno za timove koji isporučuju.</div>
+    <div class="foot-left">
+      <a href="/" aria-label="Configureout — početna" style="display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-family:var(--display);font-weight:800;letter-spacing:-.02em;">
+        <svg viewBox="0 0 64 64" width="20" height="20" aria-hidden="true" focusable="false">
+          <rect x="0" y="0" width="60" height="12" fill="currentColor"/>
+          <rect x="0" y="14" width="12" height="36" fill="currentColor"/>
+          <rect x="0" y="52" width="60" height="12" fill="currentColor"/>
+          <circle cx="54" cy="32" r="5" fill="var(--turq-500)"/>
+        </svg>
+        configureout
+      </a>
+      <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Napravljeno za timove koji isporučuju.</span>
+    </div>
     <nav class="foot-links" aria-label="Navigacija u podnožju">
       <a href="#how">Kako funkcioniše</a>
       <a href="#pricing">Cene</a>
-      <a href="mailto:hello@konfigurator.io">Kontakt</a>
+      <a href="mailto:hello@configureout.com">Kontakt</a>
       <a href="/" hreflang="en" lang="en">EN</a>
     </nav>
   </div>
