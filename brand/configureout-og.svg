@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Configureout — Commerce · Configurators">
+  <title>Configureout</title>
+  <rect width="1200" height="630" fill="#0fa392"/>
+  <g opacity="0.08">
+    <path d="M0 64 L1200 64 M0 128 L1200 128 M0 192 L1200 192 M0 256 L1200 256 M0 320 L1200 320 M0 384 L1200 384 M0 448 L1200 448 M0 512 L1200 512 M0 576 L1200 576" stroke="#f7f5f1" stroke-width="1"/>
+    <path d="M64 0 L64 630 M128 0 L128 630 M192 0 L192 630 M256 0 L256 630 M320 0 L320 630 M384 0 L384 630 M448 0 L448 630 M512 0 L512 630 M576 0 L576 630 M640 0 L640 630 M704 0 L704 630 M768 0 L768 630 M832 0 L832 630 M896 0 L896 630 M960 0 L960 630 M1024 0 L1024 630 M1088 0 L1088 630 M1152 0 L1152 630" stroke="#f7f5f1" stroke-width="1"/>
+  </g>
+  <g transform="translate(520, 120)">
+    <rect x="1.2" y="1.2" width="77.6" height="157.6" rx="7.2" fill="#0c1414"/>
+    <rect x="81.2" y="1.2" width="77.6" height="37.6" rx="7.2" fill="#f7f5f1"/>
+    <rect x="81.2" y="121.2" width="77.6" height="37.6" rx="7.2" fill="#0c1414"/>
+    <circle cx="120" cy="80" r="12.8" fill="#f7f5f1"/>
+  </g>
+  <text x="600" y="400" text-anchor="middle"
+        font-family="Sora, system-ui, sans-serif" font-weight="800" font-size="84"
+        letter-spacing="-2.5" fill="#f7f5f1">configureout</text>
+  <text x="600" y="470" text-anchor="middle"
+        font-family="'JetBrains Mono', ui-monospace, monospace" font-weight="500" font-size="22"
+        letter-spacing="6" fill="#0c1414">COMMERCE · CONFIGURATORS</text>
+</svg>
