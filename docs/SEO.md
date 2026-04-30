@@ -51,12 +51,29 @@ Recommendation: **Plausible Analytics** (privacy-first, no cookie banner needed,
 
 Alternative: Google Analytics 4 — heavier, requires cookie consent banner in EU.
 
-### 4. Replace placeholder assets
-| Asset | Current | Replace with |
-|-------|---------|-------------|
-| `og:image` | `configureout-og.svg` (SVG — some platforms don't support SVG) | Export a 1200×630 PNG from the OG design |
-| Web manifest icons | SVG only | Add `icon-192.png` (192×192) and `icon-512.png` (512×512) PNG exports |
-| `apple-touch-icon` | SVG | Add `apple-touch-icon.png` (180×180 PNG) |
+### 4. Bitmap assets (already generated)
+PNG and ICO files were rendered from the brand SVGs using `rsvg-convert` and `imagemagick`:
+| File | Size | Source |
+|------|------|--------|
+| `/favicon.ico` | 16+32+48 multi-res | `brand/configureout-favicon-onTurq.svg` |
+| `/apple-touch-icon.png` | 180×180 | `brand/configureout-favicon-onTurq.svg` |
+| `/icon-192.png` | 192×192 | `brand/configureout-favicon-onTurq.svg` |
+| `/icon-512.png` | 512×512 | `brand/configureout-favicon-onTurq.svg` |
+| `/brand/configureout-og.png` | 1200×630 | `brand/configureout-og.svg` |
+
+To regenerate after editing the source SVGs:
+```bash
+rsvg-convert -w 180  -h 180  brand/configureout-favicon-onTurq.svg -o apple-touch-icon.png
+rsvg-convert -w 192  -h 192  brand/configureout-favicon-onTurq.svg -o icon-192.png
+rsvg-convert -w 512  -h 512  brand/configureout-favicon-onTurq.svg -o icon-512.png
+rsvg-convert -w 16   -h 16   brand/configureout-favicon-onTurq.svg -o /tmp/fav16.png
+rsvg-convert -w 32   -h 32   brand/configureout-favicon-onTurq.svg -o /tmp/fav32.png
+rsvg-convert -w 48   -h 48   brand/configureout-favicon-onTurq.svg -o /tmp/fav48.png
+convert /tmp/fav16.png /tmp/fav32.png /tmp/fav48.png favicon.ico
+rsvg-convert -w 1200 -h 630  brand/configureout-og.svg -o brand/configureout-og.png
+```
+
+Note: the OG PNG renders the wordmark and tagline using the system fallback sans-serif since Sora and JetBrains Mono aren't installed on the build host. If you want the exact branded fonts, render the OG image in a browser (e.g. via Puppeteer) or in a design tool.
 
 ### 5. Update `sameAs` in Organization schema
 When social profiles are created, add their URLs to the `sameAs` array in the JSON-LD block in both `index.html` and `sr/index.html`:
