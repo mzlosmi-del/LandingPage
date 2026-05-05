@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Configureout — Prodajte konfigurabilne proizvode bez obrazaca za ponude</title>
-<meta name="description" content="Ugradiv konfigurator proizvoda za proizvođače i radionice po porudžbini. Cene uživo, 3D prikazi, kvalifikovani upiti — ugradnja jednom linijom koda." />
+<meta name="description" content="Ugradiv konfigurator proizvoda za proizvođače i radionice po porudžbini. Cene uživo, izmena slike po izboru, kvalifikovani upiti — ugradnja jednom linijom koda." />
 <meta name="theme-color" content="#0fa392" />
 <meta property="og:title" content="Configureout — Commerce · Configurators" />
-<meta property="og:description" content="Cene uživo. 3D prikazi. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
+<meta property="og:description" content="Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="sr_RS" />
 <meta property="og:url" content="https://configureout.com/sr" />
@@ -16,7 +16,7 @@
 <meta name="robots" content="index, follow" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Configureout — Commerce · Configurators" />
-<meta name="twitter:description" content="Cene uživo. 3D prikazi. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
+<meta name="twitter:description" content="Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
 <meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
 <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" /> -->
 <!-- <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" /> -->
@@ -871,7 +871,7 @@ footer {
   "name": "Configureout",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "Embed a live product configurator on your site. Real-time pricing, 3D previews, qualified inquiries. Built for manufacturers, custom shops, and configurable-product brands.",
+  "description": "Embed a live product configurator on your site. Real-time pricing, image swap on selection, qualified inquiries. Built for manufacturers, custom shops, and configurable-product brands.",
   "offers": [
     { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
@@ -893,22 +893,12 @@ footer {
     {
       "@type": "Question",
       "name": "Will it work on my existing website?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It embeds as a single script tag, a Web Component, or an iFrame — covering WordPress, Shopify, Webflow, Wix, and any custom CMS. Your developer won't need to rebuild anything." }
+      "acceptedAnswer": { "@type": "Answer", "text": "It embeds as a single <script> tag plus a marker <div> on the page. The widget runs inside its own Shadow DOM so it won't conflict with your site's styles. Works on WordPress, Shopify, and any custom HTML page." }
     },
     {
       "@type": "Question",
       "name": "What happens to the inquiries — does this replace my sales team?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Your team converts them into formal quotes and follows up. Configureout removes the back-and-forth on basic specs so your people spend time on real conversations." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can it push data into my ERP or CRM?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. HMAC-signed webhooks fire on every inquiry and quotation status change. Native Zapier, HubSpot, and Pipedrive integrations are shipping during early access. Custom integrations are straightforward via the webhook payload." }
-    },
-    {
-      "@type": "Question",
-      "name": "Where do my 3D models come from?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Upload your own GLB or GLTF files — most CAD packages export them. For early-access customers, we'll help convert one model from your existing assets so you launch with a real preview on day one." }
     }
   ]
 }
@@ -964,7 +954,7 @@ footer {
       <h1>Prodajte konfigurabilne proizvode bez <span class="hi">obrazaca za ponude</span>.</h1>
       <p class="hero-sub">
         Ugradiv konfigurator proizvoda za proizvođače, radionice po porudžbini i brendove sa konfigurabilnim proizvodima.
-        Cene uživo. 3D prikazi. Kvalifikovani upiti. Ugradnja jednom linijom koda.
+        Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda.
       </p>
       <div class="hero-ctas">
         <a href="#demo" class="btn btn-primary">
@@ -1131,7 +1121,7 @@ footer {
         </div>
         <div>
           <h4>Vizuelni prikaz</h4>
-          <p>Kupci vide tačno ono što konfigurišu — slike ili 3D.</p>
+          <p>Kupci vide tačno ono što konfigurišu — slika se menja sa svakim novim izborom.</p>
         </div>
       </div>
       <div class="demo-co">
@@ -1176,7 +1166,7 @@ footer {
 &lt;script src=<span class="st">"configureout.com/w.js"</span>
   data-product=<span class="st">"vas-id"</span>&gt;
 &lt;/script&gt;</div>
-        <div class="step-meta">WordPress · Shopify · Webflow · Po meri</div>
+        <div class="step-meta">WordPress · Shopify · Custom HTML</div>
       </div>
     </div>
   </div>
@@ -1200,10 +1190,10 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 11l8-4.5M11 11v9M11 11L3 6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 5h16v12H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10h8M7 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-        <h4>Nativni 3D i AR</h4>
-        <p>Otpremite GLB jednom. Kupci rotiraju, zumiraju i postavljaju model u svoj prostor preko AR-a. Svaka opcija se renderuje uživo u pretraživaču.</p>
+        <h4>Sandučić upita uživo</h4>
+        <p>Svaki upit stiže u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Filtrirajte, pretražujte i pratite nove upite u realnom vremenu.</p>
       </div>
 
       <div class="feat">
@@ -1224,10 +1214,10 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 11a8 8 0 0116 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="12" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="12" y="12" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
-        <h4>Webhook-ovi i CRM sinhronizacija</h4>
-        <p>Šaljite svaki upit i događaj sa ponude u vaš CRM, ERP ili magacinski sistem. HMAC-potpisano, sa ponovnim pokušajima, evidentirano.</p>
+        <h4>Biblioteka karakteristika</h4>
+        <p>Definišite karakteristiku jednom — sa vrednostima, opcijama i cenovnim modifikatorima — pa je pridružite bilo kom proizvodu. Izmenite jednom, primenjuje se svuda. Bez copy-paste-a.</p>
       </div>
 
       <div class="feat">
@@ -1256,11 +1246,10 @@ footer {
         <ul class="cmp-list">
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val">Već postoji</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-bad">Ne prikazuje se</span></li>
-          <li><span class="cmp-attr">3D / AR prikaz</span><span class="cmp-val cmp-bad">Nema</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val">0 €</span></li>
           <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val">0 €</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-bad">Nedovoljno specifikovan</span></li>
-          <li><span class="cmp-attr">CRM integracija</span><span class="cmp-val cmp-bad">Ručno</span></li>
+          <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-bad">Email prepiska</span></li>
         </ul>
         <div class="cmp-verdict">Gubi kupce koji žele cenu odmah</div>
       </div>
@@ -1273,11 +1262,10 @@ footer {
         <ul class="cmp-list">
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-good">Jedno popodne</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-good">Da — formula engine</span></li>
-          <li><span class="cmp-attr">3D / AR prikaz</span><span class="cmp-val cmp-good">Nativno GLB / GLTF</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val cmp-good">0 € postavljanje</span></li>
           <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-good">Od 49 € / mes.</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-good">Potpuno specifikovan</span></li>
-          <li><span class="cmp-attr">CRM integracija</span><span class="cmp-val cmp-good">Webhook · Zapier</span></li>
+          <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-good">Dashboard uživo</span></li>
         </ul>
         <div class="cmp-verdict">Pravi konfigurator, bez velikog projekta</div>
       </div>
@@ -1289,11 +1277,10 @@ footer {
         <ul class="cmp-list">
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-bad">3–6 meseci</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-good">Da</span></li>
-          <li><span class="cmp-attr">3D / AR prikaz</span><span class="cmp-val cmp-warn">Skup dodatak</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val cmp-bad">40k – 200k €</span></li>
           <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-bad">2k+ € po korisniku</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-good">Potpuno specifikovan</span></li>
-          <li><span class="cmp-attr">CRM integracija</span><span class="cmp-val cmp-good">Nativno</span></li>
+          <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-good">Ugrađeno</span></li>
         </ul>
         <div class="cmp-verdict">Previše za većinu timova</div>
       </div>
@@ -1317,7 +1304,7 @@ footer {
           <li>3 proizvoda</li>
           <li>25 upita / mesečno</li>
           <li>1 član tima</li>
-          <li>PNG vizualizacija</li>
+          <li>Generator embed koda</li>
           <li>„Powered by" oznaka</li>
         </ul>
         <a href="#waitlist" class="tier-cta">Počnite besplatno</a>
@@ -1331,7 +1318,7 @@ footer {
           <li>25 proizvoda</li>
           <li>250 upita / mesečno</li>
           <li>3 člana tima</li>
-          <li>3D i AR prikaz</li>
+          <li>Filtriranje i pretraga upita</li>
           <li>Brendirane PDF ponude</li>
           <li>5 AI postavki / mesečno</li>
         </ul>
@@ -1347,7 +1334,7 @@ footer {
           <li>Neograničen broj proizvoda</li>
           <li>2.000 upita / mesečno</li>
           <li>10 članova tima</li>
-          <li>Webhook i CRM sinhronizacija</li>
+          <li>Biblioteka karakteristika</li>
           <li>Napredna analitika</li>
           <li>Uklonite „Powered by" oznaku</li>
           <li>50 AI postavki / mesečno</li>
@@ -1385,19 +1372,11 @@ footer {
       </div>
       <div class="faq-item">
         <h3 class="faq-q">Hoće li raditi na mom postojećem sajtu?</h3>
-        <p class="faq-a">Ugrađuje se kao jedan script tag, Web Component ili iFrame — pokriva WordPress, Shopify, Webflow, Wix i bilo koji CMS po meri. Vaš programer ne mora ništa da gradi iz početka.</p>
+        <p class="faq-a">Ugrađuje se kao jedan &lt;script&gt; tag uz marker &lt;div&gt; na stranici. Widget radi u sopstvenom Shadow DOM-u, pa ne dolazi u sukob sa stilovima vašeg sajta. Radi na WordPress-u, Shopify-u i bilo kojoj custom HTML stranici.</p>
       </div>
       <div class="faq-item">
         <h3 class="faq-q">Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?</h3>
         <p class="faq-a">Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Vaš tim ih pretvara u zvanične ponude i prati ih dalje. Configureout uklanja prepisku oko osnovnih specifikacija, pa vaši ljudi vreme troše na prave razgovore.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Može li slati podatke u moj ERP ili CRM?</h3>
-        <p class="faq-a">Da. HMAC-potpisani webhook-ovi se šalju za svaki upit i svaku promenu statusa ponude. Nativne integracije sa Zapier-om, HubSpot-om i Pipedrive-om stižu tokom ranog pristupa. Integracije po meri su jednostavne preko webhook payload-a.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Odakle dolaze moji 3D modeli?</h3>
-        <p class="faq-a">Otpremate svoje GLB ili GLTF fajlove — većina CAD programa ih izvozi. Za korisnike u ranom pristupu, pomoći ćemo da konvertujemo jedan model iz vaših postojećih resursa, da krenete sa pravim prikazom već prvog dana.</p>
       </div>
     </div>
   </div>
