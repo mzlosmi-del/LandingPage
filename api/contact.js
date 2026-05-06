@@ -56,7 +56,6 @@ module.exports = async function handler(req, res) {
       email,
       attributes: {
         FIRSTNAME: name,
-        SMS: phone,
         PHONE: phone,
         BUSINESS_NAME: businessName,
         BUSINESS_DESCRIPTION: description,
