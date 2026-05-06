@@ -825,6 +825,56 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 .final .btn-primary:hover { background: var(--turq-300); }
 
+/* Contact form (lives inside .final) */
+.contact-form {
+  position: relative; z-index: 1;
+  max-width: 640px; margin: 0 auto;
+  text-align: left;
+  display: grid; gap: 16px;
+}
+.cf-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 600px) { .cf-row { grid-template-columns: 1fr 1fr; } }
+.cf-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cf-field label {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+.cf-field input,
+.cf-field textarea {
+  font: inherit; font-family: var(--sans); font-size: 15px;
+  padding: 12px 14px; border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  color: var(--gray-1);
+  border: 1px solid rgba(255,255,255,.16);
+  outline: none; transition: border-color .15s, background .15s;
+  width: 100%; box-sizing: border-box;
+}
+.cf-field input::placeholder,
+.cf-field textarea::placeholder { color: rgba(255,255,255,.45); }
+.cf-field input:focus,
+.cf-field textarea:focus {
+  border-color: var(--turq-300); background: rgba(255,255,255,.09);
+}
+.cf-field textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+.cf-honey {
+  position: absolute !important; left: -9999px !important;
+  width: 1px !important; height: 1px !important; opacity: 0 !important;
+  pointer-events: none !important;
+}
+.cf-actions { margin-top: 8px; text-align: center; }
+.cf-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.cf-msg {
+  min-height: 22px; text-align: center;
+  font-size: 14px; color: rgba(255,255,255,.85);
+}
+.cf-msg.error { color: #ffb4a8; }
+.cf-msg.success { color: var(--turq-200); }
+.contact-form.is-success > :not(.cf-msg) { display: none; }
+.contact-form.is-success .cf-msg {
+  font-size: 17px; padding: 24px 0; min-height: 0;
+}
+
 /* ─────────────────────────────────────────
    FOOTER
    ───────────────────────────────────────── */
@@ -1393,10 +1443,47 @@ footer {
   <div class="wrap final-inner">
     <h2>Vidite kako Configureout<br>odgovara vašem poslovanju.</h2>
     <p>Zakažite besplatne konsultacije od 30 minuta. Proći ćemo kroz vaš asortiman, pokazaćemo šta je moguće i odgovoriti na vaša pitanja. Bez pritiska, bez obaveze.</p>
-    <a href="mailto:sales@configureout.com?subject=Konsultacije%20%E2%80%94%20Configureout" class="btn btn-primary">
-      Zakažite konsultacije
-      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+    <form
+      class="contact-form"
+      id="consultationForm"
+      novalidate
+      data-label-sending="Slanje…"
+      data-success="Hvala — javljamo vam se u roku od jednog radnog dana."
+      data-error="Došlo je do greške. Pošaljite poruku na sales@configureout.com."
+    >
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="cf-honey" aria-hidden="true">
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-name">Vaše ime</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" maxlength="100">
+        </div>
+        <div class="cf-field">
+          <label for="cf-business">Naziv firme</label>
+          <input id="cf-business" name="businessName" type="text" required autocomplete="organization" maxlength="200">
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-email">Poslovni email</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" maxlength="254">
+        </div>
+        <div class="cf-field">
+          <label for="cf-phone">Telefon</label>
+          <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" maxlength="30">
+        </div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-desc">Čime se vaša firma bavi?</label>
+        <textarea id="cf-desc" name="description" required rows="4" minlength="10" maxlength="2000" placeholder="Nekoliko rečenica o tome šta prodajete i kako trenutno pravite ponude."></textarea>
+      </div>
+      <div class="cf-actions">
+        <button type="submit" class="btn btn-primary cf-submit">
+          <span class="cf-submit-label">Zatraži konsultacije</span>
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="cf-msg" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </section>
 
@@ -1420,11 +1507,55 @@ footer {
     <nav class="foot-links" aria-label="Navigacija u podnožju">
       <a href="#how">Kako funkcioniše</a>
       <a href="#pricing">Cene</a>
-      <a href="mailto:sales@configureout.com">Kontakt</a>
+      <a href="#consultation">Kontakt</a>
       <a href="/" hreflang="en" lang="en">EN</a>
     </nav>
   </div>
 </footer>
+
+<script>
+(function () {
+  var form = document.getElementById('consultationForm');
+  if (!form) return;
+  var msg = form.querySelector('.cf-msg');
+  var btn = form.querySelector('.cf-submit');
+  var labelEl = form.querySelector('.cf-submit-label');
+  var labelDefault = labelEl.textContent;
+  var labelSending = form.dataset.labelSending || 'Slanje…';
+  var successMsg  = form.dataset.success || 'Hvala — javljamo vam se uskoro.';
+  var errorMsg    = form.dataset.error || 'Došlo je do greške. Pošaljite poruku na sales@configureout.com.';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg.className = 'cf-msg';
+    msg.textContent = '';
+    if (!form.reportValidity()) return;
+
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
+    data.locale = document.documentElement.lang || 'sr';
+
+    btn.disabled = true;
+    labelEl.textContent = labelSending;
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(function (res) {
+      if (!res.ok) throw new Error('http_' + res.status);
+      form.classList.add('is-success');
+      msg.classList.add('success');
+      msg.textContent = successMsg;
+    }).catch(function () {
+      msg.classList.add('error');
+      msg.textContent = errorMsg;
+      btn.disabled = false;
+      labelEl.textContent = labelDefault;
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
