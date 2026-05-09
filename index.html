@@ -121,14 +121,16 @@ img, svg { display: block; max-width: 100%; }
 .nav-links { display: none; align-items: center; gap: 32px; font-size: 15px; font-weight: 500; }
 .nav-links a { color: var(--gray-6); transition: color .15s; }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.lang-switch {
+.nav-end { display: flex; align-items: center; gap: 10px; }
+.lang-switch {
   font-family: var(--mono); font-size: 12px; font-weight: 600;
   letter-spacing: .04em;
   border: 1px solid var(--line-2);
   padding: 4px 10px; border-radius: 999px;
   color: var(--gray-6);
+  transition: color .15s, background .15s, border-color .15s;
 }
-.nav-links a.lang-switch:hover { background: var(--gray-2); border-color: var(--gray-4); color: var(--ink); }
+.lang-switch:hover { background: var(--gray-2); border-color: var(--gray-4); color: var(--ink); }
 .nav-cta {
   background: var(--ink); color: var(--gray-1);
   padding: 9px 18px; border-radius: 999px;
@@ -987,9 +989,11 @@ footer {
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
-      <a href="/sr" hreflang="sr" lang="sr" class="lang-switch">SR</a>
     </nav>
-    <a href="#consultation" class="nav-cta">Book a consultation</a>
+    <div class="nav-end">
+      <a href="/sr" hreflang="sr" lang="sr" class="lang-switch">SR</a>
+      <a href="#consultation" class="nav-cta">Book a consultation</a>
+    </div>
   </div>
 </header>
 
