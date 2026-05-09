@@ -122,14 +122,16 @@ img, svg { display: block; max-width: 100%; }
 .nav-links { display: none; align-items: center; gap: 32px; font-size: 15px; font-weight: 500; }
 .nav-links a { color: var(--gray-6); transition: color .15s; }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.lang-switch {
+.nav-end { display: flex; align-items: center; gap: 10px; }
+.lang-switch {
   font-family: var(--mono); font-size: 12px; font-weight: 600;
   letter-spacing: .04em;
   border: 1px solid var(--line-2);
   padding: 4px 10px; border-radius: 999px;
   color: var(--gray-6);
+  transition: color .15s, background .15s, border-color .15s;
 }
-.nav-links a.lang-switch:hover { background: var(--gray-2); border-color: var(--gray-4); color: var(--ink); }
+.lang-switch:hover { background: var(--gray-2); border-color: var(--gray-4); color: var(--ink); }
 .nav-cta {
   background: var(--ink); color: var(--gray-1);
   padding: 9px 18px; border-radius: 999px;
@@ -988,9 +990,11 @@ footer {
       <a href="#how">Kako funkcioniše</a>
       <a href="#features">Mogućnosti</a>
       <a href="#pricing">Cene</a>
-      <a href="/" hreflang="en" lang="en" class="lang-switch">EN</a>
     </nav>
-    <a href="#consultation" class="nav-cta">Zakažite konsultacije</a>
+    <div class="nav-end">
+      <a href="/" hreflang="en" lang="en" class="lang-switch">EN</a>
+      <a href="#consultation" class="nav-cta">Zakažite konsultacije</a>
+    </div>
   </div>
 </header>
 
