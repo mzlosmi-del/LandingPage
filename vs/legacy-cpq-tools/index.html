@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>A Modern Alternative to Legacy CPQ Tools — Configureout</title>
+<meta name="description" content="Skip the 6-month implementation and €40k+ setup. Embed a product configurator in one afternoon, from €49/month." />
+<meta name="theme-color" content="#0fa392" />
+<meta property="og:title" content="A Modern Alternative to Legacy CPQ Tools — Configureout" />
+<meta property="og:description" content="Skip the 6-month implementation and €40k+ setup. Embed a product configurator in one afternoon, from €49/month." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://configureout.com/vs/legacy-cpq-tools" />
+<meta property="og:site_name" content="Configureout" />
+<meta property="og:image" content="https://configureout.com/brand/configureout-og.png" />
+<meta name="robots" content="index, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="A Modern Alternative to Legacy CPQ Tools — Configureout" />
+<meta name="twitter:description" content="Skip the 6-month implementation and €40k+ setup. Embed a product configurator in one afternoon, from €49/month." />
+<meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
+<link rel="canonical" href="https://configureout.com/vs/legacy-cpq-tools" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"></noscript>
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+.page-hero { padding: 56px 0 56px; }
+@media (min-width: 768px) { .page-hero { padding: 88px 0 72px; } }
+.page-hero .hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gray-2); border: 1px solid var(--line);
+  color: var(--gray-6); padding: 6px 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; margin-bottom: 24px;
+}
+.page-hero .hero-tag::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(15,163,146,.25);
+}
+.page-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(32px, 6.5vw, 60px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -.03em;
+  margin-bottom: 22px; color: var(--ink); max-width: 920px;
+}
+.page-hero .hero-sub {
+  font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;
+  color: var(--gray-6); margin-bottom: 32px; max-width: 640px;
+}
+.page-hero .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* COMPARISON GRID (same as homepage) */
+.cmp-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 1024px) { .cmp-grid { grid-template-columns: repeat(3,1fr); gap: 20px; align-items: stretch; } }
+.cmp-col {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 28px 26px;
+  display: flex; flex-direction: column; position: relative;
+}
+.cmp-col.featured {
+  background: var(--ink); color: var(--gray-1);
+  border-color: var(--ink);
+  transform: scale(1); box-shadow: var(--shadow-lg);
+}
+@media (min-width: 1024px) { .cmp-col.featured { transform: scale(1.02); } }
+.cmp-badge {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: var(--accent-ink);
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px;
+}
+.cmp-icon {
+  width: 44px; height: 44px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; margin-bottom: 16px;
+}
+.cmp-bad-icon { background: #fee2e2; color: var(--bad); }
+.cmp-warn-icon { background: var(--gray-3); color: var(--gray-6); }
+.cmp-good-icon { background: var(--accent); color: var(--accent-ink); }
+.cmp-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 4px; }
+.cmp-sub { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--gray-5); letter-spacing: .02em; margin-bottom: 24px; }
+.cmp-col.featured .cmp-sub { color: rgba(255,255,255,.6); }
+.cmp-list { list-style: none; margin: 0; padding: 0; flex: 1; margin-bottom: 22px; }
+.cmp-list li {
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.cmp-col.featured .cmp-list li { border-color: rgba(255,255,255,.12); }
+.cmp-list li:last-child { border-bottom: 0; }
+.cmp-attr { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--gray-5); }
+.cmp-col.featured .cmp-attr { color: rgba(255,255,255,.5); }
+.cmp-val { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+.cmp-col.featured .cmp-val { color: var(--gray-1); }
+.cmp-good { color: var(--good); font-weight: 600; }
+.cmp-col.featured .cmp-good { color: var(--accent); }
+.cmp-bad { color: var(--bad); font-weight: 500; }
+.cmp-warn { color: var(--warn); font-weight: 500; }
+.cmp-verdict {
+  font-size: 13px; font-weight: 500; text-align: center;
+  padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--gray-2); color: var(--gray-6);
+}
+.cmp-col.featured .cmp-verdict {
+  background: rgba(15,163,146,.12);
+  border-color: rgba(15,163,146,.32);
+  color: var(--turq-300); font-weight: 600;
+}
+
+/* DIMENSIONS */
+.dim-block { max-width: 820px; margin: 0 auto; }
+.dim-item {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px 26px;
+  margin-bottom: 16px;
+}
+.dim-item h3 {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -.015em; margin-bottom: 10px;
+  color: var(--ink);
+}
+.dim-item p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+
+/* QUOTE PLACEHOLDER */
+.quote-block {
+  max-width: 720px; margin: 0 auto;
+  background: var(--gray-2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+}
+.quote-block blockquote {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 24px);
+  font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.35; color: var(--ink);
+  margin-bottom: 16px;
+}
+.quote-attr {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--gray-5);
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "A Modern Alternative to Legacy CPQ Tools",
+  "description": "Skip the 6-month implementation and €40k+ setup. Embed a product configurator in one afternoon, from €49/month.",
+  "url": "https://configureout.com/vs/legacy-cpq-tools",
+  "inLanguage": "en",
+  "isPartOf": { "@type": "WebSite", "name": "Configureout", "url": "https://configureout.com" }
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="Configureout — home">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+        <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+        <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+        <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+      </svg>
+      <span class="wordmark">configureout</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/#how">How it works</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="nav-end">
+      <a href="/sr" hreflang="sr" lang="sr" class="lang-switch">SR</a>
+      <a href="/#consultation" class="nav-cta">Book a consultation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="hero-tag">Comparison · CPQ alternatives</div>
+    <h1>A modern alternative to legacy CPQ tools</h1>
+    <p class="hero-sub">Most teams shopping for a configurator don't need a six-month integration project. They need a working configurator on their site this quarter, with the option to grow into more sophistication later.</p>
+    <div class="hero-ctas">
+      <a href="/#pricing" class="btn btn-primary">
+        Start free
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/#consultation" class="btn btn-ghost">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── COMPARISON ────────── -->
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">Compared</span>
+    <h2>The right tool, in the right size,<br>at the right price.</h2>
+    <p class="sec-lead">Most teams are choosing between three options today. Here's how they stack up.</p>
+
+    <div class="cmp-grid">
+      <div class="cmp-col">
+        <div class="cmp-icon cmp-bad-icon">✕</div>
+        <div class="cmp-name">Status quo (contact form)</div>
+        <div class="cmp-sub">What most companies use today</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val">Already there</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-bad">Not shown</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val">€0</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val">€0</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-bad">Underspecified</span></li>
+          <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-bad">Email thread</span></li>
+        </ul>
+        <div class="cmp-verdict">Loses customers who want a price now</div>
+      </div>
+
+      <div class="cmp-col featured">
+        <div class="cmp-badge">Recommended</div>
+        <div class="cmp-icon cmp-good-icon">✓</div>
+        <div class="cmp-name">Configureout</div>
+        <div class="cmp-sub">Built for ambitious teams</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-good">An afternoon</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes — formula engine</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-good">€0 setup</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-good">From €49 / mo</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
+          <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-good">Live dashboard</span></li>
+        </ul>
+        <div class="cmp-verdict">A real configurator, without the project</div>
+      </div>
+
+      <div class="cmp-col">
+        <div class="cmp-icon cmp-warn-icon">!</div>
+        <div class="cmp-name">Enterprise CPQ</div>
+        <div class="cmp-sub">Legacy sales-config platforms</div>
+        <ul class="cmp-list">
+          <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-bad">3–6 months</span></li>
+          <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes</span></li>
+          <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-bad">€40k – €200k</span></li>
+          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-bad">€2k+ per user</span></li>
+          <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
+          <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-good">Built-in</span></li>
+        </ul>
+        <div class="cmp-verdict">Overkill for most teams</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── DIMENSIONS ────────── -->
+<section class="sec">
+  <div class="wrap">
+    <span class="sec-eyebrow">Dimension by dimension</span>
+    <h2>Where the two approaches really differ.</h2>
+    <p class="sec-lead">Enterprise CPQ platforms and a modern embeddable configurator solve overlapping problems, but they're built for very different teams. Here's what changes on each axis.</p>
+
+    <div class="dim-block">
+      <div class="dim-item">
+        <h3>Time to live</h3>
+        <p>Enterprise CPQ rollouts are measured in months — discovery, scoping, modeling, integration, training, rollout. Configureout is measured in afternoons. Define a product, build a formula, paste the embed code on your existing site. You can ship a working configurator on one product line before lunch and add the rest as you go.</p>
+      </div>
+      <div class="dim-item">
+        <h3>Total cost of ownership</h3>
+        <p>Legacy platforms bundle a high implementation cost (€40k–€200k+ in consulting), an annual contract for the platform itself, and per-seat charges that climb every time you grow the team. Configureout is a predictable monthly subscription, no setup fees, and inquiry-based — not seat-based — so adding sales people doesn't change the bill.</p>
+      </div>
+      <div class="dim-item">
+        <h3>Implementation complexity</h3>
+        <p>Enterprise CPQ is a consulting project. You'll need a partner, a steering committee, and a multi-quarter project plan. Configureout is self-serve: define characteristics, build a formula in the visual editor, embed the widget. If you outgrow self-serve, we offer a paid onboarding service — but it's an option, not a requirement.</p>
+      </div>
+      <div class="dim-item">
+        <h3>Who it's for</h3>
+        <p>Enterprise CPQ platforms are built for Fortune-500 manufacturing operations with global sales teams, ERP integrations, and dedicated CPQ admins. Configureout is built for SMB and mid-market manufacturers, custom shops, and product brands that want a configurator on their site without becoming a CPQ shop themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── WHY TEAMS SWITCH ────────── -->
+<section class="sec tinted">
+  <div class="wrap" style="text-align:center;">
+    <span class="sec-eyebrow">Why teams switch</span>
+    <h2 style="margin-bottom: 32px;">Made for teams that ship.</h2>
+
+    <!-- TODO: replace with real customer quote when available -->
+    <div class="quote-block">
+      <blockquote>"We spent two quarters evaluating an enterprise CPQ. With Configureout we had a working configurator on our most-requested product line by the end of the first afternoon."</blockquote>
+      <div class="quote-attr">— Product manager, custom furniture brand</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── CROSS-LINKS ────────── -->
+<section class="sec">
+  <div class="wrap" style="text-align:center;">
+    <span class="sec-eyebrow">Explore</span>
+    <h2 style="margin-bottom:24px;">See it in your industry.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;">
+      <a class="btn btn-ghost" href="/pricing">Pricing</a>
+      <a class="btn btn-ghost" href="/demo">Live demo</a>
+      <a class="btn btn-ghost" href="/for/furniture-makers">For furniture makers</a>
+      <a class="btn btn-ghost" href="/for/window-manufacturers">For window manufacturers</a>
+      <a class="btn btn-ghost" href="/for/sign-shops">For sign shops</a>
+      <a class="btn btn-ghost" href="/vs/contact-forms">vs contact forms</a>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FINAL CTA ────────── -->
+<section class="final">
+  <div class="wrap final-inner">
+    <h2>The configurator your team<br>actually has time to ship.</h2>
+    <p>Free tier, no credit card, no implementation project. Upgrade only when real inquiries are coming in.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-primary" href="/#pricing">
+        Start free
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="/#consultation" style="background:rgba(255,255,255,.06);color:var(--gray-1);border-color:rgba(255,255,255,.18);">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <a href="/" aria-label="Configureout — home" style="display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-family:var(--display);font-weight:800;letter-spacing:-.02em;">
+        <svg viewBox="0 0 200 200" width="20" height="20" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+          <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+          <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+          <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+        </svg>
+        configureout
+      </a>
+      <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Built for teams that ship.</span>
+    </div>
+    <nav class="foot-links" aria-label="Footer navigation">
+      <a href="/#how">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/demo">Demo</a>
+      <a href="/#consultation">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/sr" hreflang="sr" lang="sr">SR</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

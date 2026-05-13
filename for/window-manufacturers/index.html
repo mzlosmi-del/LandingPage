@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Product Configurator for Window Manufacturers — Configureout</title>
+<meta name="description" content="Show live pricing on your website. Customers configure dimensions, glazing, and frame material — and submit qualified inquiries." />
+<meta name="theme-color" content="#0fa392" />
+<meta property="og:title" content="Product Configurator for Window Manufacturers — Configureout" />
+<meta property="og:description" content="Show live pricing on your website. Customers configure dimensions, glazing, and frame material — and submit qualified inquiries." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://configureout.com/for/window-manufacturers" />
+<meta property="og:site_name" content="Configureout" />
+<meta property="og:image" content="https://configureout.com/brand/configureout-og.png" />
+<meta name="robots" content="index, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Product Configurator for Window Manufacturers — Configureout" />
+<meta name="twitter:description" content="Show live pricing on your website. Customers configure dimensions, glazing, and frame material — and submit qualified inquiries." />
+<meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
+<link rel="canonical" href="https://configureout.com/for/window-manufacturers" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"></noscript>
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+.page-hero { padding: 56px 0 56px; }
+@media (min-width: 768px) { .page-hero { padding: 88px 0 80px; } }
+.page-hero .hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gray-2); border: 1px solid var(--line);
+  color: var(--gray-6); padding: 6px 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; margin-bottom: 24px;
+}
+.page-hero .hero-tag::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(15,163,146,.25);
+}
+.page-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(32px, 6.5vw, 60px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -.03em;
+  margin-bottom: 22px; color: var(--ink); max-width: 920px;
+}
+.page-hero .hero-sub {
+  font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;
+  color: var(--gray-6); margin-bottom: 32px; max-width: 640px;
+}
+.page-hero .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+.prob-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .prob-grid { grid-template-columns: repeat(3,1fr); gap: 20px; } }
+.prob-card {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 26px;
+  transition: transform .15s, box-shadow .15s;
+}
+.prob-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.prob-icon {
+  width: 44px; height: 44px;
+  background: var(--gray-2); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); margin-bottom: 18px;
+}
+.prob-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; margin-bottom: 10px; }
+.prob-card p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+
+.demo-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.demo-bar { background: var(--ink); color: var(--gray-1); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; font-weight: 500; }
+.demo-dots { display: flex; gap: 6px; }
+.demo-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.22); display: block; }
+.demo-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.demo-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+.demo-body { background: #fff; min-height: 540px; display: flex; align-items: stretch; }
+.demo-body > div { width: 100%; }
+
+.steps { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.step { background: var(--gray-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; position: relative; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--ink); color: var(--accent); border-radius: 999px; font-family: var(--mono); font-size: 14px; font-weight: 700; margin-bottom: 18px; }
+.step h3 { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; line-height: 1.25; }
+.step p { font-size: 15px; line-height: 1.6; color: var(--gray-6); margin-bottom: 16px; }
+.step-meta { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--gray-5); padding-top: 14px; border-top: 1px solid var(--line); }
+
+.feat-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); overflow: hidden; }
+@media (min-width: 640px) { .feat-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1024px) { .feat-grid { grid-template-columns: repeat(3,1fr); } }
+.feat { background: var(--ink); padding: 32px 28px; transition: background .2s; }
+.feat:hover { background: #141414; }
+.feat-icon { width: 40px; height: 40px; background: rgba(15,163,146,.14); color: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.feat h4 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; color: var(--gray-1); }
+.feat p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.72); }
+
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
+.faq-item { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; }
+.faq-q { font-size: 17px; font-weight: 600; letter-spacing: -.015em; margin-bottom: 8px; line-height: 1.35; }
+.faq-a { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does the configurator show energy ratings like Uw values?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Uw, Ug, and g-value can each be a derived field on the configuration. The formula engine looks up the right value for the chosen glazing and frame combination, then displays it next to the price. The same numbers flow into the inquiry and the PDF quote so your sales and production teams see consistent specs." } },
+    { "@type": "Question", "name": "Can it handle regional standards like CE marking or NFRC labels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can tag each glazing or frame option with the certifications that apply, and configure rules so customers in one region only see compliant options. The certification IDs travel with the inquiry and can be printed on the PDF quote, giving production a clean handoff." } },
+    { "@type": "Question", "name": "Can we model custom mullion configurations?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mullion count, position, and pattern are characteristics like any other — with rules that limit them based on overall dimensions. Pricing can scale per linear meter of mullion, or use a stepped table. The formula engine handles dependent constraints so you never quote an impossible configuration." } },
+    { "@type": "Question", "name": "Can we include installation services pricing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add an 'installation' characteristic with zones, surcharges, or per-unit pricing. The customer's postal code or region can drive the rate. The installation line item appears separately on the PDF quote, which makes it easy for your team to split out for invoicing." } },
+    { "@type": "Question", "name": "Can dealers see their own catalog and pricing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — on Growth and Scale plans. Sub-tenants for dealers, each with their own price book, currency, and PDF template. Same products, same formulas, different multipliers. Dealers also get their own inquiry inbox." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="Configureout — home">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+        <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+        <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+        <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+      </svg>
+      <span class="wordmark">configureout</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/#how">How it works</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="nav-end">
+      <a href="/sr" hreflang="sr" lang="sr" class="lang-switch">SR</a>
+      <a href="/#consultation" class="nav-cta">Book a consultation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="hero-tag">For window &amp; door manufacturers</div>
+    <h1>The product configurator for window manufacturers</h1>
+    <p class="hero-sub">Show live pricing on your website. Customers configure width × height × glazing × frame — you get qualified inquiries.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn btn-primary">
+        See it work for windows
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/#consultation" class="btn btn-ghost">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">The problem</span>
+    <h2>Windows are easy to spec —<br>and hard to quote on a website.</h2>
+    <p class="sec-lead">If you manufacture made-to-measure windows, three problems quietly cost you qualified leads every week.</p>
+
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M4 11h14M11 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Customers ask about U-values, you can't show them without an engineer</h3>
+        <p>Every glazing × frame combination has a different Uw. Without a tool, your sales team is on the phone with installers translating spec sheets — when the customer just wants a quote.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 3h16v16H3z" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h16M3 14h16M8 3v16M14 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Custom W × H means no standard catalog price</h3>
+        <p>Every window is unique. Your team writes the same per-square-meter formula by hand on each quote, with manual surcharges for mullions, frame upgrades, and hardware finishes.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M3 11h16M11 3a12 12 0 010 16M11 3a12 12 0 000 16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Regional certifications block national catalogs</h3>
+        <p>What's certified for one region isn't for another. CE marking, NFRC labels, regional energy class — customers want to know what applies to them before they fill in a form.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="demo">
+  <div class="wrap">
+    <span class="sec-eyebrow">See it work</span>
+    <h2>This is the actual widget.<br>Configure a window right now.</h2>
+    <p class="sec-lead">Enter dimensions, pick glazing and frame, see the price and the Uw value update on every change. Submit at the end to see what an inquiry looks like.</p>
+
+    <div class="demo-card">
+      <div class="demo-bar">
+        <div class="demo-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span>live demo · windows</span>
+        <span class="demo-live">LIVE</span>
+      </div>
+      <div class="demo-body">
+        <div
+          id="configurator-bcb673d3"
+          data-supabase-url="https://laqgfdqorqksfbqkbwkl.supabase.co"
+          data-supabase-anon-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcWdmZHFvcnFrc2ZicWtid2tsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDY2OTgsImV4cCI6MjA5MTEyMjY5OH0.9ysIS9r0ocwwSD_gz9CKvW0T4jK89iToBBmIycPof40"
+          data-product-id="bcb673d3-bf8f-4500-939d-d5610f206c11"
+          data-tenant-id="a1000000-0000-0000-0000-000000000001"
+          data-style="cloud"
+        ></div>
+        <script>if(!localStorage.getItem('lang'))localStorage.setItem('lang','en');</script>
+        <script src="https://konfigurator-psi.vercel.app/widget.js" async></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">How it works</span>
+    <h2>From window spec to live configurator<br>in three steps.</h2>
+    <p class="sec-lead">Most window manufacturers ship their first configurator in an afternoon.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Define your window</h3>
+        <p>Window = W × H × glazing × frame × hardware. Bound the dimensions, list your glazing options, tag each with its Uw and certifications, and define the frame materials.</p>
+        <div class="step-meta">~ 30 minutes · No code</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Set your pricing formula</h3>
+        <p>Per-square-meter base price by frame material, glazing surcharge, hardware premium, regional installation. Build it in the visual node editor — same logic you use in your quoting spreadsheet today.</p>
+        <div class="step-meta">Visual editor · No code</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Embed and ship</h3>
+        <p>One script tag and one marker div on your product page. The widget runs in its own Shadow DOM so it won't conflict with your site's styles. Inquiries land in your dashboard with the full configuration, computed price, and energy values.</p>
+        <div class="step-meta">WordPress · Shopify · Custom HTML</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap">
+    <span class="sec-eyebrow">Features</span>
+    <h2>Built for the way windows are actually sold.</h2>
+    <p class="sec-lead">Everything you need to move from email back-and-forth to qualified online inquiries.</p>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h4>Formula-based pricing</h4>
+        <p>Per-square-meter base, perimeter mullion, glazing premium, regional installation surcharge. Anything your quoting spreadsheet can do, the engine can do faster.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/><path d="M3 11h16M11 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h4>Image &amp; profile swap</h4>
+        <p>Pick a frame, the cross-section image swaps. Pick a glazing, the visual fill changes. Customers see what they're buying, not a flattened option list.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 5h16v12H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10h8M7 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Live lead capture</h4>
+        <p>Inquiries arrive with W × H, glazing, frame, hardware, Uw, and computed price. No "we'll send a quote" black hole.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Inquiry dashboard</h4>
+        <p>Filter, search, tag inquiries by status. Turn any inquiry into a branded PDF quote with your logo, terms, and energy-class labels.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 9l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>One-line embed</h4>
+        <p>One script tag, one marker div, done. Works on WordPress, Shopify, and any custom HTML page. Shadow-DOM-isolated so it can't conflict with the rest of your site.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Multi-language &amp; multi-market</h4>
+        <p>Per-language labels for every characteristic and value. Run the same configurator across markets with regional pricing, regional certifications, and translated PDFs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="sec-eyebrow">Windows FAQ</span>
+    <h2>Questions window manufacturers ask first.</h2>
+    <div class="faq-list" style="margin-top:48px">
+      <div class="faq-item">
+        <h3 class="faq-q">Does the configurator show energy ratings like Uw values?</h3>
+        <p class="faq-a">Yes. Uw, Ug, and g-value can each be a derived field on the configuration. The formula engine looks up the right value for the chosen glazing and frame combination, then displays it next to the price. The same numbers flow into the inquiry and the PDF quote so your sales and production teams see consistent specs.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can it handle regional standards like CE marking or NFRC labels?</h3>
+        <p class="faq-a">Yes. You can tag each glazing or frame option with the certifications that apply, and configure rules so customers in one region only see compliant options. The certification IDs travel with the inquiry and can be printed on the PDF quote, giving production a clean handoff.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can we model custom mullion configurations?</h3>
+        <p class="faq-a">Yes. Mullion count, position, and pattern are characteristics like any other — with rules that limit them based on overall dimensions. Pricing can scale per linear meter of mullion, or use a stepped table. The formula engine handles dependent constraints so you never quote an impossible configuration.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can we include installation services pricing?</h3>
+        <p class="faq-a">Yes. Add an "installation" characteristic with zones, surcharges, or per-unit pricing. The customer's postal code or region can drive the rate. The installation line item appears separately on the PDF quote, which makes it easy for your team to split out for invoicing.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can dealers see their own catalog and pricing?</h3>
+        <p class="faq-a">Yes — on Growth and Scale plans. Sub-tenants for dealers, each with their own price book, currency, and PDF template. Same products, same formulas, different multipliers. Dealers also get their own inquiry inbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap" style="text-align:center;">
+    <span class="sec-eyebrow">Also see</span>
+    <h2 style="margin-bottom:24px;">More from Configureout.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;">
+      <a class="btn btn-ghost" href="/pricing">Pricing</a>
+      <a class="btn btn-ghost" href="/demo">Live demo</a>
+      <a class="btn btn-ghost" href="/for/furniture-makers">For furniture makers</a>
+      <a class="btn btn-ghost" href="/for/sign-shops">For sign shops</a>
+      <a class="btn btn-ghost" href="/vs/legacy-cpq-tools">vs legacy CPQ tools</a>
+      <a class="btn btn-ghost" href="/vs/contact-forms">vs contact forms</a>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap final-inner">
+    <h2>Ship a window configurator<br>this quarter.</h2>
+    <p>No CPQ project. No six-month rollout. Build, embed, and start collecting qualified inquiries from your own site.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-primary" href="/#pricing">
+        Start free
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="/#consultation" style="background:rgba(255,255,255,.06);color:var(--gray-1);border-color:rgba(255,255,255,.18);">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <a href="/" aria-label="Configureout — home" style="display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-family:var(--display);font-weight:800;letter-spacing:-.02em;">
+        <svg viewBox="0 0 200 200" width="20" height="20" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+          <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+          <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+          <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+        </svg>
+        configureout
+      </a>
+      <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Built for teams that ship.</span>
+    </div>
+    <nav class="foot-links" aria-label="Footer navigation">
+      <a href="/#how">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/demo">Demo</a>
+      <a href="/#consultation">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/sr" hreflang="sr" lang="sr">SR</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
