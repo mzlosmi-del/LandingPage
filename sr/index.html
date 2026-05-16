@@ -353,28 +353,41 @@ h1 .hi {
   margin-bottom: 16px; text-align: center;
 }
 .types-list {
-  display: flex; gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 0 auto;
   padding: 0 24px;
-  justify-content: flex-start;
+  list-style: none;
 }
-.types-list::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .types-list { grid-template-columns: repeat(3, 1fr); padding: 0 24px; } }
 .types-list li {
   list-style: none;
-  font-size: 14px; font-weight: 500;
-  color: var(--gray-6);
-  padding: 8px 16px;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex; align-items: center; gap: 14px;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.types-list li:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.types-list a {
+  color: var(--ink);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 12px;
+  width: 100%;
+}
+.types-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--turq-50);
+  color: var(--turq-700);
+  display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-@media (min-width: 1024px) {
-  .types-list { justify-content: center; flex-wrap: wrap; padding: 0; }
-}
+.types-icon svg { width: 18px; height: 18px; }
 
 /* ─────────────────────────────────────────
    SECTION SHELL
@@ -1212,14 +1225,31 @@ footer {
   <div>
     <div class="types-label">Napravljeno za proizvode poput ovih</div>
     <ul class="types-list">
-      <li>Prozori i vrata</li>
-      <li>Nameštaj</li>
-      <li>Kuhinje po meri</li>
-      <li>Reklamne table</li>
-      <li>Odeća i suveniri</li>
-      <li>Industrijska oprema</li>
-      <li>Nakit</li>
-      <li>... ili bilo šta što biste računali u tabeli</li>
+      <li>
+        <a href="/for/window-manufacturers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 12h16M12 3v18"/></svg>
+          </span>
+          Prozori i vrata
+        </a>
+      </li>
+      <li>
+        <a href="/for/furniture-makers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/><path d="M3 11h18v6H3z"/><path d="M5 17v3M19 17v3"/></svg>
+          </span>
+          Nameštaj
+        </a>
+      </li>
+      <!-- TODO: build /for/custom-kitchens page -->
+      <li>
+        <a href="/#vertical-custom-kitchens">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg>
+          </span>
+          Kuhinje po meri
+        </a>
+      </li>
     </ul>
   </div>
 </section>
