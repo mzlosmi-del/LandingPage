@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Product Configurator for Sign Shops — Configureout</title>
+<meta name="description" content="Quote custom signs faster. Customers pick substrate, dimensions, and finish — you get qualified inquiries with live pricing." />
+<meta name="theme-color" content="#0fa392" />
+<meta property="og:title" content="Product Configurator for Sign Shops — Configureout" />
+<meta property="og:description" content="Quote custom signs faster. Customers pick substrate, dimensions, and finish — you get qualified inquiries with live pricing." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://configureout.com/for/sign-shops" />
+<meta property="og:site_name" content="Configureout" />
+<meta property="og:image" content="https://configureout.com/brand/configureout-og.png" />
+<meta name="robots" content="index, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Product Configurator for Sign Shops — Configureout" />
+<meta name="twitter:description" content="Quote custom signs faster. Customers pick substrate, dimensions, and finish — you get qualified inquiries with live pricing." />
+<meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
+<link rel="canonical" href="https://configureout.com/for/sign-shops" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"></noscript>
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+.page-hero { padding: 56px 0 56px; }
+@media (min-width: 768px) { .page-hero { padding: 88px 0 80px; } }
+.page-hero .hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gray-2); border: 1px solid var(--line);
+  color: var(--gray-6); padding: 6px 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; margin-bottom: 24px;
+}
+.page-hero .hero-tag::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 3px rgba(15,163,146,.25);
+}
+.page-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(32px, 6.5vw, 60px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -.03em;
+  margin-bottom: 22px; color: var(--ink); max-width: 920px;
+}
+.page-hero .hero-sub {
+  font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;
+  color: var(--gray-6); margin-bottom: 32px; max-width: 640px;
+}
+.page-hero .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+.prob-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .prob-grid { grid-template-columns: repeat(3,1fr); gap: 20px; } }
+.prob-card {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 26px;
+  transition: transform .15s, box-shadow .15s;
+}
+.prob-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.prob-icon { width: 44px; height: 44px; background: var(--gray-2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--ink); margin-bottom: 18px; }
+.prob-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; margin-bottom: 10px; }
+.prob-card p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+
+.demo-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.demo-bar { background: var(--ink); color: var(--gray-1); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; font-weight: 500; }
+.demo-dots { display: flex; gap: 6px; }
+.demo-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.22); display: block; }
+.demo-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.demo-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+.demo-body { background: #fff; min-height: 540px; display: flex; align-items: stretch; }
+.demo-body > div { width: 100%; }
+
+.steps { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.step { background: var(--gray-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; position: relative; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--ink); color: var(--accent); border-radius: 999px; font-family: var(--mono); font-size: 14px; font-weight: 700; margin-bottom: 18px; }
+.step h3 { font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; line-height: 1.25; }
+.step p { font-size: 15px; line-height: 1.6; color: var(--gray-6); margin-bottom: 16px; }
+.step-meta { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--gray-5); padding-top: 14px; border-top: 1px solid var(--line); }
+
+.feat-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); overflow: hidden; }
+@media (min-width: 640px) { .feat-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1024px) { .feat-grid { grid-template-columns: repeat(3,1fr); } }
+.feat { background: var(--ink); padding: 32px 28px; transition: background .2s; }
+.feat:hover { background: #141414; }
+.feat-icon { width: 40px; height: 40px; background: rgba(15,163,146,.14); color: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.feat h4 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; color: var(--gray-1); }
+.feat p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.72); }
+
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
+.faq-item { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; }
+.faq-q { font-size: 17px; font-weight: 600; letter-spacing: -.015em; margin-bottom: 8px; line-height: 1.35; }
+.faq-a { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can customers upload their own artwork files?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add a file-upload field as a characteristic on the product. Customers can attach AI, EPS, PDF, PNG, or any format you accept, with size limits you control. The file is stored with the inquiry and surfaces alongside the configuration and price in your dashboard." } },
+    { "@type": "Question", "name": "Can we let customers type text and pick fonts in the configurator?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Free-text characteristics let customers enter sign copy, and a dropdown of fonts lets them pick a typeface. The text length can flow into your pricing formula — for example, per-character or per-line surcharges for vinyl cutting. Final artwork can be auto-rendered for the inquiry preview." } },
+    { "@type": "Question", "name": "Does it support a proof workflow before production?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each inquiry has a status workflow you can extend — new, proofing, approved, in production, shipped. Send the PDF quote as the initial proof, then use the dashboard to track approvals. Customers can be looped in via email link." } },
+    { "@type": "Question", "name": "Can we vary installation pricing by zone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add an installation characteristic with zones based on postal code, region, or distance bands. The formula engine applies the right surcharge automatically and shows the customer the installed total. The line item appears separately on the PDF quote." } },
+    { "@type": "Question", "name": "Can we surface a rush-order surcharge?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add a 'lead time' characteristic with options like Standard, Express, Rush. Each option can apply its own percentage uplift or flat fee, and any option can hide other options that don't qualify. The selected lead time and surcharge travel with the inquiry and print on the PDF quote." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="Configureout — home">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+        <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+        <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+        <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+      </svg>
+      <span class="wordmark">configureout</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/#how">How it works</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="nav-end">
+      <a href="/sr" hreflang="sr" lang="sr" class="lang-switch">SR</a>
+      <a href="/#consultation" class="nav-cta">Book a consultation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="hero-tag">For sign shops &amp; print-to-order</div>
+    <h1>The product configurator for sign shops</h1>
+    <p class="hero-sub">Customers configure substrate × dimensions × finish × installation — and submit ready-to-quote inquiries.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn btn-primary">
+        See it work for signage
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/#consultation" class="btn btn-ghost">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">The problem</span>
+    <h2>Signs are quoted by hand —<br>and that's where the margin dies.</h2>
+    <p class="sec-lead">If you cut, print, or fabricate custom signage, four problems quietly eat your day every single week.</p>
+
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Substrate questions become email threads</h3>
+        <p>Foamex vs Dibond vs aluminum vs acrylic — each one prices differently per square meter and behaves differently outdoors. Customers email "how much for…?", and your designer answers instead of designing.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 3h16M3 19h16M5 3v16M17 3v16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Custom dimensions break standard pricing</h3>
+        <p>No two jobs are the same size. Per-job pricing is manual; per-square-meter pricing needs a formula. Spreadsheets help, until they don't.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M3 11h16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Installation zones vary, but the website doesn't</h3>
+        <p>Within-city, suburb, rural — different drive time, different rate. Your team has to ask "where are you?" before they can quote, and most customers won't answer until they see a price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="demo">
+  <div class="wrap">
+    <span class="sec-eyebrow">See it work</span>
+    <h2>This is the actual widget.<br>Configure a sign right now.</h2>
+    <p class="sec-lead">Pick substrate, enter dimensions, choose finish, add installation. The price updates on every change — and the inquiry includes everything your shop needs to start work.</p>
+
+    <div class="demo-card">
+      <div class="demo-bar">
+        <div class="demo-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span>live demo · signage</span>
+        <span class="demo-live">LIVE</span>
+      </div>
+      <div class="demo-body">
+        <div
+          id="configurator-bcb673d3"
+          data-supabase-url="https://laqgfdqorqksfbqkbwkl.supabase.co"
+          data-supabase-anon-key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhcWdmZHFvcnFrc2ZicWtid2tsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDY2OTgsImV4cCI6MjA5MTEyMjY5OH0.9ysIS9r0ocwwSD_gz9CKvW0T4jK89iToBBmIycPof40"
+          data-product-id="bcb673d3-bf8f-4500-939d-d5610f206c11"
+          data-tenant-id="a1000000-0000-0000-0000-000000000001"
+          data-style="cloud"
+        ></div>
+        <script>if(!localStorage.getItem('lang'))localStorage.setItem('lang','en');</script>
+        <script src="https://konfigurator-psi.vercel.app/widget.js" async></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap">
+    <span class="sec-eyebrow">How it works</span>
+    <h2>From sign spec to live configurator<br>in three steps.</h2>
+    <p class="sec-lead">Most sign shops ship their first configurator in an afternoon.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Define your sign</h3>
+        <p>Sign = substrate × dimensions × finish × installation. List your substrates with per-square-meter rates, define finish options, bound the dimensions, and tag installation zones.</p>
+        <div class="step-meta">~ 25 minutes · No code</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Set your pricing formula</h3>
+        <p>Per-square-meter substrate, finish premium, rush-order surcharge, zone-based installation. Build it visually — same logic as the quoting spreadsheet your shop runs today.</p>
+        <div class="step-meta">Visual editor · No code</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Embed and ship</h3>
+        <p>One script tag, one marker div. Inquiries land with full configuration, file uploads, computed price, and zone-aware installation — ready to schedule.</p>
+        <div class="step-meta">WordPress · Shopify · Custom HTML</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap">
+    <span class="sec-eyebrow">Features</span>
+    <h2>Built for the way signage<br>is actually quoted.</h2>
+    <p class="sec-lead">Everything you need to move from email threads to qualified online inquiries.</p>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h16M8 3v16" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h4>Formula-based pricing</h4>
+        <p>Per-square-meter substrate, perimeter cutting, finish premium, rush surcharge, zone-based installation — recalculated on every selection.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" stroke="currentColor" stroke-width="1.6"/><path d="M6 7h10M6 11h10M6 15h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>File upload &amp; artwork capture</h4>
+        <p>Customers attach AI, EPS, PDF, PNG — whatever your shop accepts. Files travel with the inquiry to your dashboard, ready for production.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 5h16v12H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10h8M7 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Live lead capture</h4>
+        <p>Inquiries arrive with substrate, dimensions, finish, installation zone, artwork, lead time, and computed price. No clarifying email threads.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Inquiry &amp; proof workflow</h4>
+        <p>Status tracking from new → proofing → approved → in production → shipped. Turn any inquiry into a branded PDF proof in one click.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 9l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>One-line embed</h4>
+        <p>One script tag, one marker div, done. Works on WordPress, Shopify, and any custom HTML page. Doesn't conflict with the rest of your site.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Multi-language &amp; teams</h4>
+        <p>Per-language labels for every characteristic and value. Invite designers, sales, and ops staff with role-based access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="sec-eyebrow">Signage FAQ</span>
+    <h2>Questions sign shops ask first.</h2>
+    <div class="faq-list" style="margin-top:48px">
+      <div class="faq-item">
+        <h3 class="faq-q">Can customers upload their own artwork files?</h3>
+        <p class="faq-a">Yes. Add a file-upload field as a characteristic on the product. Customers can attach AI, EPS, PDF, PNG, or any format you accept, with size limits you control. The file is stored with the inquiry and surfaces alongside the configuration and price in your dashboard.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can we let customers type text and pick fonts in the configurator?</h3>
+        <p class="faq-a">Yes. Free-text characteristics let customers enter sign copy, and a dropdown of fonts lets them pick a typeface. The text length can flow into your pricing formula — for example, per-character or per-line surcharges for vinyl cutting. Final artwork can be auto-rendered for the inquiry preview.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Does it support a proof workflow before production?</h3>
+        <p class="faq-a">Yes. Each inquiry has a status workflow you can extend — new, proofing, approved, in production, shipped. Send the PDF quote as the initial proof, then use the dashboard to track approvals. Customers can be looped in via email link.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can we vary installation pricing by zone?</h3>
+        <p class="faq-a">Yes. Add an installation characteristic with zones based on postal code, region, or distance bands. The formula engine applies the right surcharge automatically and shows the customer the installed total. The line item appears separately on the PDF quote.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can we surface a rush-order surcharge?</h3>
+        <p class="faq-a">Yes. Add a "lead time" characteristic with options like Standard, Express, Rush. Each option can apply its own percentage uplift or flat fee, and any option can hide other options that don't qualify. The selected lead time and surcharge travel with the inquiry and print on the PDF quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tinted">
+  <div class="wrap" style="text-align:center;">
+    <span class="sec-eyebrow">Also see</span>
+    <h2 style="margin-bottom:24px;">More from Configureout.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;">
+      <a class="btn btn-ghost" href="/pricing">Pricing</a>
+      <a class="btn btn-ghost" href="/demo">Live demo</a>
+      <a class="btn btn-ghost" href="/for/furniture-makers">For furniture makers</a>
+      <a class="btn btn-ghost" href="/for/window-manufacturers">For window manufacturers</a>
+      <a class="btn btn-ghost" href="/vs/legacy-cpq-tools">vs legacy CPQ tools</a>
+      <a class="btn btn-ghost" href="/vs/contact-forms">vs contact forms</a>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap final-inner">
+    <h2>Ship a sign configurator<br>this quarter.</h2>
+    <p>No CPQ project. No multi-month rollout. Build, embed, and start collecting qualified inquiries from your own site.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-primary" href="/#pricing">
+        Start free
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="/#consultation" style="background:rgba(255,255,255,.06);color:var(--gray-1);border-color:rgba(255,255,255,.18);">Book a consultation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-left">
+      <a href="/" aria-label="Configureout — home" style="display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-family:var(--display);font-weight:800;letter-spacing:-.02em;">
+        <svg viewBox="0 0 200 200" width="20" height="20" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="97" height="197" rx="9" fill="currentColor"/>
+          <rect x="101.5" y="1.5" width="97" height="47" rx="9" fill="var(--turq-500)"/>
+          <rect x="101.5" y="151.5" width="97" height="47" rx="9" fill="currentColor"/>
+          <circle cx="150" cy="100" r="16" fill="var(--turq-500)"/>
+        </svg>
+        configureout
+      </a>
+      <p class="foot-region">Built in Belgrade. Used across CEE.</p>
+      <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Built for teams that ship.</span>
+    </div>
+    <nav class="foot-links" aria-label="Footer navigation">
+      <a href="/#how">How it works</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/demo">Demo</a>
+      <a href="/#consultation">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/sr" hreflang="sr" lang="sr">SR</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

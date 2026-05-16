@@ -6,7 +6,7 @@
 <title>Configureout — Sell configurable products without quote forms</title>
 <meta name="description" content="Embed a live product configurator on your site. Real-time pricing, image swap on selection, qualified inquiries. Built for manufacturers, custom shops, and configurable-product brands." />
 <meta name="theme-color" content="#0fa392" />
-<meta property="og:title" content="Configureout — Commerce · Configurators" />
+<meta property="og:title" content="Configureout — Sell configurable products without quote forms" />
 <meta property="og:description" content="Live pricing. Image swap. Qualified inquiries. Embed in one line of code." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://configureout.com/" />
@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://configureout.com/brand/configureout-og.png" />
 <meta name="robots" content="index, follow" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Configureout — Commerce · Configurators" />
+<meta name="twitter:title" content="Configureout — Sell configurable products without quote forms" />
 <meta name="twitter:description" content="Live pricing. Image swap. Qualified inquiries. Embed in one line of code." />
 <meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
 <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" /> -->
@@ -352,28 +352,41 @@ h1 .hi {
   margin-bottom: 16px; text-align: center;
 }
 .types-list {
-  display: flex; gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 0 auto;
   padding: 0 24px;
-  justify-content: flex-start;
+  list-style: none;
 }
-.types-list::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .types-list { grid-template-columns: repeat(3, 1fr); padding: 0 24px; } }
 .types-list li {
   list-style: none;
-  font-size: 14px; font-weight: 500;
-  color: var(--gray-6);
-  padding: 8px 16px;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex; align-items: center; gap: 14px;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.types-list li:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.types-list a {
+  color: var(--ink);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 12px;
+  width: 100%;
+}
+.types-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--turq-50);
+  color: var(--turq-700);
+  display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-@media (min-width: 1024px) {
-  .types-list { justify-content: center; flex-wrap: wrap; padding: 0; }
-}
+.types-icon svg { width: 18px; height: 18px; }
 
 /* ─────────────────────────────────────────
    SECTION SHELL
@@ -773,6 +786,94 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 .tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
 
+/* Pilot banner */
+.pilot-banner {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: var(--turq-50);
+  border-left: 3px solid var(--turq-500);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--gray-6);
+}
+.pilot-banner strong { color: var(--ink); }
+
+/* Billing toggle */
+.billing-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  margin: 0 auto 32px;
+  width: fit-content;
+}
+.billing-toggle button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  color: var(--gray-5);
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+.billing-toggle button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--gray-1);
+}
+.billing-toggle button small {
+  font-size: 11px; font-weight: 500;
+  margin-left: 4px;
+  opacity: .8;
+}
+
+/* Setup options */
+.setup-section { margin-top: 64px; }
+.setup-heading {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.setup-sub {
+  font-size: 15px;
+  color: var(--gray-6);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.setup-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) { .setup-grid { grid-template-columns: repeat(3, 1fr); } }
+.setup-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.setup-name {
+  font-family: var(--display);
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin-bottom: 4px;
+}
+.setup-price {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--turq-700);
+  margin-bottom: 8px;
+}
+.setup-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-6);
+}
+
 /* ─────────────────────────────────────────
    FAQ
    ───────────────────────────────────────── */
@@ -910,6 +1011,7 @@ footer {
 .foot-links { display: flex; gap: 20px; font-size: 13px; }
 .foot-links a { color: var(--gray-5); transition: color .15s; }
 .foot-links a:hover { color: var(--ink); }
+.foot-region { font-size: 12px; color: var(--gray-5); margin-bottom: 4px; font-family: var(--mono); letter-spacing: .04em; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -942,8 +1044,8 @@ footer {
   "offers": [
     { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Growth",  "price": "149", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Scale",   "price": "399", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "Growth",  "price": "129", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Scale",   "price": "349", "priceCurrency": "EUR" }
   ]
 }
 </script>
@@ -966,6 +1068,26 @@ footer {
       "@type": "Question",
       "name": "What happens to the inquiries — does this replace my sales team?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Convert each one into a branded PDF quote — apply tax, discount, or surcharge adjustments, then download and share with the customer. Built-in analytics show conversion patterns per product so you know what's working." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a setup fee?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No mandatory setup fee. The Free, Starter, Growth, and Scale plans all start immediately. For teams that want help, we offer optional paid Setup sprints from €500." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I cancel any time?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cancel from your billing settings. Annual prepay is non-refundable but you keep access until the period ends." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my data if I cancel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your tenant is downgraded to Free. Existing products and inquiries are retained for 90 days, after which they're permanently deleted. You can export everything via the Settings page or our REST API at any time." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have a free trial of Growth?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — the 60-day pilot gives you Growth-tier features for 60 days, paired with a €500 Quick Setup sprint (refundable if you don't convert)." }
     }
   ]
 }
@@ -1026,12 +1148,13 @@ footer {
         Live pricing. Image swap on selection. Qualified inquiries. Embed in one line of code.
       </p>
       <div class="hero-ctas">
-        <a href="#demo" class="btn btn-primary">
-          Try the live demo
+        <a href="https://app.configureout.com/register" class="btn btn-primary">
+          Start free
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#consultation" class="btn btn-ghost">Book a consultation</a>
+        <a href="#demo" class="btn btn-ghost">Try the live demo</a>
       </div>
+      <a href="#consultation" class="hero-consult-link" style="display:inline-block;margin-top:12px;font-size:14px;color:var(--gray-5);transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--gray-5)'">Book a consultation</a>
       <div class="hero-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1056,41 +1179,40 @@ footer {
         <span class="hv-live">LIVE</span>
       </div>
       <div class="hv-body">
-        <div class="hv-product-name">Series · 70 Pro</div>
-        <div class="hv-product-title">Configure your product</div>
+        <div class="hv-product-name">Steel doors · Pro Series</div>
+        <div class="hv-product-title">Configure your door</div>
 
         <div class="hv-row">
-          <div class="hv-label"><span>Material</span><b>Oak veneer</b></div>
+          <div class="hv-label"><span>Steel grade</span><b>S235JR</b></div>
           <div class="hv-pills">
-            <button class="hv-pill" tabindex="-1">Pine</button>
-            <button class="hv-pill on" tabindex="-1">Oak</button>
-            <button class="hv-pill" tabindex="-1">Walnut</button>
-            <button class="hv-pill" tabindex="-1">Beech</button>
+            <button class="hv-pill on" tabindex="-1">S235JR</button>
+            <button class="hv-pill" tabindex="-1">S275JR</button>
+            <button class="hv-pill" tabindex="-1">S355J2</button>
           </div>
         </div>
 
         <div class="hv-row">
-          <div class="hv-label"><span>Finish</span><b>Anthracite</b></div>
+          <div class="hv-label"><span>RAL colour</span><b>RAL 7016</b></div>
           <div class="hv-swatches">
-            <span class="hv-sw" style="background:#f5f4ef"></span>
-            <span class="hv-sw on" style="background:#3a3b3f"></span>
-            <span class="hv-sw" style="background:#5e3a1f"></span>
-            <span class="hv-sw" style="background:#0a0a0a"></span>
-            <span class="hv-sw" style="background:#0fa392"></span>
+            <span class="hv-sw" style="background:#EFEFEF"></span>
+            <span class="hv-sw on" style="background:#293133"></span>
+            <span class="hv-sw" style="background:#45322E"></span>
+            <span class="hv-sw" style="background:#0A0A0A"></span>
+            <span class="hv-sw" style="background:#AF2B1E"></span>
           </div>
         </div>
 
         <div class="hv-row">
           <div class="hv-label"><span>Dimensions</span></div>
           <div class="hv-dims">
-            <div class="hv-dim"><label>Width</label><div class="v">1200<small>mm</small></div></div>
-            <div class="hv-dim"><label>Height</label><div class="v">800<small>mm</small></div></div>
+            <div class="hv-dim"><label>Width</label><div class="v">900<small>mm</small></div></div>
+            <div class="hv-dim"><label>Height</label><div class="v">2100<small>mm</small></div></div>
           </div>
         </div>
 
         <div class="hv-price-card">
           <span class="lbl">Configured price</span>
-          <span class="price">€1,247<small>.50</small></span>
+          <span class="price">€847<small>.00</small></span>
         </div>
       </div>
     </div>
@@ -1102,14 +1224,31 @@ footer {
   <div>
     <div class="types-label">Built for products like these</div>
     <ul class="types-list">
-      <li>Windows &amp; doors</li>
-      <li>Furniture</li>
-      <li>Custom kitchens</li>
-      <li>Signage</li>
-      <li>Apparel &amp; merch</li>
-      <li>Industrial equipment</li>
-      <li>Jewelry</li>
-      <li>... or anything you'd quote in a spreadsheet</li>
+      <li>
+        <a href="/for/window-manufacturers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 12h16M12 3v18"/></svg>
+          </span>
+          Windows &amp; doors
+        </a>
+      </li>
+      <li>
+        <a href="/for/furniture-makers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/><path d="M3 11h18v6H3z"/><path d="M5 17v3M19 17v3"/></svg>
+          </span>
+          Furniture
+        </a>
+      </li>
+      <!-- TODO: build /for/custom-kitchens page -->
+      <li>
+        <a href="/#vertical-custom-kitchens">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg>
+          </span>
+          Custom kitchens
+        </a>
+      </li>
     </ul>
   </div>
 </section>
@@ -1293,10 +1432,18 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M3 11h16M11 3c2.5 2.5 4 5 4 8s-1.5 5.5-4 8c-2.5-2.5-4-5-4-8s1.5-5.5 4-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Multi-language</h4>
+        <p>Per-language overrides for every market. Quotes, characteristics, and customer-facing copy localize automatically.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-        <h4>Multi-language &amp; teams</h4>
-        <p>Per-language overrides for every market. Invite admins, members, and viewers across sales, product, and ops.</p>
+        <h4>Team roles &amp; permissions</h4>
+        <p>Invite admins, members, and viewers. Per-functionality permissions across products, pricing, inquiries, quotations, and settings.</p>
       </div>
     </div>
   </div>
@@ -1356,6 +1503,7 @@ footer {
         <div class="cmp-verdict">Overkill for most teams</div>
       </div>
     </div>
+    <p style="text-align:center;margin-top:32px;font-size:14px;color:var(--gray-5);">See full breakdown: <a href="/vs/legacy-cpq-tools" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs legacy CPQ tools</a> · <a href="/vs/contact-forms" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs contact forms</a></p>
   </div>
 </section>
 
@@ -1363,70 +1511,101 @@ footer {
 <section class="sec" id="pricing">
   <div class="wrap">
     <span class="sec-eyebrow">Pricing</span>
-    <h2>Plans that scale with the inquiries you receive,<br>not your seat count.</h2>
-    <p class="sec-lead">Start free. Upgrade when you grow. No setup fees, no implementation projects, no surprises.</p>
+    <h2>Plans that grow with your catalogue,<br>not your headcount.</h2>
+    <p class="sec-lead">Start free. Upgrade when you grow. No setup fees, no implementation projects, no surprises. <a href="/pricing" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">See full pricing details →</a></p>
+
+    <div class="pilot-banner">
+      <strong>60-day pilot.</strong> Try Growth free for 60 days with €500 paid Quick Setup (refundable if you don't convert). Auto-bills €129/mo on day 61.
+    </div>
+
+    <div class="billing-toggle" role="tablist" aria-label="Billing frequency">
+      <button type="button" role="tab" aria-selected="true" data-billing="monthly">Monthly</button>
+      <button type="button" role="tab" aria-selected="false" data-billing="annual">Annual <small>save 2 months</small></button>
+    </div>
 
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
-        <div class="tier-price">€0<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€0" data-annual="€0"><span>€0</span><small>/mo</small></div>
         <div class="tier-desc">Try the engine on a single product line.</div>
         <ul>
-          <li>3 products</li>
-          <li>25 inquiries / month</li>
-          <li>1 team member</li>
-          <li>PDF quotations</li>
+          <li>1 published product</li>
+          <li>500 inquiries / month</li>
+          <li>1 seat</li>
+          <li>"Powered by" badge required</li>
+          <li>No 3D / AR</li>
           <li>Embed code generator</li>
-          <li>"Powered by" badge</li>
         </ul>
-        <a href="#consultation" class="tier-cta">Book a consultation</a>
+        <a href="https://app.configureout.com/register?plan=free" class="tier-cta">Start free →</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Starter</div>
-        <div class="tier-price">€49<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€49" data-annual="€490"><span>€49</span><small>/mo</small></div>
         <div class="tier-desc">For shops launching their first online configurator.</div>
         <ul>
-          <li>25 products</li>
-          <li>250 inquiries / month</li>
-          <li>3 team members</li>
-          <li>Inquiry filtering &amp; search</li>
-          <li>Branded PDF quotations</li>
-          <li>Quotation status tracking</li>
+          <li>10 products</li>
+          <li>Unlimited inquiries</li>
+          <li>1 seat</li>
+          <li>PDF quotes</li>
+          <li>No 3D</li>
+          <li>Remove "Powered by" badge</li>
         </ul>
-        <a href="#consultation" class="tier-cta">Book a consultation</a>
+        <a href="https://app.configureout.com/register?plan=starter" class="tier-cta">Start free →</a>
       </div>
 
       <div class="tier best">
-        <div class="tier-badge">Most popular</div>
+        <div class="tier-badge" style="font-size:10px;">Recommended for growing teams</div>
         <div class="tier-name">Growth</div>
-        <div class="tier-price">€149<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€129" data-annual="€1,290"><span>€129</span><small>/mo</small></div>
         <div class="tier-desc">For teams scaling beyond the homepage.</div>
         <ul>
-          <li>Unlimited products</li>
-          <li>2,000 inquiries / month</li>
-          <li>10 team members</li>
-          <li>Template products &amp; characteristics</li>
-          <li>Advanced analytics</li>
-          <li>Remove "Powered by" badge</li>
-          <li>Multi-language PDF quotes</li>
+          <li>50 products</li>
+          <li>Unlimited inquiries</li>
+          <li>3 seats</li>
+          <li>3D &amp; AR</li>
+          <li>Webhooks</li>
+          <li>White-label PDF</li>
+          <li>Custom favicon</li>
         </ul>
         <a href="#consultation" class="tier-cta">Book a consultation</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Scale</div>
-        <div class="tier-price">€399<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€349" data-annual="€3,490"><span>€349</span><small>/mo</small></div>
         <div class="tier-desc">For multi-brand and multi-region operations.</div>
         <ul>
-          <li>Everything unlimited</li>
-          <li>White-label &amp; custom domain</li>
-          <li>Unlimited team members</li>
-          <li>Priority email support</li>
-          <li>Onboarding assistance</li>
-          <li>Custom PDF templates</li>
+          <li>Unlimited products</li>
+          <li>Unlimited inquiries</li>
+          <li>10 seats</li>
+          <li>Verified email From domain</li>
+          <li>Audit log</li>
+          <li>Priority support</li>
         </ul>
         <a href="#consultation" class="tier-cta">Book a consultation</a>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3 class="setup-heading">Setup options</h3>
+      <p class="setup-sub">Optional sprints if you want hands-on help launching.</p>
+      <div class="setup-grid">
+        <div class="setup-card">
+          <div class="setup-name">Quick Setup</div>
+          <div class="setup-price">€500</div>
+          <p>1 product · 2D only · generic PDF template</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Pro Setup</div>
+          <div class="setup-price">€1,200</div>
+          <p>3 products · 1 with 3D model · branded PDF</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Custom Setup</div>
+          <div class="setup-price">from €3,000</div>
+          <p>multi-product white-label rollout</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1449,6 +1628,22 @@ footer {
       <div class="faq-item">
         <h3 class="faq-q">What happens to the inquiries — does this replace my sales team?</h3>
         <p class="faq-a">No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Convert each one into a branded PDF quote — apply tax, discount, or surcharge adjustments, then download and share with the customer. Built-in analytics show conversion patterns per product so you know what's working.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Is there a setup fee?</h3>
+        <p class="faq-a">No mandatory setup fee. The Free, Starter, Growth, and Scale plans all start immediately. For teams that want help, we offer optional paid Setup sprints from €500.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Can I cancel any time?</h3>
+        <p class="faq-a">Yes. Cancel from your billing settings. Annual prepay is non-refundable but you keep access until the period ends.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">What happens to my data if I cancel?</h3>
+        <p class="faq-a">Your tenant is downgraded to Free. Existing products and inquiries are retained for 90 days, after which they're permanently deleted. You can export everything via the Settings page or our REST API at any time.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Do you have a free trial of Growth?</h3>
+        <p class="faq-a">Yes — the 60-day pilot gives you Growth-tier features for 60 days, paired with a €500 Quick Setup sprint (refundable if you don't convert).</p>
       </div>
     </div>
   </div>
@@ -1519,6 +1714,7 @@ footer {
         </svg>
         configureout
       </a>
+      <p class="foot-region">Built in Belgrade. Used across CEE.</p>
       <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Built for teams that ship.</span>
     </div>
     <nav class="foot-links" aria-label="Footer navigation">
@@ -1530,7 +1726,34 @@ footer {
       <a href="/sr" hreflang="sr" lang="sr">SR</a>
     </nav>
   </div>
+  <div class="wrap" style="margin-top:16px;font-size:13px;color:var(--gray-5);line-height:1.6;">
+    <nav class="foot-links" aria-label="More pages" style="flex-wrap:wrap;">
+      <a href="/for/furniture-makers">For furniture makers</a>
+      <a href="/for/window-manufacturers">For window manufacturers</a>
+      <a href="/for/sign-shops">For sign shops</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/demo">Demo</a>
+    </nav>
+  </div>
 </footer>
+
+<script>
+(function(){
+  const toggles = document.querySelectorAll('.billing-toggle button');
+  const prices = document.querySelectorAll('.tier-price');
+  toggles.forEach(btn => btn.addEventListener('click', () => {
+    const mode = btn.dataset.billing;
+    toggles.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    prices.forEach(p => {
+      const span = p.querySelector('span');
+      const small = p.querySelector('small');
+      if (!span || !p.dataset[mode]) return;
+      span.textContent = p.dataset[mode];
+      if (small) small.textContent = mode === 'annual' ? '/yr' : '/mo';
+    });
+  }));
+})();
+</script>
 
 <script>
 (function () {

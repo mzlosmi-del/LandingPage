@@ -6,7 +6,7 @@
 <title>Configureout — Prodajte konfigurabilne proizvode bez obrazaca za ponude</title>
 <meta name="description" content="Ugradiv konfigurator proizvoda za proizvođače i radionice po porudžbini. Cene uživo, izmena slike po izboru, kvalifikovani upiti — ugradnja jednom linijom koda." />
 <meta name="theme-color" content="#0fa392" />
-<meta property="og:title" content="Configureout — Commerce · Configurators" />
+<meta property="og:title" content="Configureout — Prodajte konfigurabilne proizvode bez obrazaca za ponude" />
 <meta property="og:description" content="Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="sr_RS" />
@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://configureout.com/brand/configureout-og.png" />
 <meta name="robots" content="index, follow" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Configureout — Commerce · Configurators" />
+<meta name="twitter:title" content="Configureout — Prodajte konfigurabilne proizvode bez obrazaca za ponude" />
 <meta name="twitter:description" content="Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda." />
 <meta name="twitter:image" content="https://configureout.com/brand/configureout-og.png" />
 <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN" /> -->
@@ -353,28 +353,41 @@ h1 .hi {
   margin-bottom: 16px; text-align: center;
 }
 .types-list {
-  display: flex; gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 0 auto;
   padding: 0 24px;
-  justify-content: flex-start;
+  list-style: none;
 }
-.types-list::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .types-list { grid-template-columns: repeat(3, 1fr); padding: 0 24px; } }
 .types-list li {
   list-style: none;
-  font-size: 14px; font-weight: 500;
-  color: var(--gray-6);
-  padding: 8px 16px;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex; align-items: center; gap: 14px;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.types-list li:hover { border-color: var(--line-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.types-list a {
+  color: var(--ink);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 12px;
+  width: 100%;
+}
+.types-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--turq-50);
+  color: var(--turq-700);
+  display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-@media (min-width: 1024px) {
-  .types-list { justify-content: center; flex-wrap: wrap; padding: 0; }
-}
+.types-icon svg { width: 18px; height: 18px; }
 
 /* ─────────────────────────────────────────
    SECTION SHELL
@@ -774,6 +787,94 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 .tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
 
+/* Pilot banner */
+.pilot-banner {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: var(--turq-50);
+  border-left: 3px solid var(--turq-500);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--gray-6);
+}
+.pilot-banner strong { color: var(--ink); }
+
+/* Billing toggle */
+.billing-toggle {
+  display: flex;
+  margin: 0 auto 32px;
+  width: fit-content;
+  gap: 4px;
+  padding: 4px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.billing-toggle button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  color: var(--gray-5);
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+.billing-toggle button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--gray-1);
+}
+.billing-toggle button small {
+  font-size: 11px; font-weight: 500;
+  margin-left: 4px;
+  opacity: .8;
+}
+
+/* Setup options */
+.setup-section { margin-top: 64px; }
+.setup-heading {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.setup-sub {
+  font-size: 15px;
+  color: var(--gray-6);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.setup-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) { .setup-grid { grid-template-columns: repeat(3, 1fr); } }
+.setup-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.setup-name {
+  font-family: var(--display);
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin-bottom: 4px;
+}
+.setup-price {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--turq-700);
+  margin-bottom: 8px;
+}
+.setup-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-6);
+}
+
 /* ─────────────────────────────────────────
    FAQ
    ───────────────────────────────────────── */
@@ -911,6 +1012,7 @@ footer {
 .foot-links { display: flex; gap: 20px; font-size: 13px; }
 .foot-links a { color: var(--gray-5); transition: color .15s; }
 .foot-links a:hover { color: var(--ink); }
+.foot-region { font-size: 12px; color: var(--gray-5); margin-bottom: 4px; font-family: var(--mono); letter-spacing: .04em; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -943,8 +1045,8 @@ footer {
   "offers": [
     { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Growth",  "price": "149", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Scale",   "price": "399", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "Growth",  "price": "129", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Scale",   "price": "349", "priceCurrency": "EUR" }
   ]
 }
 </script>
@@ -955,18 +1057,38 @@ footer {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Can it handle the actual complexity of my product line?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Configureout handles dependent characteristics, surface-area pricing, conditional surcharges, per-language labels, and display rules per product. If your sales team can describe it in a spreadsheet, the formula engine can model it." }
+      "name": "Da li može da se nosi sa stvarnom kompleksnošću mog asortimana?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Da. Configureout podržava zavisne karakteristike, cene po površini, uslovne doplate, prevode po jeziku i pravila prikaza po proizvodu. Ako vaš prodajni tim to može opisati u tabeli, formula engine to može modelovati." }
     },
     {
       "@type": "Question",
-      "name": "Will it work on my existing website?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It embeds as a single <script> tag plus a marker <div> on the page. The widget runs inside its own Shadow DOM so it won't conflict with your site's styles. Works on WordPress, Shopify, and any custom HTML page." }
+      "name": "Hoće li raditi na mom postojećem sajtu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ugrađuje se kao jedan <script> tag uz marker <div> na stranici. Widget radi u sopstvenom Shadow DOM-u, pa ne dolazi u sukob sa stilovima vašeg sajta. Radi na WordPress-u, Shopify-u i bilo kojoj custom HTML stranici." }
     },
     {
       "@type": "Question",
-      "name": "What happens to the inquiries — does this replace my sales team?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Inquiries land in your dashboard with the full configuration, customer details, and computed price. Convert each one into a branded PDF quote — apply tax, discount, or surcharge adjustments, then download and share with the customer. Built-in analytics show conversion patterns per product so you know what's working." }
+      "name": "Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Pretvorite svaki upit u brendirani PDF — primenite porez, popust ili doplatu, pa preuzmite ponudu i pošaljite je kupcu. Ugrađena analitika prikazuje konverziju po proizvodu i pomaže da vidite šta radi." }
+    },
+    {
+      "@type": "Question",
+      "name": "Postoji li naknada za postavljanje?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nema obavezne naknade za postavljanje. Planovi Free, Starter, Growth i Scale počinju odmah. Za timove koji žele pomoć, nudimo opcione plaćene Setup sprintove od €500." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mogu li otkazati u bilo kom trenutku?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Da. Otkažite iz podešavanja naplate. Godišnje plaćanje unapred se ne refundira, ali zadržavate pristup do kraja perioda." }
+    },
+    {
+      "@type": "Question",
+      "name": "Šta se dešava sa mojim podacima ako otkažem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vaš nalog se prebacuje na Free. Postojeći proizvodi i upiti se čuvaju 90 dana, nakon čega se trajno brišu. Možete izvesti sve preko stranice Podešavanja ili našeg REST API-ja u bilo kom trenutku." }
+    },
+    {
+      "@type": "Question",
+      "name": "Postoji li besplatna proba Growth plana?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Da — 60-dnevni pilot vam daje Growth funkcionalnosti 60 dana, uz €500 Quick Setup sprint (refundabilan ako ne pređete)." }
     }
   ]
 }
@@ -1027,12 +1149,13 @@ footer {
         Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda.
       </p>
       <div class="hero-ctas">
-        <a href="#demo" class="btn btn-primary">
-          Isprobajte demo uživo
+        <a href="https://app.configureout.com/register" class="btn btn-primary">
+          Započnite besplatno
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#consultation" class="btn btn-ghost">Zakažite konsultacije</a>
+        <a href="#demo" class="btn btn-ghost">Isprobajte demo uživo</a>
       </div>
+      <a href="#consultation" class="hero-consult-link" style="display:inline-block;margin-top:12px;font-size:14px;color:var(--gray-5);transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--gray-5)'">Zakažite konsultacije</a>
       <div class="hero-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1057,41 +1180,40 @@ footer {
         <span class="hv-live">LIVE</span>
       </div>
       <div class="hv-body">
-        <div class="hv-product-name">Serija · 70 Pro</div>
-        <div class="hv-product-title">Konfigurišite svoj proizvod</div>
+        <div class="hv-product-name">Čelična vrata · Pro Serija</div>
+        <div class="hv-product-title">Konfigurišite vrata</div>
 
         <div class="hv-row">
-          <div class="hv-label"><span>Materijal</span><b>Hrastov furnir</b></div>
+          <div class="hv-label"><span>Klasa čelika</span><b>S235JR</b></div>
           <div class="hv-pills">
-            <button class="hv-pill" tabindex="-1">Bor</button>
-            <button class="hv-pill on" tabindex="-1">Hrast</button>
-            <button class="hv-pill" tabindex="-1">Orah</button>
-            <button class="hv-pill" tabindex="-1">Bukva</button>
+            <button class="hv-pill on" tabindex="-1">S235JR</button>
+            <button class="hv-pill" tabindex="-1">S275JR</button>
+            <button class="hv-pill" tabindex="-1">S355J2</button>
           </div>
         </div>
 
         <div class="hv-row">
-          <div class="hv-label"><span>Završna obrada</span><b>Antracit</b></div>
+          <div class="hv-label"><span>RAL boja</span><b>RAL 7016</b></div>
           <div class="hv-swatches">
-            <span class="hv-sw" style="background:#f5f4ef"></span>
-            <span class="hv-sw on" style="background:#3a3b3f"></span>
-            <span class="hv-sw" style="background:#5e3a1f"></span>
-            <span class="hv-sw" style="background:#0a0a0a"></span>
-            <span class="hv-sw" style="background:#0fa392"></span>
+            <span class="hv-sw" style="background:#EFEFEF"></span>
+            <span class="hv-sw on" style="background:#293133"></span>
+            <span class="hv-sw" style="background:#45322E"></span>
+            <span class="hv-sw" style="background:#0A0A0A"></span>
+            <span class="hv-sw" style="background:#AF2B1E"></span>
           </div>
         </div>
 
         <div class="hv-row">
           <div class="hv-label"><span>Dimenzije</span></div>
           <div class="hv-dims">
-            <div class="hv-dim"><label>Širina</label><div class="v">1200<small>mm</small></div></div>
-            <div class="hv-dim"><label>Visina</label><div class="v">800<small>mm</small></div></div>
+            <div class="hv-dim"><label>Širina</label><div class="v">900<small>mm</small></div></div>
+            <div class="hv-dim"><label>Visina</label><div class="v">2100<small>mm</small></div></div>
           </div>
         </div>
 
         <div class="hv-price-card">
           <span class="lbl">Konfigurisana cena</span>
-          <span class="price">€1.247<small>,50</small></span>
+          <span class="price">€847<small>,00</small></span>
         </div>
       </div>
     </div>
@@ -1103,14 +1225,31 @@ footer {
   <div>
     <div class="types-label">Napravljeno za proizvode poput ovih</div>
     <ul class="types-list">
-      <li>Prozori i vrata</li>
-      <li>Nameštaj</li>
-      <li>Kuhinje po meri</li>
-      <li>Reklamne table</li>
-      <li>Odeća i suveniri</li>
-      <li>Industrijska oprema</li>
-      <li>Nakit</li>
-      <li>... ili bilo šta što biste računali u tabeli</li>
+      <li>
+        <a href="/for/window-manufacturers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 12h16M12 3v18"/></svg>
+          </span>
+          Prozori i vrata
+        </a>
+      </li>
+      <li>
+        <a href="/for/furniture-makers">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/><path d="M3 11h18v6H3z"/><path d="M5 17v3M19 17v3"/></svg>
+          </span>
+          Nameštaj
+        </a>
+      </li>
+      <!-- TODO: build /for/custom-kitchens page -->
+      <li>
+        <a href="/#vertical-custom-kitchens">
+          <span class="types-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg>
+          </span>
+          Kuhinje po meri
+        </a>
+      </li>
     </ul>
   </div>
 </section>
@@ -1294,10 +1433,18 @@ footer {
 
       <div class="feat">
         <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M3 11h16M11 3c2.5 2.5 4 5 4 8s-1.5 5.5-4 8c-2.5-2.5-4-5-4-8s1.5-5.5 4-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Više jezika</h4>
+        <p>Prevodi po jeziku za svako tržište. Ponude, karakteristike i tekstovi za kupce se lokalizuju automatski.</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-        <h4>Više jezika i timovi</h4>
-        <p>Prevodi po jeziku za svako tržište. Pozovite administratore, članove i posmatrače iz prodaje, proizvoda i operacija.</p>
+        <h4>Uloge i dozvole</h4>
+        <p>Pozovite admine, članove i posmatrače. Dozvole po funkcionalnosti za proizvode, cene, upite, ponude i podešavanja.</p>
       </div>
     </div>
   </div>
@@ -1364,70 +1511,101 @@ footer {
 <section class="sec" id="pricing">
   <div class="wrap">
     <span class="sec-eyebrow">Cene</span>
-    <h2>Planovi koji rastu sa brojem upita,<br>a ne sa brojem korisnika.</h2>
+    <h2>Planovi koji rastu sa vašim katalogom,<br>ne sa brojem zaposlenih.</h2>
     <p class="sec-lead">Krenite besplatno. Nadogradite kad porastete. Bez troškova postavljanja, bez implementacionih projekata, bez iznenađenja.</p>
+
+    <div class="pilot-banner">
+      <strong>60 dana probnog perioda.</strong> Isprobajte Growth besplatno 60 dana uz €500 Quick Setup (refundabilan ako ne pređete). Auto-naplata €129/mes od 61. dana.
+    </div>
+
+    <div class="billing-toggle" role="tablist" aria-label="Učestalost naplate">
+      <button type="button" role="tab" aria-selected="true" data-billing="monthly">Mesečno</button>
+      <button type="button" role="tab" aria-selected="false" data-billing="annual">Godišnje <small>uštedite 2 meseca</small></button>
+    </div>
 
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
-        <div class="tier-price">0 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€0" data-annual="€0"><span>€0</span><small>/mes.</small></div>
         <div class="tier-desc">Isprobajte engine na jednoj liniji proizvoda.</div>
         <ul>
-          <li>3 proizvoda</li>
-          <li>25 upita / mesečno</li>
-          <li>1 član tima</li>
-          <li>PDF ponude</li>
+          <li>1 objavljen proizvod</li>
+          <li>500 upita mesečno</li>
+          <li>1 korisnik</li>
+          <li>Obavezna „Powered by" oznaka</li>
+          <li>Bez 3D / AR</li>
           <li>Generator embed koda</li>
-          <li>„Powered by" oznaka</li>
         </ul>
-        <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
+        <a href="https://app.configureout.com/register?plan=free" class="tier-cta">Započnite besplatno →</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Starter</div>
-        <div class="tier-price">49 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€49" data-annual="€490"><span>€49</span><small>/mes.</small></div>
         <div class="tier-desc">Za radionice koje pokreću svoj prvi onlajn konfigurator.</div>
         <ul>
-          <li>25 proizvoda</li>
-          <li>250 upita / mesečno</li>
-          <li>3 člana tima</li>
-          <li>Filtriranje i pretraga upita</li>
-          <li>Brendirane PDF ponude</li>
-          <li>Praćenje statusa ponuda</li>
+          <li>10 proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>1 korisnik</li>
+          <li>PDF ponude</li>
+          <li>Bez 3D</li>
+          <li>Uklonjena „Powered by" oznaka</li>
         </ul>
-        <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
+        <a href="https://app.configureout.com/register?plan=starter" class="tier-cta">Započnite besplatno →</a>
       </div>
 
       <div class="tier best">
-        <div class="tier-badge">Najpopularnije</div>
+        <div class="tier-badge" style="font-size:10px;">Preporučeno za rastuće timove</div>
         <div class="tier-name">Growth</div>
-        <div class="tier-price">149 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€129" data-annual="€1.290"><span>€129</span><small>/mes.</small></div>
         <div class="tier-desc">Za timove koji rastu izvan jedne stranice.</div>
         <ul>
-          <li>Neograničen broj proizvoda</li>
-          <li>2.000 upita / mesečno</li>
-          <li>10 članova tima</li>
-          <li>Šabloni proizvoda i karakteristika</li>
-          <li>Napredna analitika</li>
-          <li>Uklonite „Powered by" oznaku</li>
-          <li>Višejezične PDF ponude</li>
+          <li>50 proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>3 korisnika</li>
+          <li>3D i AR</li>
+          <li>Webhook-ovi</li>
+          <li>White-label PDF</li>
+          <li>Sopstveni favicon</li>
         </ul>
         <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Scale</div>
-        <div class="tier-price">399 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€349" data-annual="€3.490"><span>€349</span><small>/mes.</small></div>
         <div class="tier-desc">Za operacije sa više brendova i regiona.</div>
         <ul>
-          <li>Sve bez ograničenja</li>
-          <li>White-label i sopstveni domen</li>
-          <li>Neograničen broj članova tima</li>
-          <li>Prioritetna email podrška</li>
-          <li>Pomoć pri uvođenju</li>
-          <li>Prilagođeni PDF šabloni</li>
+          <li>Neograničen broj proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>10 korisnika</li>
+          <li>Verifikovan From domen za email</li>
+          <li>Audit log</li>
+          <li>Prioritetna podrška</li>
         </ul>
         <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3 class="setup-heading">Opcije postavljanja</h3>
+      <p class="setup-sub">Opcioni sprintovi ako želite praktičnu pomoć pri pokretanju.</p>
+      <div class="setup-grid">
+        <div class="setup-card">
+          <div class="setup-name">Quick Setup</div>
+          <div class="setup-price">€500</div>
+          <p>1 proizvod · samo 2D · generički PDF šablon</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Pro Setup</div>
+          <div class="setup-price">€1.200</div>
+          <p>3 proizvoda · 1 sa 3D modelom · brendirani PDF</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Custom Setup</div>
+          <div class="setup-price">od €3.000</div>
+          <p>white-label rollout za više proizvoda</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1450,6 +1628,22 @@ footer {
       <div class="faq-item">
         <h3 class="faq-q">Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?</h3>
         <p class="faq-a">Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Pretvorite svaki upit u brendirani PDF — primenite porez, popust ili doplatu, pa preuzmite ponudu i pošaljite je kupcu. Ugrađena analitika prikazuje konverziju po proizvodu i pomaže da vidite šta radi.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Postoji li naknada za postavljanje?</h3>
+        <p class="faq-a">Nema obavezne naknade za postavljanje. Planovi Free, Starter, Growth i Scale počinju odmah. Za timove koji žele pomoć, nudimo opcione plaćene Setup sprintove od €500.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Mogu li otkazati u bilo kom trenutku?</h3>
+        <p class="faq-a">Da. Otkažite iz podešavanja naplate. Godišnje plaćanje unapred se ne refundira, ali zadržavate pristup do kraja perioda.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Šta se dešava sa mojim podacima ako otkažem?</h3>
+        <p class="faq-a">Vaš nalog se prebacuje na Free. Postojeći proizvodi i upiti se čuvaju 90 dana, nakon čega se trajno brišu. Možete izvesti sve preko stranice Podešavanja ili našeg REST API-ja u bilo kom trenutku.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Postoji li besplatna proba Growth plana?</h3>
+        <p class="faq-a">Da — 60-dnevni pilot vam daje Growth funkcionalnosti 60 dana, uz €500 Quick Setup sprint (refundabilan ako ne pređete).</p>
       </div>
     </div>
   </div>
@@ -1520,6 +1714,7 @@ footer {
         </svg>
         configureout
       </a>
+      <p class="foot-region">Pravljeno u Beogradu. Koristi se širom regiona.</p>
       <span style="color:var(--gray-5);margin-left:8px;">© 2026 · Napravljeno za timove koji isporučuju.</span>
     </div>
     <nav class="foot-links" aria-label="Navigacija u podnožju">
@@ -1532,6 +1727,24 @@ footer {
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  const toggles = document.querySelectorAll('.billing-toggle button');
+  const prices = document.querySelectorAll('.tier-price');
+  toggles.forEach(btn => btn.addEventListener('click', () => {
+    const mode = btn.dataset.billing;
+    toggles.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    prices.forEach(p => {
+      const span = p.querySelector('span');
+      const small = p.querySelector('small');
+      if (!span || !p.dataset[mode]) return;
+      span.textContent = p.dataset[mode];
+      if (small) small.textContent = mode === 'annual' ? '/god.' : '/mes.';
+    });
+  }));
+})();
+</script>
 
 <script>
 (function () {
