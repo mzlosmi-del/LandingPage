@@ -45,11 +45,7 @@ Three `<script type="application/ld+json">` blocks in `<head>` on both pages:
 4. Submit sitemap
 
 ### 3. Analytics
-Recommendation: **Plausible Analytics** (privacy-first, no cookie banner needed, GDPR compliant)
-- Sign up at plausible.io, add your domain
-- Add `<script defer data-domain="configureout.com" src="https://plausible.io/js/script.js"></script>` before `</body>`
-
-Alternative: Google Analytics 4 — heavier, requires cookie consent banner in EU.
+Using **Cloudflare Web Analytics** (privacy-first, no cookie banner needed, GDPR compliant). The beacon is already wired into the site templates — no additional setup required beyond enabling analytics for the Pages project in the Cloudflare dashboard.
 
 ### 4. Bitmap assets (already generated)
 PNG and ICO files were rendered from the brand SVGs using `rsvg-convert` and `imagemagick`:
