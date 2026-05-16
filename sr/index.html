@@ -774,6 +774,94 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 .tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
 
+/* Pilot banner */
+.pilot-banner {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: var(--turq-50);
+  border-left: 3px solid var(--turq-500);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--gray-6);
+}
+.pilot-banner strong { color: var(--ink); }
+
+/* Billing toggle */
+.billing-toggle {
+  display: flex;
+  margin: 0 auto 32px;
+  width: fit-content;
+  gap: 4px;
+  padding: 4px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.billing-toggle button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  color: var(--gray-5);
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+.billing-toggle button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--gray-1);
+}
+.billing-toggle button small {
+  font-size: 11px; font-weight: 500;
+  margin-left: 4px;
+  opacity: .8;
+}
+
+/* Setup options */
+.setup-section { margin-top: 64px; }
+.setup-heading {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.setup-sub {
+  font-size: 15px;
+  color: var(--gray-6);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.setup-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) { .setup-grid { grid-template-columns: repeat(3, 1fr); } }
+.setup-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.setup-name {
+  font-family: var(--display);
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin-bottom: 4px;
+}
+.setup-price {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--turq-700);
+  margin-bottom: 8px;
+}
+.setup-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-6);
+}
+
 /* ─────────────────────────────────────────
    FAQ
    ───────────────────────────────────────── */
@@ -943,8 +1031,8 @@ footer {
   "offers": [
     { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Growth",  "price": "149", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Scale",   "price": "399", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "Growth",  "price": "129", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Scale",   "price": "349", "priceCurrency": "EUR" }
   ]
 }
 </script>
@@ -1368,33 +1456,42 @@ footer {
     <h2>Planovi koji rastu sa brojem upita,<br>a ne sa brojem korisnika.</h2>
     <p class="sec-lead">Krenite besplatno. Nadogradite kad porastete. Bez troškova postavljanja, bez implementacionih projekata, bez iznenađenja.</p>
 
+    <div class="pilot-banner">
+      <strong>60 dana probnog perioda.</strong> Isprobajte Growth besplatno 60 dana uz €500 Quick Setup (refundabilan ako ne pređete). Auto-naplata €129/mes od 61. dana.
+    </div>
+
+    <div class="billing-toggle" role="tablist" aria-label="Učestalost naplate">
+      <button type="button" role="tab" aria-selected="true" data-billing="monthly">Mesečno</button>
+      <button type="button" role="tab" aria-selected="false" data-billing="annual">Godišnje <small>uštedite 2 meseca</small></button>
+    </div>
+
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
-        <div class="tier-price">0 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€0" data-annual="€0"><span>€0</span><small>/mes.</small></div>
         <div class="tier-desc">Isprobajte engine na jednoj liniji proizvoda.</div>
         <ul>
-          <li>3 proizvoda</li>
-          <li>25 upita / mesečno</li>
-          <li>1 član tima</li>
-          <li>PDF ponude</li>
+          <li>1 objavljen proizvod</li>
+          <li>500 upita mesečno</li>
+          <li>1 korisnik</li>
+          <li>Obavezna „Powered by" oznaka</li>
+          <li>Bez 3D / AR</li>
           <li>Generator embed koda</li>
-          <li>„Powered by" oznaka</li>
         </ul>
         <a href="https://app.configureout.com/register?plan=free" class="tier-cta">Započnite besplatno →</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Starter</div>
-        <div class="tier-price">49 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€49" data-annual="€490"><span>€49</span><small>/mes.</small></div>
         <div class="tier-desc">Za radionice koje pokreću svoj prvi onlajn konfigurator.</div>
         <ul>
-          <li>25 proizvoda</li>
-          <li>250 upita / mesečno</li>
-          <li>3 člana tima</li>
-          <li>Filtriranje i pretraga upita</li>
-          <li>Brendirane PDF ponude</li>
-          <li>Praćenje statusa ponuda</li>
+          <li>10 proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>1 korisnik</li>
+          <li>PDF ponude</li>
+          <li>Bez 3D</li>
+          <li>Uklonjena „Powered by" oznaka</li>
         </ul>
         <a href="https://app.configureout.com/register?plan=starter" class="tier-cta">Započnite besplatno →</a>
       </div>
@@ -1402,33 +1499,55 @@ footer {
       <div class="tier best">
         <div class="tier-badge">Najpopularnije</div>
         <div class="tier-name">Growth</div>
-        <div class="tier-price">149 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€129" data-annual="€1.290"><span>€129</span><small>/mes.</small></div>
         <div class="tier-desc">Za timove koji rastu izvan jedne stranice.</div>
         <ul>
-          <li>Neograničen broj proizvoda</li>
-          <li>2.000 upita / mesečno</li>
-          <li>10 članova tima</li>
-          <li>Šabloni proizvoda i karakteristika</li>
-          <li>Napredna analitika</li>
-          <li>Uklonite „Powered by" oznaku</li>
-          <li>Višejezične PDF ponude</li>
+          <li>50 proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>3 korisnika</li>
+          <li>3D i AR</li>
+          <li>Webhook-ovi</li>
+          <li>White-label PDF</li>
+          <li>Sopstveni favicon</li>
         </ul>
         <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Scale</div>
-        <div class="tier-price">399 €<small>/mes.</small></div>
+        <div class="tier-price" data-monthly="€349" data-annual="€3.490"><span>€349</span><small>/mes.</small></div>
         <div class="tier-desc">Za operacije sa više brendova i regiona.</div>
         <ul>
-          <li>Sve bez ograničenja</li>
-          <li>White-label i sopstveni domen</li>
-          <li>Neograničen broj članova tima</li>
-          <li>Prioritetna email podrška</li>
-          <li>Pomoć pri uvođenju</li>
-          <li>Prilagođeni PDF šabloni</li>
+          <li>Neograničen broj proizvoda</li>
+          <li>Neograničen broj upita</li>
+          <li>10 korisnika</li>
+          <li>Verifikovan From domen za email</li>
+          <li>Audit log</li>
+          <li>Prioritetna podrška</li>
         </ul>
         <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3 class="setup-heading">Opcije postavljanja</h3>
+      <p class="setup-sub">Opcioni sprintovi ako želite praktičnu pomoć pri pokretanju.</p>
+      <div class="setup-grid">
+        <div class="setup-card">
+          <div class="setup-name">Quick Setup</div>
+          <div class="setup-price">€500</div>
+          <p>1 proizvod · samo 2D · generički PDF šablon</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Pro Setup</div>
+          <div class="setup-price">€1.200</div>
+          <p>3 proizvoda · 1 sa 3D modelom · brendirani PDF</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Custom Setup</div>
+          <div class="setup-price">od €3.000</div>
+          <p>white-label rollout za više proizvoda</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1533,6 +1652,24 @@ footer {
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  const toggles = document.querySelectorAll('.billing-toggle button');
+  const prices = document.querySelectorAll('.tier-price');
+  toggles.forEach(btn => btn.addEventListener('click', () => {
+    const mode = btn.dataset.billing;
+    toggles.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    prices.forEach(p => {
+      const span = p.querySelector('span');
+      const small = p.querySelector('small');
+      if (!span || !p.dataset[mode]) return;
+      span.textContent = p.dataset[mode];
+      if (small) small.textContent = mode === 'annual' ? '/god.' : '/mes.';
+    });
+  }));
+})();
+</script>
 
 <script>
 (function () {

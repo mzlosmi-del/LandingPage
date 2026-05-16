@@ -773,6 +773,94 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 .tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
 
+/* Pilot banner */
+.pilot-banner {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: var(--turq-50);
+  border-left: 3px solid var(--turq-500);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--gray-6);
+}
+.pilot-banner strong { color: var(--ink); }
+
+/* Billing toggle */
+.billing-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--gray-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  margin: 0 auto 32px;
+  width: fit-content;
+}
+.billing-toggle button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  color: var(--gray-5);
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+.billing-toggle button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--gray-1);
+}
+.billing-toggle button small {
+  font-size: 11px; font-weight: 500;
+  margin-left: 4px;
+  opacity: .8;
+}
+
+/* Setup options */
+.setup-section { margin-top: 64px; }
+.setup-heading {
+  font-family: var(--display);
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.setup-sub {
+  font-size: 15px;
+  color: var(--gray-6);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.setup-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) { .setup-grid { grid-template-columns: repeat(3, 1fr); } }
+.setup-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.setup-name {
+  font-family: var(--display);
+  font-size: 17px; font-weight: 700;
+  letter-spacing: -.015em;
+  margin-bottom: 4px;
+}
+.setup-price {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--turq-700);
+  margin-bottom: 8px;
+}
+.setup-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-6);
+}
+
 /* ─────────────────────────────────────────
    FAQ
    ───────────────────────────────────────── */
@@ -942,8 +1030,8 @@ footer {
   "offers": [
     { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Growth",  "price": "149", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Scale",   "price": "399", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "Growth",  "price": "129", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Scale",   "price": "349", "priceCurrency": "EUR" }
   ]
 }
 </script>
@@ -1368,33 +1456,42 @@ footer {
     <h2>Plans that scale with the inquiries you receive,<br>not your seat count.</h2>
     <p class="sec-lead">Start free. Upgrade when you grow. No setup fees, no implementation projects, no surprises. <a href="/pricing" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">See full pricing details →</a></p>
 
+    <div class="pilot-banner">
+      <strong>60-day pilot.</strong> Try Growth free for 60 days with €500 paid Quick Setup (refundable if you don't convert). Auto-bills €129/mo on day 61.
+    </div>
+
+    <div class="billing-toggle" role="tablist" aria-label="Billing frequency">
+      <button type="button" role="tab" aria-selected="true" data-billing="monthly">Monthly</button>
+      <button type="button" role="tab" aria-selected="false" data-billing="annual">Annual <small>save 2 months</small></button>
+    </div>
+
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
-        <div class="tier-price">€0<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€0" data-annual="€0"><span>€0</span><small>/mo</small></div>
         <div class="tier-desc">Try the engine on a single product line.</div>
         <ul>
-          <li>3 products</li>
-          <li>25 inquiries / month</li>
-          <li>1 team member</li>
-          <li>PDF quotations</li>
+          <li>1 published product</li>
+          <li>500 inquiries / month</li>
+          <li>1 seat</li>
+          <li>"Powered by" badge required</li>
+          <li>No 3D / AR</li>
           <li>Embed code generator</li>
-          <li>"Powered by" badge</li>
         </ul>
         <a href="https://app.configureout.com/register?plan=free" class="tier-cta">Start free →</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Starter</div>
-        <div class="tier-price">€49<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€49" data-annual="€490"><span>€49</span><small>/mo</small></div>
         <div class="tier-desc">For shops launching their first online configurator.</div>
         <ul>
-          <li>25 products</li>
-          <li>250 inquiries / month</li>
-          <li>3 team members</li>
-          <li>Inquiry filtering &amp; search</li>
-          <li>Branded PDF quotations</li>
-          <li>Quotation status tracking</li>
+          <li>10 products</li>
+          <li>Unlimited inquiries</li>
+          <li>1 seat</li>
+          <li>PDF quotes</li>
+          <li>No 3D</li>
+          <li>Remove "Powered by" badge</li>
         </ul>
         <a href="https://app.configureout.com/register?plan=starter" class="tier-cta">Start free →</a>
       </div>
@@ -1402,33 +1499,55 @@ footer {
       <div class="tier best">
         <div class="tier-badge">Most popular</div>
         <div class="tier-name">Growth</div>
-        <div class="tier-price">€149<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€129" data-annual="€1,290"><span>€129</span><small>/mo</small></div>
         <div class="tier-desc">For teams scaling beyond the homepage.</div>
         <ul>
-          <li>Unlimited products</li>
-          <li>2,000 inquiries / month</li>
-          <li>10 team members</li>
-          <li>Template products &amp; characteristics</li>
-          <li>Advanced analytics</li>
-          <li>Remove "Powered by" badge</li>
-          <li>Multi-language PDF quotes</li>
+          <li>50 products</li>
+          <li>Unlimited inquiries</li>
+          <li>3 seats</li>
+          <li>3D &amp; AR</li>
+          <li>Webhooks</li>
+          <li>White-label PDF</li>
+          <li>Custom favicon</li>
         </ul>
         <a href="#consultation" class="tier-cta">Book a consultation</a>
       </div>
 
       <div class="tier">
         <div class="tier-name">Scale</div>
-        <div class="tier-price">€399<small>/mo</small></div>
+        <div class="tier-price" data-monthly="€349" data-annual="€3,490"><span>€349</span><small>/mo</small></div>
         <div class="tier-desc">For multi-brand and multi-region operations.</div>
         <ul>
-          <li>Everything unlimited</li>
-          <li>White-label &amp; custom domain</li>
-          <li>Unlimited team members</li>
-          <li>Priority email support</li>
-          <li>Onboarding assistance</li>
-          <li>Custom PDF templates</li>
+          <li>Unlimited products</li>
+          <li>Unlimited inquiries</li>
+          <li>10 seats</li>
+          <li>Verified email From domain</li>
+          <li>Audit log</li>
+          <li>Priority support</li>
         </ul>
         <a href="#consultation" class="tier-cta">Book a consultation</a>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3 class="setup-heading">Setup options</h3>
+      <p class="setup-sub">Optional sprints if you want hands-on help launching.</p>
+      <div class="setup-grid">
+        <div class="setup-card">
+          <div class="setup-name">Quick Setup</div>
+          <div class="setup-price">€500</div>
+          <p>1 product · 2D only · generic PDF template</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Pro Setup</div>
+          <div class="setup-price">€1,200</div>
+          <p>3 products · 1 with 3D model · branded PDF</p>
+        </div>
+        <div class="setup-card">
+          <div class="setup-name">Custom Setup</div>
+          <div class="setup-price">from €3,000</div>
+          <p>multi-product white-label rollout</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1542,6 +1661,24 @@ footer {
     </nav>
   </div>
 </footer>
+
+<script>
+(function(){
+  const toggles = document.querySelectorAll('.billing-toggle button');
+  const prices = document.querySelectorAll('.tier-price');
+  toggles.forEach(btn => btn.addEventListener('click', () => {
+    const mode = btn.dataset.billing;
+    toggles.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    prices.forEach(p => {
+      const span = p.querySelector('span');
+      const small = p.querySelector('small');
+      if (!span || !p.dataset[mode]) return;
+      span.textContent = p.dataset[mode];
+      if (small) small.textContent = mode === 'annual' ? '/yr' : '/mo';
+    });
+  }));
+})();
+</script>
 
 <script>
 (function () {
