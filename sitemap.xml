@@ -71,6 +71,24 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://configureout.com/sr/for/furniture-makers</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://configureout.com/sr/for/window-manufacturers</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://configureout.com/sr/for/sign-shops</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://configureout.com/sr/privacy</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
