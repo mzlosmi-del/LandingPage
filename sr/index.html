@@ -694,188 +694,6 @@ h3, h4 { font-family: var(--display); font-weight: 700; }
 }
 
 /* ─────────────────────────────────────────
-   PRICING
-   ───────────────────────────────────────── */
-.tiers {
-  display: grid; grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 640px) { .tiers { grid-template-columns: repeat(2,1fr); } }
-@media (min-width: 1024px) { .tiers { grid-template-columns: repeat(4,1fr); gap: 16px; } }
-
-.tier {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
-  display: flex; flex-direction: column;
-  position: relative;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-}
-.tier:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--line-2); }
-.tier.best {
-  background: var(--ink); color: var(--gray-1);
-  border-color: var(--ink);
-}
-.tier.best:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-.tier-badge {
-  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-  background: var(--accent); color: var(--accent-ink);
-  font-family: var(--mono); font-size: 11px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 999px;
-}
-.tier-name {
-  font-size: 14px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .06em;
-  color: var(--gray-5);
-  margin-bottom: 12px;
-}
-.tier.best .tier-name { color: var(--accent); }
-.tier-price {
-  font-size: 40px; font-weight: 700;
-  letter-spacing: -.035em; line-height: 1;
-  margin-bottom: 4px;
-}
-.tier-price small {
-  font-size: 14px; font-weight: 500;
-  color: var(--gray-5); margin-left: 4px;
-}
-.tier.best .tier-price small { color: rgba(255,255,255,.6); }
-.tier-desc {
-  font-size: 14px; color: var(--gray-6);
-  line-height: 1.45; margin: 12px 0 22px;
-  min-height: 40px;
-}
-.tier.best .tier-desc { color: rgba(255,255,255,.7); }
-.tier ul { list-style: none; padding: 0; margin: 0 0 24px; flex: 1; }
-.tier li {
-  font-size: 14px; padding: 8px 0;
-  display: flex; align-items: flex-start; gap: 10px;
-  line-height: 1.45;
-}
-.tier li::before {
-  content: "";
-  width: 16px; height: 16px;
-  background: var(--gray-2);
-  border-radius: 999px;
-  flex-shrink: 0;
-  margin-top: 2px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8L7 11.5L12.5 5' stroke='%230a0a0a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position: center; background-repeat: no-repeat;
-}
-.tier.best li::before {
-  background: var(--accent);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8L7 11.5L12.5 5' stroke='%230a0a0a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position: center; background-repeat: no-repeat;
-}
-.tier-cta {
-  display: block; text-align: center;
-  padding: 12px;
-  border-radius: 999px;
-  font-size: 14px; font-weight: 600;
-  background: var(--gray-2); color: var(--ink);
-  border: 1px solid var(--line);
-  transition: background .15s, border-color .15s;
-}
-.tier-cta:hover { background: var(--gray-3); border-color: var(--gray-4); }
-.tier.best .tier-cta {
-  background: var(--accent); color: var(--accent-ink);
-  border-color: var(--accent);
-}
-.tier.best .tier-cta:hover { background: var(--turq-700); border-color: var(--turq-700); }
-
-/* Pilot banner */
-.pilot-banner {
-  max-width: 720px;
-  margin: 0 auto 24px;
-  padding: 16px 20px;
-  background: var(--turq-50);
-  border-left: 3px solid var(--turq-500);
-  border-radius: var(--radius-sm);
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--gray-6);
-}
-.pilot-banner strong { color: var(--ink); }
-
-/* Billing toggle */
-.billing-toggle {
-  display: flex;
-  margin: 0 auto 32px;
-  width: fit-content;
-  gap: 4px;
-  padding: 4px;
-  background: var(--gray-2);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-}
-.billing-toggle button {
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-size: 14px; font-weight: 600;
-  color: var(--gray-5);
-  background: transparent;
-  transition: background .15s, color .15s;
-}
-.billing-toggle button[aria-selected="true"] {
-  background: var(--ink);
-  color: var(--gray-1);
-}
-.billing-toggle button small {
-  font-size: 11px; font-weight: 500;
-  margin-left: 4px;
-  opacity: .8;
-}
-
-/* Setup options */
-.setup-section { margin-top: 64px; }
-.setup-heading {
-  font-family: var(--display);
-  font-size: 24px; font-weight: 700;
-  letter-spacing: -.02em;
-  margin-bottom: 6px;
-  text-align: center;
-}
-.setup-sub {
-  font-size: 15px;
-  color: var(--gray-6);
-  margin-bottom: 28px;
-  text-align: center;
-}
-.setup-grid {
-  display: grid; grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 768px) { .setup-grid { grid-template-columns: repeat(3, 1fr); } }
-.setup-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 24px;
-}
-.setup-name {
-  font-family: var(--display);
-  font-size: 17px; font-weight: 700;
-  letter-spacing: -.015em;
-  margin-bottom: 4px;
-}
-.setup-price {
-  font-family: var(--display);
-  font-size: 22px; font-weight: 700;
-  letter-spacing: -.02em;
-  color: var(--turq-700);
-  margin-bottom: 8px;
-}
-.setup-card p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--gray-6);
-}
-
-/* ─────────────────────────────────────────
    FAQ
    ───────────────────────────────────────── */
 .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
@@ -1041,13 +859,7 @@ footer {
   "name": "Configureout",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "Embed a live product configurator on your site. Real-time pricing, image swap on selection, qualified inquiries. Built for manufacturers, custom shops, and configurable-product brands.",
-  "offers": [
-    { "@type": "Offer", "name": "Free",    "price": "0",   "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Starter", "price": "49",  "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Growth",  "price": "129", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Scale",   "price": "349", "priceCurrency": "EUR" }
-  ]
+  "description": "Embed a live product configurator on your site. Real-time pricing, image swap on selection, qualified inquiries. Built for manufacturers, custom shops, and configurable-product brands."
 }
 </script>
 <script type="application/ld+json">
@@ -1069,26 +881,6 @@ footer {
       "@type": "Question",
       "name": "Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?",
       "acceptedAnswer": { "@type": "Answer", "text": "Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Pretvorite svaki upit u brendirani PDF — primenite porez, popust ili doplatu, pa preuzmite ponudu i pošaljite je kupcu. Ugrađena analitika prikazuje konverziju po proizvodu i pomaže da vidite šta radi." }
-    },
-    {
-      "@type": "Question",
-      "name": "Postoji li naknada za postavljanje?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Nema obavezne naknade za postavljanje. Planovi Free, Starter, Growth i Scale počinju odmah. Za timove koji žele pomoć, nudimo opcione plaćene Setup sprintove od €500." }
-    },
-    {
-      "@type": "Question",
-      "name": "Mogu li otkazati u bilo kom trenutku?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Da. Otkažite iz podešavanja naplate. Godišnje plaćanje unapred se ne refundira, ali zadržavate pristup do kraja perioda." }
-    },
-    {
-      "@type": "Question",
-      "name": "Šta se dešava sa mojim podacima ako otkažem?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Vaš nalog se prebacuje na Free. Postojeći proizvodi i upiti se čuvaju 90 dana, nakon čega se trajno brišu. Možete izvesti sve preko stranice Podešavanja ili našeg REST API-ja u bilo kom trenutku." }
-    },
-    {
-      "@type": "Question",
-      "name": "Postoji li besplatna proba Growth plana?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Da — 60-dnevni pilot vam daje Growth funkcionalnosti 60 dana, uz €500 Quick Setup sprint (refundabilan ako ne pređete)." }
     }
   ]
 }
@@ -1111,7 +903,6 @@ footer {
     <nav class="nav-links" aria-label="Glavna navigacija">
       <a href="#how">Kako funkcioniše</a>
       <a href="#features">Mogućnosti</a>
-      <a href="#pricing">Cene</a>
     </nav>
     <div class="nav-end">
       <a href="/" hreflang="en" lang="en" class="lang-switch">EN</a>
@@ -1164,10 +955,6 @@ footer {
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Bez implementacionog projekta
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Dostupna besplatna verzija
         </span>
       </div>
     </div>
@@ -1482,7 +1269,7 @@ footer {
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-good">Jedno popodne</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-good">Da — formula engine</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val cmp-good">0 € postavljanje</span></li>
-          <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-good">Od 49 € / mes.</span></li>
+          <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-good">Fiksna pretplata</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-good">Potpuno specifikovan</span></li>
           <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-good">Dashboard uživo</span></li>
         </ul>
@@ -1507,110 +1294,6 @@ footer {
   </div>
 </section>
 
-<!-- ────────── PRICING ────────── -->
-<section class="sec" id="pricing">
-  <div class="wrap">
-    <span class="sec-eyebrow">Cene</span>
-    <h2>Planovi koji rastu sa vašim katalogom,<br>ne sa brojem zaposlenih.</h2>
-    <p class="sec-lead">Krenite besplatno. Nadogradite kad porastete. Bez troškova postavljanja, bez implementacionih projekata, bez iznenađenja.</p>
-
-    <div class="pilot-banner">
-      <strong>60 dana probnog perioda.</strong> Isprobajte Growth besplatno 60 dana uz €500 Quick Setup (refundabilan ako ne pređete). Auto-naplata €129/mes od 61. dana.
-    </div>
-
-    <div class="billing-toggle" role="tablist" aria-label="Učestalost naplate">
-      <button type="button" role="tab" aria-selected="true" data-billing="monthly">Mesečno</button>
-      <button type="button" role="tab" aria-selected="false" data-billing="annual">Godišnje <small>uštedite 2 meseca</small></button>
-    </div>
-
-    <div class="tiers">
-      <div class="tier">
-        <div class="tier-name">Free</div>
-        <div class="tier-price" data-monthly="€0" data-annual="€0"><span>€0</span><small>/mes.</small></div>
-        <div class="tier-desc">Isprobajte engine na jednoj liniji proizvoda.</div>
-        <ul>
-          <li>1 objavljen proizvod</li>
-          <li>500 upita mesečno</li>
-          <li>1 korisnik</li>
-          <li>Obavezna „Powered by" oznaka</li>
-          <li>Bez 3D / AR</li>
-          <li>Generator embed koda</li>
-        </ul>
-        <a href="https://app.configureout.com/register?plan=free" class="tier-cta">Započnite besplatno →</a>
-      </div>
-
-      <div class="tier">
-        <div class="tier-name">Starter</div>
-        <div class="tier-price" data-monthly="€49" data-annual="€490"><span>€49</span><small>/mes.</small></div>
-        <div class="tier-desc">Za radionice koje pokreću svoj prvi onlajn konfigurator.</div>
-        <ul>
-          <li>10 proizvoda</li>
-          <li>Neograničen broj upita</li>
-          <li>1 korisnik</li>
-          <li>PDF ponude</li>
-          <li>Bez 3D</li>
-          <li>Uklonjena „Powered by" oznaka</li>
-        </ul>
-        <a href="https://app.configureout.com/register?plan=starter" class="tier-cta">Započnite besplatno →</a>
-      </div>
-
-      <div class="tier best">
-        <div class="tier-badge" style="font-size:10px;">Preporučeno za rastuće timove</div>
-        <div class="tier-name">Growth</div>
-        <div class="tier-price" data-monthly="€129" data-annual="€1.290"><span>€129</span><small>/mes.</small></div>
-        <div class="tier-desc">Za timove koji rastu izvan jedne stranice.</div>
-        <ul>
-          <li>50 proizvoda</li>
-          <li>Neograničen broj upita</li>
-          <li>3 korisnika</li>
-          <li>3D i AR</li>
-          <li>Webhook-ovi</li>
-          <li>White-label PDF</li>
-          <li>Sopstveni favicon</li>
-        </ul>
-        <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
-      </div>
-
-      <div class="tier">
-        <div class="tier-name">Scale</div>
-        <div class="tier-price" data-monthly="€349" data-annual="€3.490"><span>€349</span><small>/mes.</small></div>
-        <div class="tier-desc">Za operacije sa više brendova i regiona.</div>
-        <ul>
-          <li>Neograničen broj proizvoda</li>
-          <li>Neograničen broj upita</li>
-          <li>10 korisnika</li>
-          <li>Verifikovan From domen za email</li>
-          <li>Audit log</li>
-          <li>Prioritetna podrška</li>
-        </ul>
-        <a href="#consultation" class="tier-cta">Zakažite konsultacije</a>
-      </div>
-    </div>
-
-    <div class="setup-section">
-      <h3 class="setup-heading">Opcije postavljanja</h3>
-      <p class="setup-sub">Opcioni sprintovi ako želite praktičnu pomoć pri pokretanju.</p>
-      <div class="setup-grid">
-        <div class="setup-card">
-          <div class="setup-name">Quick Setup</div>
-          <div class="setup-price">€500</div>
-          <p>1 proizvod · samo 2D · generički PDF šablon</p>
-        </div>
-        <div class="setup-card">
-          <div class="setup-name">Pro Setup</div>
-          <div class="setup-price">€1.200</div>
-          <p>3 proizvoda · 1 sa 3D modelom · brendirani PDF</p>
-        </div>
-        <div class="setup-card">
-          <div class="setup-name">Custom Setup</div>
-          <div class="setup-price">od €3.000</div>
-          <p>white-label rollout za više proizvoda</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ────────── FAQ ────────── -->
 <section class="sec tinted">
   <div class="wrap">
@@ -1628,22 +1311,6 @@ footer {
       <div class="faq-item">
         <h3 class="faq-q">Šta se dešava sa upitima — da li ovo zamenjuje moj prodajni tim?</h3>
         <p class="faq-a">Ne. Upiti stižu u vaš dashboard sa kompletnom konfiguracijom, podacima o kupcu i izračunatom cenom. Pretvorite svaki upit u brendirani PDF — primenite porez, popust ili doplatu, pa preuzmite ponudu i pošaljite je kupcu. Ugrađena analitika prikazuje konverziju po proizvodu i pomaže da vidite šta radi.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Postoji li naknada za postavljanje?</h3>
-        <p class="faq-a">Nema obavezne naknade za postavljanje. Planovi Free, Starter, Growth i Scale počinju odmah. Za timove koji žele pomoć, nudimo opcione plaćene Setup sprintove od €500.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Mogu li otkazati u bilo kom trenutku?</h3>
-        <p class="faq-a">Da. Otkažite iz podešavanja naplate. Godišnje plaćanje unapred se ne refundira, ali zadržavate pristup do kraja perioda.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Šta se dešava sa mojim podacima ako otkažem?</h3>
-        <p class="faq-a">Vaš nalog se prebacuje na Free. Postojeći proizvodi i upiti se čuvaju 90 dana, nakon čega se trajno brišu. Možete izvesti sve preko stranice Podešavanja ili našeg REST API-ja u bilo kom trenutku.</p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-q">Postoji li besplatna proba Growth plana?</h3>
-        <p class="faq-a">Da — 60-dnevni pilot vam daje Growth funkcionalnosti 60 dana, uz €500 Quick Setup sprint (refundabilan ako ne pređete).</p>
       </div>
     </div>
   </div>
@@ -1719,7 +1386,6 @@ footer {
     </div>
     <nav class="foot-links" aria-label="Navigacija u podnožju">
       <a href="#how">Kako funkcioniše</a>
-      <a href="#pricing">Cene</a>
       <a href="#consultation">Kontakt</a>
       <a href="/sr/privacy">Privatnost</a>
       <a href="/sr/terms">Uslovi</a>
@@ -1727,24 +1393,6 @@ footer {
     </nav>
   </div>
 </footer>
-
-<script>
-(function(){
-  const toggles = document.querySelectorAll('.billing-toggle button');
-  const prices = document.querySelectorAll('.tier-price');
-  toggles.forEach(btn => btn.addEventListener('click', () => {
-    const mode = btn.dataset.billing;
-    toggles.forEach(b => b.setAttribute('aria-selected', String(b === btn)));
-    prices.forEach(p => {
-      const span = p.querySelector('span');
-      const small = p.querySelector('small');
-      if (!span || !p.dataset[mode]) return;
-      span.textContent = p.dataset[mode];
-      if (small) small.textContent = mode === 'annual' ? '/god.' : '/mes.';
-    });
-  }));
-})();
-</script>
 
 <script>
 (function () {

@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────
    Configureout shared core CSS
    Extracted from index.html so additional pages
-   (pricing, demo, for/*, vs/*) can reuse it
+   (demo, for/*, vs/*) can reuse it
    without duplicating ~1500 lines per page.
 
    The existing index.html, sr/index.html and
