@@ -17,7 +17,7 @@ Three `<script type="application/ld+json">` blocks in `<head>` on both pages:
 | Schema | Purpose |
 |--------|---------|
 | `Organization` | Brand entity, contact point, social links (empty array — fill when accounts exist) |
-| `SoftwareApplication` | Product info + all 4 pricing tiers (Free/Starter/Growth/Scale) |
+| `SoftwareApplication` | Product info |
 | `FAQPage` | 5 FAQ items — keep in sync with the FAQ section in `index.html` |
 
 ### New files
@@ -90,7 +90,6 @@ The `FAQPage` JSON-LD block is manually maintained. If you add, remove, or edit 
 
 ## Phase 2 checklist (not implemented)
 
-- [ ] `/pricing` dedicated page with full tier comparison table
 - [ ] `/demo` page with embedded live configurator
 - [ ] Vertical landing pages (`/for/manufacturers`, `/for/custom-shops`, etc.)
 - [ ] Blog with keyword-targeted articles
