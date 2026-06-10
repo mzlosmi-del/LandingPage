@@ -836,6 +836,102 @@ footer {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ─────────────────────────────────────────
+   PROCESS FLOW (Going-live + Quote-to-order)
+   ───────────────────────────────────────── */
+.flow-title { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -.02em; margin: 36px 0 16px; }
+.flow-title:first-of-type { margin-top: 0; }
+
+.flow-line { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.flow-step {
+  position: relative;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 20px;
+}
+.flow-step .fs-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 13px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.flow-step h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
+.flow-step p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+.flow-caption { font-family: var(--mono); font-size: 13px; color: var(--gray-5); margin-top: 18px; }
+@media (min-width: 768px) {
+  .flow-line { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; align-items: stretch; }
+  .flow-step { border-radius: 0; }
+  .flow-step:first-child { border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
+  .flow-step:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+  .flow-step + .flow-step { border-left: 0; }
+  .flow-step:not(:last-child)::after {
+    content: ""; position: absolute; right: -9px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 14px; height: 14px; background: var(--paper);
+    border-top: 1px solid var(--line); border-right: 1px solid var(--line);
+    z-index: 2;
+  }
+}
+
+/* Quote-to-order swimlanes */
+.lanes { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .lanes { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+.lane { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); overflow: hidden; }
+.lane.auto { border-color: var(--ink); }
+.lane-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .04em;
+  color: var(--gray-6);
+  border-bottom: 1px solid var(--line);
+}
+.lane.auto .lane-head { background: var(--ink); color: var(--accent); border-bottom-color: var(--ink); }
+.lane-body { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
+.lane-node {
+  background: var(--gray-1); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  font-size: 14px; line-height: 1.5;
+}
+.lane.auto .lane-node { background: rgba(15,163,146,.07); border-color: rgba(15,163,146,.25); }
+.lane-node b { display: block; font-weight: 600; margin-bottom: 2px; }
+.lane-node small { color: var(--gray-5); }
+.lane-branch { display: flex; flex-direction: column; gap: 8px; }
+.lane-branch span {
+  font-family: var(--mono); font-size: 11px; line-height: 1.4;
+  padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line);
+}
+.lane-branch .won { color: var(--good); border-color: var(--good); }
+.lane-branch .lost { color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   CAPABILITIES grid (light)
+   ───────────────────────────────────────── */
+.cap-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+.cap { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+.cap-icon {
+  width: 38px; height: 38px;
+  background: rgba(15,163,146,.12); color: var(--accent);
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.cap h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.cap p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   SETUP & SUPPORT
+   ───────────────────────────────────────── */
+.support-cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+@media (min-width: 768px) { .support-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+.support-card { background: var(--gray-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px 26px; }
+.support-card h3 { font-family: var(--display); font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; }
+.support-card p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+.support-card .opt { font-family: var(--mono); font-size: 12px; color: var(--gray-5); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 </style>
 <script type="application/ld+json">
 {
@@ -902,6 +998,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#how">How it works</a>
+      <a href="#process">Process</a>
       <a href="#features">Features</a>
     </nav>
     <div class="nav-end">
@@ -941,13 +1038,12 @@ footer {
         Live pricing. Image swap on selection. Qualified inquiries. Embed in one line of code.
       </p>
       <div class="hero-ctas">
-        <a href="https://app.configureout.com/register" class="btn btn-primary">
-          Start free
+        <a href="#demo" class="btn btn-primary">
+          Try the live demo
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#demo" class="btn btn-ghost">Try the live demo</a>
+        <a href="#consultation" class="btn btn-ghost">Book a consultation</a>
       </div>
-      <a href="#consultation" class="hero-consult-link" style="display:inline-block;margin-top:12px;font-size:14px;color:var(--gray-5);transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--gray-5)'">Book a consultation</a>
       <div class="hero-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -955,7 +1051,7 @@ footer {
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          No setup project
+          Guided setup included
         </span>
       </div>
     </div>
@@ -1171,6 +1267,58 @@ footer {
   </div>
 </section>
 
+<!-- ────────── PROCESS FLOW ────────── -->
+<section class="sec tinted" id="process">
+  <div class="wrap">
+    <span class="sec-eyebrow">The process</span>
+    <h2>From setup to every closed deal.</h2>
+    <p class="sec-lead">Two flows run your business: a one-time go-live, then an automated quote-to-order loop on every deal.</p>
+
+    <!-- Flow 1: Going live -->
+    <h3 class="flow-title">Going live — one-time set-up</h3>
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Add products</h4><p>Ready-made templates or spreadsheet import.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Set pricing</h4><p>Your option logic; prices update live.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Choose design</h4><p>The theme matches your brand.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Embed</h4><p>Simple copy &amp; paste on your website.</p></div>
+      <div class="flow-step"><div class="fs-num">5</div><h4>Live</h4><p>Customers can configure and inquire.</p></div>
+    </div>
+    <p class="flow-caption">From zero to a live configurator in days, not months.</p>
+
+    <!-- Flow 2: Quote-to-order -->
+    <h3 class="flow-title">Quote-to-order — every deal</h3>
+    <div class="lanes">
+      <div class="lane">
+        <div class="lane-head">Customer</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Configure product</b><small>options · live price · 3D / AR</small></div>
+          <div class="lane-node"><b>Submit inquiry</b><small>one short form</small></div>
+          <div class="lane-node"><b>Review quotation</b><small>decide with one click</small></div>
+          <div class="lane-node"><b>Deal won</b></div>
+        </div>
+      </div>
+      <div class="lane auto">
+        <div class="lane-head">Configureout · automatic</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Capture inquiry</b><small>full configuration attached, sales notified instantly</small></div>
+          <div class="lane-node"><b>Email quotation</b><small>branded PDF with secure Accept / Decline buttons</small></div>
+          <div class="lane-node"><b>Record decision</b><small>response saved, quotation locked, team notified</small></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-head">Your sales team</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Review inquiry</b><small>complete information, no clarification loops</small></div>
+          <div class="lane-node"><b>Prepare quotation</b><small>pricing, discounts, terms &amp; validity</small></div>
+          <div class="lane-node"><b>Confirm &amp; send</b><small>professional PDF generated for you</small></div>
+          <div class="lane-node"><div class="lane-branch"><span class="won">Accepted → process order</span><span class="lost">Declined / expired → follow up with a revised offer</span></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-caption">The middle lane is fully automatic: your team only reviews, prices and closes.</p>
+  </div>
+</section>
+
 <!-- ────────── FEATURES ────────── -->
 <section class="sec dark" id="features">
   <div class="wrap">
@@ -1208,7 +1356,7 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Branded PDF quotations</h4>
-        <p>Turn any inquiry into a formal quote — your logo, your terms, your line items. Apply tax, discount, or surcharge adjustments, then download the branded PDF. Track status from draft to accepted.</p>
+        <p>Turn any inquiry into a formal quote — your logo, your terms, your line items. Apply tax, discount, or surcharge adjustments, then generate a branded PDF (English &amp; German templates). A controlled lifecycle — draft, preview, confirmed, locked — keeps every offer traceable, and quotations go out with secure Accept / Decline buttons.</p>
       </div>
 
       <div class="feat">
@@ -1232,7 +1380,66 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Team roles &amp; permissions</h4>
-        <p>Invite admins, members, and viewers. Per-functionality permissions across products, pricing, inquiries, quotations, and settings.</p>
+        <p>Invite admins, members, and viewers. Per-functionality permissions across products, pricing, inquiries, quotations, and settings — with a complete audit trail of every change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── CAPABILITIES ────────── -->
+<section class="sec" id="capabilities">
+  <div class="wrap">
+    <span class="sec-eyebrow">Capabilities</span>
+    <h2>More than a configurator.</h2>
+    <p class="sec-lead">Everything between a website visitor and a signed quotation — in one continuous flow.</p>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 2v18M3 6.5l8 4.5 8-4.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>3D &amp; augmented reality</h4>
+        <p>Customers view the product in 3D or place it in their own space with augmented reality — no waiting, no misunderstandings.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M4 11l4 4 10-10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>One-click customer decision</h4>
+        <p>Quotations go out by email with secure Accept and Decline buttons and a defined validity period. The response is recorded automatically and your team is notified at once.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 18V4M3 18h16M7 14l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Insights &amp; analytics</h4>
+        <p>Inquiry-to-quotation funnel, revenue over time, top products and the most popular option choices — tenant-wide, at a glance.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V5l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>White-label &amp; brand control</h4>
+        <p>Role-based permissions and a complete audit trail. White-label options mean customers see only your brand — on documents, emails and public pages.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 3v11M6 9l5 5 5-5M4 18h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Fast onboarding</h4>
+        <p>Start from ready-made templates or import your existing catalogue from a spreadsheet. Embedding on your website is a simple copy-and-paste.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Usage-based pricing</h4>
+        <p>Pay per inquiry received — nothing more. No seat licences, no fixed tiers, no upfront commitment. Costs scale with demand, and a quiet month costs you nothing.</p>
       </div>
     </div>
   </div>
@@ -1254,7 +1461,7 @@ footer {
           <li><span class="cmp-attr">Time to live</span><span class="cmp-val">Already there</span></li>
           <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-bad">Not shown</span></li>
           <li><span class="cmp-attr">Implementation</span><span class="cmp-val">€0</span></li>
-          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val">€0</span></li>
+          <li><span class="cmp-attr">Pricing model</span><span class="cmp-val">€0</span></li>
           <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-bad">Underspecified</span></li>
           <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-bad">Email thread</span></li>
         </ul>
@@ -1270,11 +1477,11 @@ footer {
           <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-good">An afternoon</span></li>
           <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes — formula engine</span></li>
           <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-good">€0 setup</span></li>
-          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-good">Flat subscription</span></li>
+          <li><span class="cmp-attr">Pricing model</span><span class="cmp-val cmp-good">Pay per inquiry</span></li>
           <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
           <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-good">Live dashboard</span></li>
         </ul>
-        <div class="cmp-verdict">A real configurator, without the project</div>
+        <div class="cmp-verdict">No seat licences. A quiet month costs nothing.</div>
       </div>
 
       <div class="cmp-col">
@@ -1285,7 +1492,7 @@ footer {
           <li><span class="cmp-attr">Time to live</span><span class="cmp-val cmp-bad">3–6 months</span></li>
           <li><span class="cmp-attr">Live pricing</span><span class="cmp-val cmp-good">Yes</span></li>
           <li><span class="cmp-attr">Implementation</span><span class="cmp-val cmp-bad">€40k – €200k</span></li>
-          <li><span class="cmp-attr">Monthly cost</span><span class="cmp-val cmp-bad">€2k+ per user</span></li>
+          <li><span class="cmp-attr">Pricing model</span><span class="cmp-val cmp-bad">€2k+ per user</span></li>
           <li><span class="cmp-attr">Inquiry quality</span><span class="cmp-val cmp-good">Fully specified</span></li>
           <li><span class="cmp-attr">Inquiry handling</span><span class="cmp-val cmp-good">Built-in</span></li>
         </ul>
@@ -1293,6 +1500,34 @@ footer {
       </div>
     </div>
     <p style="text-align:center;margin-top:32px;font-size:14px;color:var(--gray-5);">See full breakdown: <a href="/vs/legacy-cpq-tools" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs legacy CPQ tools</a> · <a href="/vs/contact-forms" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs contact forms</a></p>
+  </div>
+</section>
+
+<!-- ────────── SETUP & SUPPORT ────────── -->
+<section class="sec" id="support">
+  <div class="wrap">
+    <span class="sec-eyebrow">Setup &amp; support</span>
+    <h2>You're never on your own.</h2>
+    <p class="sec-lead">Configureout is more than software. Our team works alongside you from day one — and if you'd rather hand the work off entirely, we can do the heavy lifting for you.</p>
+
+    <div class="support-cards">
+      <div class="support-card">
+        <h3>Guided setup — included</h3>
+        <p>You're not handed an empty tool. We guide you through your initial setup at no extra cost: modelling your first products, defining pricing rules, matching the configurator to your brand and embedding it on your website.</p>
+        <p class="opt">Larger catalogue? Optional done-for-you build-out — we create your full product range, priced by scope.</p>
+      </div>
+      <div class="support-card">
+        <h3>Support throughout usage</h3>
+        <p>Questions, adjustments, new products or pricing changes — the team stays available after go-live. You get a direct line to the people who build the product, fast responses, and hands-on help whenever your catalogue, design or sales process evolves.</p>
+      </div>
+    </div>
+
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Kick-off</h4><p>A short call to understand your products, pricing logic and website.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Set up together</h4><p>Catalogue, pricing and design configured with us — typically within days.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Go live</h4><p>A final review together, then the configurator is embedded on your website.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Stay supported</h4><p>Ongoing help with changes and questions — included for as long as you use Configureout.</p></div>
+    </div>
   </div>
 </section>
 
@@ -1388,6 +1623,7 @@ footer {
     </div>
     <nav class="foot-links" aria-label="Footer navigation">
       <a href="#how">How it works</a>
+      <a href="#process">Process</a>
       <a href="#consultation">Contact</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>

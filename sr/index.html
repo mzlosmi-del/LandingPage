@@ -837,6 +837,102 @@ footer {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ─────────────────────────────────────────
+   PROCESS FLOW (Going-live + Quote-to-order)
+   ───────────────────────────────────────── */
+.flow-title { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -.02em; margin: 36px 0 16px; }
+.flow-title:first-of-type { margin-top: 0; }
+
+.flow-line { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.flow-step {
+  position: relative;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 20px;
+}
+.flow-step .fs-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 13px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.flow-step h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
+.flow-step p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+.flow-caption { font-family: var(--mono); font-size: 13px; color: var(--gray-5); margin-top: 18px; }
+@media (min-width: 768px) {
+  .flow-line { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; align-items: stretch; }
+  .flow-step { border-radius: 0; }
+  .flow-step:first-child { border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
+  .flow-step:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+  .flow-step + .flow-step { border-left: 0; }
+  .flow-step:not(:last-child)::after {
+    content: ""; position: absolute; right: -9px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 14px; height: 14px; background: var(--paper);
+    border-top: 1px solid var(--line); border-right: 1px solid var(--line);
+    z-index: 2;
+  }
+}
+
+/* Quote-to-order swimlanes */
+.lanes { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .lanes { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+.lane { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); overflow: hidden; }
+.lane.auto { border-color: var(--ink); }
+.lane-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .04em;
+  color: var(--gray-6);
+  border-bottom: 1px solid var(--line);
+}
+.lane.auto .lane-head { background: var(--ink); color: var(--accent); border-bottom-color: var(--ink); }
+.lane-body { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
+.lane-node {
+  background: var(--gray-1); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  font-size: 14px; line-height: 1.5;
+}
+.lane.auto .lane-node { background: rgba(15,163,146,.07); border-color: rgba(15,163,146,.25); }
+.lane-node b { display: block; font-weight: 600; margin-bottom: 2px; }
+.lane-node small { color: var(--gray-5); }
+.lane-branch { display: flex; flex-direction: column; gap: 8px; }
+.lane-branch span {
+  font-family: var(--mono); font-size: 11px; line-height: 1.4;
+  padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line);
+}
+.lane-branch .won { color: var(--good); border-color: var(--good); }
+.lane-branch .lost { color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   CAPABILITIES grid (light)
+   ───────────────────────────────────────── */
+.cap-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+.cap { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+.cap-icon {
+  width: 38px; height: 38px;
+  background: rgba(15,163,146,.12); color: var(--accent);
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.cap h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.cap p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   SETUP & SUPPORT
+   ───────────────────────────────────────── */
+.support-cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+@media (min-width: 768px) { .support-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+.support-card { background: var(--gray-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px 26px; }
+.support-card h3 { font-family: var(--display); font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; }
+.support-card p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+.support-card .opt { font-family: var(--mono); font-size: 12px; color: var(--gray-5); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 </style>
 <script type="application/ld+json">
 {
@@ -903,6 +999,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Glavna navigacija">
       <a href="#how">Kako funkcioniše</a>
+      <a href="#process">Proces</a>
       <a href="#features">Mogućnosti</a>
     </nav>
     <div class="nav-end">
@@ -942,13 +1039,12 @@ footer {
         Cene uživo. Izmena slike po izboru. Kvalifikovani upiti. Ugradnja jednom linijom koda.
       </p>
       <div class="hero-ctas">
-        <a href="https://app.configureout.com/register" class="btn btn-primary">
-          Započnite besplatno
+        <a href="#demo" class="btn btn-primary">
+          Isprobajte demo uživo
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#demo" class="btn btn-ghost">Isprobajte demo uživo</a>
+        <a href="#consultation" class="btn btn-ghost">Zakažite konsultacije</a>
       </div>
-      <a href="#consultation" class="hero-consult-link" style="display:inline-block;margin-top:12px;font-size:14px;color:var(--gray-5);transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--gray-5)'">Zakažite konsultacije</a>
       <div class="hero-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -956,7 +1052,7 @@ footer {
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Bez implementacionog projekta
+          Vođeno postavljanje uključeno
         </span>
       </div>
     </div>
@@ -1172,6 +1268,58 @@ footer {
   </div>
 </section>
 
+<!-- ────────── PROCESS FLOW ────────── -->
+<section class="sec tinted" id="process">
+  <div class="wrap">
+    <span class="sec-eyebrow">Proces</span>
+    <h2>Od postavljanja do svakog zaključenog posla.</h2>
+    <p class="sec-lead">Dva toka pokreću vaše poslovanje: jednokratno pokretanje, a zatim automatizovan ciklus od upita do porudžbine na svakom poslu.</p>
+
+    <!-- Flow 1: Going live -->
+    <h3 class="flow-title">Pokretanje — jednokratno postavljanje</h3>
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Dodajte proizvode</h4><p>Gotovi šabloni ili uvoz iz tabele.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Postavite cene</h4><p>Vaša logika opcija; cene se ažuriraju uživo.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Izaberite dizajn</h4><p>Tema se uklapa u vaš brend.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Ugradite</h4><p>Jednostavno kopiranje i lepljenje na vaš sajt.</p></div>
+      <div class="flow-step"><div class="fs-num">5</div><h4>Uživo</h4><p>Kupci mogu da konfigurišu i šalju upite.</p></div>
+    </div>
+    <p class="flow-caption">Od nule do konfiguratora uživo za dane, ne mesece.</p>
+
+    <!-- Flow 2: Quote-to-order -->
+    <h3 class="flow-title">Od upita do porudžbine — na svakom poslu</h3>
+    <div class="lanes">
+      <div class="lane">
+        <div class="lane-head">Kupac</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Konfiguriše proizvod</b><small>opcije · cena uživo · 3D / AR</small></div>
+          <div class="lane-node"><b>Šalje upit</b><small>jedan kratak obrazac</small></div>
+          <div class="lane-node"><b>Pregleda ponudu</b><small>odlučuje jednim klikom</small></div>
+          <div class="lane-node"><b>Posao dobijen</b></div>
+        </div>
+      </div>
+      <div class="lane auto">
+        <div class="lane-head">Configureout · automatski</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Beleži upit</b><small>cela konfiguracija priložena, prodaja odmah obaveštena</small></div>
+          <div class="lane-node"><b>Šalje ponudu e-poštom</b><small>brendirani PDF sa sigurnim Prihvati / Odbij dugmadima</small></div>
+          <div class="lane-node"><b>Beleži odluku</b><small>odgovor sačuvan, ponuda zaključana, tim obavešten</small></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-head">Vaš prodajni tim</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Pregleda upit</b><small>potpune informacije, bez krugova razjašnjavanja</small></div>
+          <div class="lane-node"><b>Priprema ponudu</b><small>cene, popusti, uslovi i rok važenja</small></div>
+          <div class="lane-node"><b>Potvrđuje i šalje</b><small>profesionalni PDF generisan za vas</small></div>
+          <div class="lane-node"><div class="lane-branch"><span class="won">Prihvaćeno → obrada porudžbine</span><span class="lost">Odbijeno / isteklo → nastavak sa revidiranom ponudom</span></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-caption">Srednja traka je potpuno automatska: vaš tim samo pregleda, kalkuliše i zaključuje.</p>
+  </div>
+</section>
+
 <!-- ────────── FEATURES ────────── -->
 <section class="sec dark" id="features">
   <div class="wrap">
@@ -1209,7 +1357,7 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Brendirane PDF ponude</h4>
-        <p>Pretvorite svaki upit u zvaničnu ponudu — vaš logo, vaši uslovi, vaše stavke. Primenite porez, popust ili doplatu i preuzmite brendirani PDF. Pratite status od nacrta do prihvaćenog.</p>
+        <p>Pretvorite svaki upit u zvaničnu ponudu — vaš logo, vaši uslovi, vaše stavke. Primenite porez, popust ili doplatu i generišite brendirani PDF (šabloni na engleskom i nemačkom). Kontrolisani životni ciklus — nacrt, pregled, potvrđeno, zaključano — čini svaku ponudu pratljivom, a ponude izlaze sa sigurnim Prihvati / Odbij dugmadima.</p>
       </div>
 
       <div class="feat">
@@ -1233,7 +1381,66 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Uloge i dozvole</h4>
-        <p>Pozovite admine, članove i posmatrače. Dozvole po funkcionalnosti za proizvode, cene, upite, ponude i podešavanja.</p>
+        <p>Pozovite admine, članove i posmatrače. Dozvole po funkcionalnosti za proizvode, cene, upite, ponude i podešavanja — uz potpunu istoriju svih izmena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── CAPABILITIES ────────── -->
+<section class="sec" id="capabilities">
+  <div class="wrap">
+    <span class="sec-eyebrow">Mogućnosti</span>
+    <h2>Više od konfiguratora.</h2>
+    <p class="sec-lead">Sve između posetioca sajta i potpisane ponude — u jednom neprekidnom toku.</p>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 2v18M3 6.5l8 4.5 8-4.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>3D i proširena stvarnost</h4>
+        <p>Kupci vide proizvod u 3D-u ili ga postave u sopstveni prostor putem proširene stvarnosti — bez čekanja, bez nesporazuma.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M4 11l4 4 10-10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Odluka jednim klikom</h4>
+        <p>Ponude izlaze e-poštom sa sigurnim dugmadima Prihvati i Odbij i određenim rokom važenja. Odgovor se beleži automatski i vaš tim se odmah obaveštava.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 18V4M3 18h16M7 14l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Uvidi i analitika</h4>
+        <p>Tok od upita do ponude, prihod tokom vremena, najtraženiji proizvodi i najpopularniji izbori opcija — za ceo nalog, na jedan pogled.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V5l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>White-label i kontrola brenda</h4>
+        <p>Dozvole po ulogama i potpuna istorija izmena. White-label opcije znače da kupci vide samo vaš brend — na dokumentima, e-porukama i javnim stranicama.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 3v11M6 9l5 5 5-5M4 18h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Brzo uvođenje</h4>
+        <p>Krenite od gotovih šablona ili uvezite svoj postojeći katalog iz tabele. Ugradnja na vaš sajt je jednostavno kopiranje i lepljenje.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Cena po korišćenju</h4>
+        <p>Plaćate po primljenom upitu — ništa više. Bez licenci po korisniku, bez fiksnih nivoa, bez obaveze unapred. Troškovi prate potražnju, a miran mesec vas ne košta ništa.</p>
       </div>
     </div>
   </div>
@@ -1255,7 +1462,7 @@ footer {
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val">Već postoji</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-bad">Ne prikazuje se</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val">0 €</span></li>
-          <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val">0 €</span></li>
+          <li><span class="cmp-attr">Model cene</span><span class="cmp-val">0 €</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-bad">Nedovoljno specifikovan</span></li>
           <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-bad">Email prepiska</span></li>
         </ul>
@@ -1271,11 +1478,11 @@ footer {
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-good">Jedno popodne</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-good">Da — formula engine</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val cmp-good">0 € postavljanje</span></li>
-          <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-good">Fiksna pretplata</span></li>
+          <li><span class="cmp-attr">Model cene</span><span class="cmp-val cmp-good">Plaćanje po upitu</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-good">Potpuno specifikovan</span></li>
           <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-good">Dashboard uživo</span></li>
         </ul>
-        <div class="cmp-verdict">Pravi konfigurator, bez velikog projekta</div>
+        <div class="cmp-verdict">Bez licenci po korisniku. Miran mesec ne košta ništa.</div>
       </div>
 
       <div class="cmp-col">
@@ -1286,12 +1493,40 @@ footer {
           <li><span class="cmp-attr">Vreme do produkcije</span><span class="cmp-val cmp-bad">3–6 meseci</span></li>
           <li><span class="cmp-attr">Cena uživo</span><span class="cmp-val cmp-good">Da</span></li>
           <li><span class="cmp-attr">Implementacija</span><span class="cmp-val cmp-bad">40k – 200k €</span></li>
-          <li><span class="cmp-attr">Mesečni trošak</span><span class="cmp-val cmp-bad">2k+ € po korisniku</span></li>
+          <li><span class="cmp-attr">Model cene</span><span class="cmp-val cmp-bad">2k+ € po korisniku</span></li>
           <li><span class="cmp-attr">Kvalitet upita</span><span class="cmp-val cmp-good">Potpuno specifikovan</span></li>
           <li><span class="cmp-attr">Obrada upita</span><span class="cmp-val cmp-good">Ugrađeno</span></li>
         </ul>
         <div class="cmp-verdict">Previše za većinu timova</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── SETUP & SUPPORT ────────── -->
+<section class="sec" id="support">
+  <div class="wrap">
+    <span class="sec-eyebrow">Postavljanje i podrška</span>
+    <h2>Nikada niste sami.</h2>
+    <p class="sec-lead">Configureout je više od softvera. Naš tim radi sa vama od prvog dana — a ako radije želite da posao u potpunosti prepustite nama, mi preuzimamo težak deo.</p>
+
+    <div class="support-cards">
+      <div class="support-card">
+        <h3>Vođeno postavljanje — uključeno</h3>
+        <p>Ne dobijate prazan alat. Vodimo vas kroz inicijalno postavljanje bez dodatnih troškova: modelovanje prvih proizvoda, definisanje pravila cena, usklađivanje konfiguratora sa vašim brendom i ugradnja na vaš sajt.</p>
+        <p class="opt">Veći katalog? Opciona izrada „ključ u ruke“ — kreiramo ceo vaš asortiman, naplaćeno prema obimu.</p>
+      </div>
+      <div class="support-card">
+        <h3>Podrška tokom celog korišćenja</h3>
+        <p>Pitanja, izmene, novi proizvodi ili promene cena — tim ostaje dostupan i nakon pokretanja. Imate direktnu vezu sa ljudima koji prave proizvod, brze odgovore i praktičnu pomoć kad god se vaš katalog, dizajn ili prodajni proces razvija.</p>
+      </div>
+    </div>
+
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Uvodni razgovor</h4><p>Kratak poziv da razumemo vaše proizvode, logiku cena i sajt.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Postavljanje zajedno</h4><p>Katalog, cene i dizajn podešavamo sa vama — obično za nekoliko dana.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Pokretanje</h4><p>Zajednički završni pregled, a zatim se konfigurator ugrađuje na vaš sajt.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Stalna podrška</h4><p>Trajna pomoć pri izmenama i pitanjima — uključeno dok god koristite Configureout.</p></div>
     </div>
   </div>
 </section>
@@ -1388,6 +1623,7 @@ footer {
     </div>
     <nav class="foot-links" aria-label="Navigacija u podnožju">
       <a href="#how">Kako funkcioniše</a>
+      <a href="#process">Proces</a>
       <a href="#consultation">Kontakt</a>
       <a href="/sr/privacy">Privatnost</a>
       <a href="/sr/terms">Uslovi</a>
