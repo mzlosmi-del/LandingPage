@@ -836,6 +836,102 @@ footer {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ─────────────────────────────────────────
+   PROCESS FLOW (Going-live + Quote-to-order)
+   ───────────────────────────────────────── */
+.flow-title { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -.02em; margin: 36px 0 16px; }
+.flow-title:first-of-type { margin-top: 0; }
+
+.flow-line { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.flow-step {
+  position: relative;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 20px;
+}
+.flow-step .fs-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 13px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.flow-step h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
+.flow-step p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+.flow-caption { font-family: var(--mono); font-size: 13px; color: var(--gray-5); margin-top: 18px; }
+@media (min-width: 768px) {
+  .flow-line { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; align-items: stretch; }
+  .flow-step { border-radius: 0; }
+  .flow-step:first-child { border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
+  .flow-step:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+  .flow-step + .flow-step { border-left: 0; }
+  .flow-step:not(:last-child)::after {
+    content: ""; position: absolute; right: -9px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 14px; height: 14px; background: var(--paper);
+    border-top: 1px solid var(--line); border-right: 1px solid var(--line);
+    z-index: 2;
+  }
+}
+
+/* Quote-to-order swimlanes */
+.lanes { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .lanes { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+.lane { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); overflow: hidden; }
+.lane.auto { border-color: var(--ink); }
+.lane-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .04em;
+  color: var(--gray-6);
+  border-bottom: 1px solid var(--line);
+}
+.lane.auto .lane-head { background: var(--ink); color: var(--accent); border-bottom-color: var(--ink); }
+.lane-body { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
+.lane-node {
+  background: var(--gray-1); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  font-size: 14px; line-height: 1.5;
+}
+.lane.auto .lane-node { background: rgba(15,163,146,.07); border-color: rgba(15,163,146,.25); }
+.lane-node b { display: block; font-weight: 600; margin-bottom: 2px; }
+.lane-node small { color: var(--gray-5); }
+.lane-branch { display: flex; flex-direction: column; gap: 8px; }
+.lane-branch span {
+  font-family: var(--mono); font-size: 11px; line-height: 1.4;
+  padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line);
+}
+.lane-branch .won { color: var(--good); border-color: var(--good); }
+.lane-branch .lost { color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   CAPABILITIES grid (light)
+   ───────────────────────────────────────── */
+.cap-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cap-grid { grid-template-columns: repeat(3, 1fr); } }
+.cap { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+.cap-icon {
+  width: 38px; height: 38px;
+  background: rgba(15,163,146,.12); color: var(--accent);
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.cap h4 { font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.cap p { font-size: 14px; line-height: 1.55; color: var(--gray-6); }
+
+/* ─────────────────────────────────────────
+   SETUP & SUPPORT
+   ───────────────────────────────────────── */
+.support-cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+@media (min-width: 768px) { .support-cards { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+.support-card { background: var(--gray-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px 26px; }
+.support-card h3 { font-family: var(--display); font-size: 19px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; }
+.support-card p { font-size: 15px; line-height: 1.6; color: var(--gray-6); }
+.support-card .opt { font-family: var(--mono); font-size: 12px; color: var(--gray-5); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 </style>
 <script type="application/ld+json">
 {
@@ -902,6 +998,7 @@ footer {
     </a>
     <nav class="nav-links" aria-label="Hauptnavigation">
       <a href="#how">So funktioniert's</a>
+      <a href="#process">Ablauf</a>
       <a href="#features">Funktionen</a>
     </nav>
     <div class="nav-end">
@@ -941,13 +1038,12 @@ footer {
         Live-Preise. Bildwechsel bei Auswahl. Qualifizierte Anfragen. Einbindung in einer Zeile Code.
       </p>
       <div class="hero-ctas">
-        <a href="https://app.configureout.com/register" class="btn btn-primary">
-          Kostenlos starten
+        <a href="#demo" class="btn btn-primary">
+          Live-Demo ansehen
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1 6h12M8 1l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#demo" class="btn btn-ghost">Live-Demo ausprobieren</a>
+        <a href="#consultation" class="btn btn-ghost">Beratung buchen</a>
       </div>
-      <a href="#consultation" class="hero-consult-link" style="display:inline-block;margin-top:12px;font-size:14px;color:var(--gray-5);transition:color .15s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--gray-5)'">Beratung buchen</a>
       <div class="hero-trust">
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -955,7 +1051,7 @@ footer {
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Kein Einführungsprojekt
+          Geführte Einrichtung inklusive
         </span>
       </div>
     </div>
@@ -1171,6 +1267,58 @@ footer {
   </div>
 </section>
 
+<!-- ────────── PROCESS FLOW ────────── -->
+<section class="sec tinted" id="process">
+  <div class="wrap">
+    <span class="sec-eyebrow">Der Ablauf</span>
+    <h2>Von der Einrichtung bis zu jedem Abschluss.</h2>
+    <p class="sec-lead">Zwei Abläufe steuern Ihr Geschäft: ein einmaliger Go-live und danach ein automatisierter Quote-to-Order-Kreislauf bei jedem Geschäft.</p>
+
+    <!-- Flow 1: Going live -->
+    <h3 class="flow-title">Live gehen — einmalige Einrichtung</h3>
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Produkte anlegen</h4><p>Fertige Vorlagen oder Tabellen-Import.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Preise festlegen</h4><p>Ihre Optionslogik; Preise aktualisieren sich live.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Design wählen</h4><p>Das Theme passt zu Ihrer Marke.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Einbinden</h4><p>Einfaches Kopieren &amp; Einfügen auf Ihrer Website.</p></div>
+      <div class="flow-step"><div class="fs-num">5</div><h4>Live</h4><p>Kunden können konfigurieren und anfragen.</p></div>
+    </div>
+    <p class="flow-caption">Von null zum Live-Konfigurator in Tagen, nicht Monaten.</p>
+
+    <!-- Flow 2: Quote-to-order -->
+    <h3 class="flow-title">Quote-to-Order — bei jedem Geschäft</h3>
+    <div class="lanes">
+      <div class="lane">
+        <div class="lane-head">Kunde</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Produkt konfigurieren</b><small>Optionen · Live-Preis · 3D / AR</small></div>
+          <div class="lane-node"><b>Anfrage senden</b><small>ein kurzes Formular</small></div>
+          <div class="lane-node"><b>Angebot prüfen</b><small>mit einem Klick entscheiden</small></div>
+          <div class="lane-node"><b>Geschäft gewonnen</b></div>
+        </div>
+      </div>
+      <div class="lane auto">
+        <div class="lane-head">Configureout · automatisch</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Anfrage erfassen</b><small>vollständige Konfiguration angehängt, Vertrieb sofort benachrichtigt</small></div>
+          <div class="lane-node"><b>Angebot per E-Mail</b><small>gebrandetes PDF mit sicheren Annehmen-/Ablehnen-Buttons</small></div>
+          <div class="lane-node"><b>Entscheidung erfassen</b><small>Antwort gespeichert, Angebot gesperrt, Team benachrichtigt</small></div>
+        </div>
+      </div>
+      <div class="lane">
+        <div class="lane-head">Ihr Vertriebsteam</div>
+        <div class="lane-body">
+          <div class="lane-node"><b>Anfrage prüfen</b><small>vollständige Informationen, keine Rückfrage-Schleifen</small></div>
+          <div class="lane-node"><b>Angebot vorbereiten</b><small>Preise, Rabatte, Konditionen &amp; Gültigkeit</small></div>
+          <div class="lane-node"><b>Bestätigen &amp; senden</b><small>professionelles PDF wird für Sie erstellt</small></div>
+          <div class="lane-node"><div class="lane-branch"><span class="won">Angenommen → Auftrag bearbeiten</span><span class="lost">Abgelehnt / abgelaufen → mit überarbeitetem Angebot nachfassen</span></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-caption">Die mittlere Spur ist vollständig automatisch: Ihr Team prüft, kalkuliert und schließt nur ab.</p>
+  </div>
+</section>
+
 <!-- ────────── FEATURES ────────── -->
 <section class="sec dark" id="features">
   <div class="wrap">
@@ -1208,7 +1356,7 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="3" width="14" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6M8 11h6M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Gebrandete PDF-Angebote</h4>
-        <p>Verwandeln Sie jede Anfrage in ein formelles Angebot — Ihr Logo, Ihre Bedingungen, Ihre Positionen. Passen Sie Steuer, Rabatt oder Aufschläge an und laden Sie das gebrandete PDF herunter. Verfolgen Sie den Status vom Entwurf bis zur Annahme.</p>
+        <p>Verwandeln Sie jede Anfrage in ein formelles Angebot — Ihr Logo, Ihre Bedingungen, Ihre Positionen. Passen Sie Steuer, Rabatt oder Aufschläge an und erstellen Sie ein gebrandetes PDF (Vorlagen in Englisch &amp; Deutsch). Ein kontrollierter Lebenszyklus — Entwurf, Vorschau, bestätigt, gesperrt — hält jedes Angebot nachvollziehbar, und Angebote gehen mit sicheren Annehmen-/Ablehnen-Buttons hinaus.</p>
       </div>
 
       <div class="feat">
@@ -1232,7 +1380,66 @@ footer {
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-2 2-4 5-4M19 8c0-2-2-4-5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h4>Team-Rollen &amp; Berechtigungen</h4>
-        <p>Laden Sie Administratoren, Mitglieder und Betrachter ein. Funktionsbezogene Berechtigungen über Produkte, Preise, Anfragen, Angebote und Einstellungen hinweg.</p>
+        <p>Laden Sie Administratoren, Mitglieder und Betrachter ein. Funktionsbezogene Berechtigungen über Produkte, Preise, Anfragen, Angebote und Einstellungen hinweg — mit einer vollständigen Änderungshistorie jeder Anpassung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── CAPABILITIES ────────── -->
+<section class="sec" id="capabilities">
+  <div class="wrap">
+    <span class="sec-eyebrow">Funktionsumfang</span>
+    <h2>Mehr als ein Konfigurator.</h2>
+    <p class="sec-lead">Alles zwischen einem Website-Besucher und einem unterschriebenen Angebot — in einem durchgängigen Ablauf.</p>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l8 4.5v9L11 20l-8-4.5v-9L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 2v18M3 6.5l8 4.5 8-4.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>3D &amp; Augmented Reality</h4>
+        <p>Kunden betrachten das Produkt in 3D oder platzieren es per Augmented Reality im eigenen Raum — kein Warten, keine Missverständnisse.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M4 11l4 4 10-10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Entscheidung mit einem Klick</h4>
+        <p>Angebote gehen per E-Mail mit sicheren Annehmen- und Ablehnen-Buttons und einer festgelegten Gültigkeit hinaus. Die Antwort wird automatisch erfasst und Ihr Team sofort benachrichtigt.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M3 18V4M3 18h16M7 14l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Einblicke &amp; Analysen</h4>
+        <p>Anfrage-zu-Angebot-Funnel, Umsatz im Zeitverlauf, Top-Produkte und die beliebtesten Optionen — mandantenweit, auf einen Blick.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 2l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V5l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>White-Label &amp; Markenkontrolle</h4>
+        <p>Rollenbasierte Berechtigungen und eine vollständige Änderungshistorie. White-Label-Optionen bedeuten, dass Kunden nur Ihre Marke sehen — auf Dokumenten, E-Mails und öffentlichen Seiten.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><path d="M11 3v11M6 9l5 5 5-5M4 18h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Schnelles Onboarding</h4>
+        <p>Starten Sie mit fertigen Vorlagen oder importieren Sie Ihren bestehenden Katalog aus einer Tabelle. Die Einbindung auf Ihrer Website ist ein einfaches Kopieren und Einfügen.</p>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M11 6v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Nutzungsbasierte Preise</h4>
+        <p>Zahlen Sie pro erhaltener Anfrage — mehr nicht. Keine Nutzerlizenzen, keine festen Stufen, keine Vorabverpflichtung. Die Kosten skalieren mit der Nachfrage, und ein ruhiger Monat kostet Sie nichts.</p>
       </div>
     </div>
   </div>
@@ -1254,7 +1461,7 @@ footer {
           <li><span class="cmp-attr">Zeit bis live</span><span class="cmp-val">Bereits vorhanden</span></li>
           <li><span class="cmp-attr">Live-Preise</span><span class="cmp-val cmp-bad">Nicht angezeigt</span></li>
           <li><span class="cmp-attr">Einführung</span><span class="cmp-val">0 €</span></li>
-          <li><span class="cmp-attr">Monatliche Kosten</span><span class="cmp-val">0 €</span></li>
+          <li><span class="cmp-attr">Preismodell</span><span class="cmp-val">0 €</span></li>
           <li><span class="cmp-attr">Anfragequalität</span><span class="cmp-val cmp-bad">Unzureichend spezifiziert</span></li>
           <li><span class="cmp-attr">Anfragebearbeitung</span><span class="cmp-val cmp-bad">E-Mail-Verlauf</span></li>
         </ul>
@@ -1270,11 +1477,11 @@ footer {
           <li><span class="cmp-attr">Zeit bis live</span><span class="cmp-val cmp-good">Ein Nachmittag</span></li>
           <li><span class="cmp-attr">Live-Preise</span><span class="cmp-val cmp-good">Ja — Formel-Engine</span></li>
           <li><span class="cmp-attr">Einführung</span><span class="cmp-val cmp-good">0 € Einrichtung</span></li>
-          <li><span class="cmp-attr">Monatliche Kosten</span><span class="cmp-val cmp-good">Pauschales Abo</span></li>
+          <li><span class="cmp-attr">Preismodell</span><span class="cmp-val cmp-good">Pro Anfrage</span></li>
           <li><span class="cmp-attr">Anfragequalität</span><span class="cmp-val cmp-good">Vollständig spezifiziert</span></li>
           <li><span class="cmp-attr">Anfragebearbeitung</span><span class="cmp-val cmp-good">Live-Dashboard</span></li>
         </ul>
-        <div class="cmp-verdict">Ein echter Konfigurator, ohne das Projekt</div>
+        <div class="cmp-verdict">Keine Nutzerlizenzen. Ein ruhiger Monat kostet nichts.</div>
       </div>
 
       <div class="cmp-col">
@@ -1285,7 +1492,7 @@ footer {
           <li><span class="cmp-attr">Zeit bis live</span><span class="cmp-val cmp-bad">3–6 Monate</span></li>
           <li><span class="cmp-attr">Live-Preise</span><span class="cmp-val cmp-good">Ja</span></li>
           <li><span class="cmp-attr">Einführung</span><span class="cmp-val cmp-bad">40.000 € – 200.000 €</span></li>
-          <li><span class="cmp-attr">Monatliche Kosten</span><span class="cmp-val cmp-bad">2.000 €+ pro Nutzer</span></li>
+          <li><span class="cmp-attr">Preismodell</span><span class="cmp-val cmp-bad">2.000 €+ pro Nutzer</span></li>
           <li><span class="cmp-attr">Anfragequalität</span><span class="cmp-val cmp-good">Vollständig spezifiziert</span></li>
           <li><span class="cmp-attr">Anfragebearbeitung</span><span class="cmp-val cmp-good">Integriert</span></li>
         </ul>
@@ -1293,6 +1500,34 @@ footer {
       </div>
     </div>
     <p style="text-align:center;margin-top:32px;font-size:14px;color:var(--gray-5);">Vollständigen Vergleich ansehen: <a href="/de/vs/legacy-cpq-tools" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs. klassische CPQ-Tools</a> · <a href="/de/vs/contact-forms" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;">vs. Kontaktformulare</a></p>
+  </div>
+</section>
+
+<!-- ────────── SETUP & SUPPORT ────────── -->
+<section class="sec" id="support">
+  <div class="wrap">
+    <span class="sec-eyebrow">Einrichtung &amp; Support</span>
+    <h2>Sie sind nie auf sich allein gestellt.</h2>
+    <p class="sec-lead">Configureout ist mehr als Software. Unser Team arbeitet vom ersten Tag an mit Ihnen zusammen — und wenn Sie die Arbeit lieber ganz abgeben möchten, übernehmen wir die schwere Arbeit für Sie.</p>
+
+    <div class="support-cards">
+      <div class="support-card">
+        <h3>Geführte Einrichtung — inklusive</h3>
+        <p>Sie erhalten kein leeres Werkzeug. Wir begleiten Sie ohne Zusatzkosten durch die Ersteinrichtung: Modellierung Ihrer ersten Produkte, Festlegen der Preisregeln, Anpassung des Konfigurators an Ihre Marke und Einbindung auf Ihrer Website.</p>
+        <p class="opt">Größerer Katalog? Optionaler Done-for-you-Aufbau — wir erstellen Ihr gesamtes Sortiment, abgerechnet nach Umfang.</p>
+      </div>
+      <div class="support-card">
+        <h3>Support während der gesamten Nutzung</h3>
+        <p>Fragen, Anpassungen, neue Produkte oder Preisänderungen — das Team bleibt auch nach dem Go-live verfügbar. Sie erhalten einen direkten Draht zu den Menschen, die das Produkt entwickeln, schnelle Antworten und tatkräftige Hilfe, wann immer sich Ihr Katalog, Ihr Design oder Ihr Vertriebsprozess weiterentwickelt.</p>
+      </div>
+    </div>
+
+    <div class="flow-line">
+      <div class="flow-step"><div class="fs-num">1</div><h4>Kick-off</h4><p>Ein kurzes Gespräch über Ihre Produkte, Preislogik und Website.</p></div>
+      <div class="flow-step"><div class="fs-num">2</div><h4>Gemeinsam einrichten</h4><p>Katalog, Preise und Design gemeinsam mit uns — typischerweise innerhalb weniger Tage.</p></div>
+      <div class="flow-step"><div class="fs-num">3</div><h4>Live gehen</h4><p>Eine gemeinsame Endprüfung, dann wird der Konfigurator auf Ihrer Website eingebunden.</p></div>
+      <div class="flow-step"><div class="fs-num">4</div><h4>Begleitet bleiben</h4><p>Laufende Hilfe bei Änderungen und Fragen — inklusive, solange Sie Configureout nutzen.</p></div>
+    </div>
   </div>
 </section>
 
@@ -1388,6 +1623,7 @@ footer {
     </div>
     <nav class="foot-links" aria-label="Fußzeilen-Navigation">
       <a href="#how">So funktioniert's</a>
+      <a href="#process">Ablauf</a>
       <a href="#consultation">Kontakt</a>
       <a href="/de/privacy">Datenschutz</a>
       <a href="/de/terms">Bedingungen</a>
